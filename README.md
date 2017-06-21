@@ -22,6 +22,17 @@ php bin/console doctrine:schema:create.
 
 в окне браузера: http://localhost:8000/update-vendors, http://localhost:8000/update-complect
 
+Верстка будет доступна по ссылке http://localhost:8000/new
+
+Корневой шаблон - /app/Resources/views/smallBase.html.php
+
+Дочерние в директории - /src/AppBundle/Resources/views
+
+Файл стилей - /web/style.css
+
+## Обычная html верстка
+/web/dsphere_demo
+
 
 
 
