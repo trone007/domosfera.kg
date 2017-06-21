@@ -7,6 +7,10 @@ domosfera.kg /gallery.kg subservice
 ## Требования:
   #### БД(PostgreSQL >= 9.4)
   #### PHP >= 7.1 (драйвер php-pgsql, php-pdo, php-libxml, php-curl)
+ 
+## Обычная html верстка
+лежит в: /web/dsphere_demo
+
 ## Настройка подключения к БД и внесение изменений в нее:  
 
 файл: /app/config/parameters.yml
@@ -29,9 +33,6 @@ php bin/console doctrine:schema:create.
 Дочерние в директории - /src/AppBundle/Resources/views
 
 Файл стилей - /web/style.css
-
-## Обычная html верстка
-/web/dsphere_demo
 
 
 
