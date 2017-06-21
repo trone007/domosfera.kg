@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Страница коллекции</title>
+	<link href="./fonts/fonts.css" rel="stylesheet">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body><div class="container main-container" id="main-container">
+
+	<header class="header--new"><div class="header--new__wrap">
+		<div class="header--new__mobile-view">
+			<div class="mobile-menu__handler mobile-menu__handler--open" data-sidebar-open="mobile-menu"><span>menu open</span></div>
+			<a href="/" class="header--new__title"></a>
+		</div>
+		<div class="header--new__top">
+			<a href="/" class="header--new__title"></a>
+			<div class="header__region bs__dropdown">
+				<button class="bs__dropdown__toggle" type="button" id="region-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Кыргызстан</button>
+				<ul class="header__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="region-dropdown">
+				    <li>
+				    	<a href="#">Кыргызстан</a>
+						<ul class="second-level">
+							<li>Бишкек</li>
+							<li>Кара-Балта</li>
+							<li>Ош</li>
+							<li>Талас</li>
+							<li>Токмак</li>
+						</ul>
+				    </li>
+				    <li><a href="#">Казахстан</a></li>
+				    <li><a href="#">Группа компаний</a></li>
+			  	</ul>
+			</div>
+			<div class="header--new__block">
+				<a href="#" class="header--new__link">личный кабинет</a>
+				<a href="#" class="header--new__link header__navigation__more__favorites"><span>33</span>избранное</a>
+			</div>
+			<div class="header--new__block">
+				<a href="#" class="header--new__link">контакты</a>
+			</div>
+			<div class="header--new__block">
+				<a href="#" class="header--new__link">мастера</a>
+				<a href="#" class="header--new__link">дизайнеры</a>
+			</div>
+		</div>
+		
+
+		<div class="header--new__navigation__categories">
+			<div class="header--new__navigation__categories__item bs__dropdown">
+				<button class="bs__dropdown__toggle" type="button" id="header-cat1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Фотообои</button>
+				<ul class="header--new__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="header-cat1">
+				    <li><a href="#">Cartoon</a></li>
+				    <li><a href="#">Wallpaper</a></li>
+				    <li><a href="#">Walls</a></li>
+			  	</ul>
+			</div>
+	        <a href="#" class="header--new__navigation__categories__item">Ткани</a>
+	        <a href="#" class="header--new__navigation__categories__item">Текстиль</a>
+	        <a href="#" class="header--new__navigation__categories__item">Освещение</a>
+	        <a href="#" class="header--new__navigation__categories__item">Обои</a>
+	        <a href="#" class="header--new__navigation__categories__item">Не указана</a>
+	        <a href="#" class="header--new__navigation__categories__item">Натяжные потолки</a>
+	        <a href="#" class="header--new__navigation__categories__item">Мебель и ковры</a>
+	        <a href="#" class="header--new__navigation__categories__item">Лепнина</a>
+	        <a href="#" class="header--new__navigation__categories__item">Краски</a>
+	        <a href="#" class="header--new__navigation__categories__item">Клей</a>
+	        <a href="#" class="header--new__navigation__categories__item">Кафель</a>
+	        <a href="#" class="header--new__navigation__categories__item">Картины</a>
+	        <a href="#" class="header--new__navigation__categories__item">Инструменты</a>
+		</div>
+	</div></header>
+
+	<div class="mobile-menu closed" id="mobile-menu">
+		<div class="mobile-menu__container">
+			<div class="mobile-menu__head clearfix">
+				<div class="select-container">
+					<select name="citySelector" id="citySelector">
+						<option value="bsk">Бишкек</option>
+						<option value="krb">Кара-Балта</option>
+						<option value="osh">Ош</option>
+						<option value="tls">Талас</option>
+						<option value="tmk">Токмак</option>
+						<option value="kzh">Казахстан</option>
+						<option value="oth">Другие</option>
+					</select>
+				</div>
+				<div class="mobile-menu__handler mobile-menu__handler--close" data-sidebar-close="mobile-menu"><span>menu close</span></div>
+			</div>
+		  	<ul class="mobile-menu__list">
+			    <li><a href="#">Обои</a></li>
+			    <li><a href="#">Кафель</a></li>
+			    <li><a href="#">Освещение</a></li>
+			    <li><a href="#">Текстиль</a></li>
+			    <li><a href="#">Лепнина</a></li>
+			    <li><a href="#">Напольные покрытия</a></li>
+			    <li><a href="#">Ковры</a></li>
+			    <li><a href="#">Мебель</a></li>
+		  	</ul>
+		  	<ul class="mobile-menu__small-list">
+		  		<li><a href="#">мастера</a></li>
+		  		<li><a href="#">дизайнеры</a></li>
+		  	</ul>
+		  	<ul class="mobile-menu__small-list">
+		  		<li><a href="#">избранное</a></li>
+		  		<li><a href="#">вход в личный кабинет</a></li>
+		  	</ul>
+		</div>
+		<div class="blackout mobile-menu__handler--close"></div>
+	</div>
+
+	<section class="section-collection-page-intro">
+		<div class="head">
+			<h1 class="title-1 head__title">Trianon XI</h1>
+			<p class="head__subtitle">Германия, Rasch</p>
+			<a href="#" class="arrow-link arrow-link--invert head__go-back">Ко всему списку</a>
+		</div>
+		<div class="images">
+			<div class="images__first" style="background-image: url('img/collection-intro.jpg');"></div>
+			<div class="images__second" style="background-image: url('img/collection-intro-2.jpg');"></div>
+		</div>
+	</section>
+
+	<main class="list row">
+
+		<div class="col-sm-6 col-md-2"><div class="list__item list__item--beige">
+			<div class="list__item__pattern" style="background-image: url(./img/wallpapers/beige.png)"></div>
+			<div class="list__item__info">
+				<div class="list__item__info__code">Артикул 30930</div>
+				<div class="list__item__info__like"></div>
+				<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+				<div class="list__item__info__size">0,7 x 10,05 м</div>
+				<div class="list__item__info__price">4 820</div>
+				<div class="list__item__info__country">Франция</div>
+			</div>
+		</div></div>
+		<div class="col-sm-6 col-md-2"><div class="list__item list__item--aqua">
+			<div class="list__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+			<div class="list__item__info">
+				<div class="list__item__info__code">Артикул 30930</div>
+				<div class="list__item__info__like"></div>
+				<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+				<div class="list__item__info__size">0,7 x 10,05 м</div>
+				<div class="list__item__info__price">4 820</div>
+				<div class="list__item__info__country">Франция</div>
+			</div>
+		</div></div>
+		<div class="col-sm-6 col-md-2"><div class="list__item list__item--orange">
+			<div class="list__item__pattern" style="background-image: url(./img/wallpapers/orange.png)"></div>
+			<div class="list__item__info">
+				<div class="list__item__info__code">Артикул 30930</div>
+				<div class="list__item__info__like"></div>
+				<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+				<div class="list__item__info__size">0,7 x 10,05 м</div>
+				<div class="list__item__info__price">4 820</div>
+				<div class="list__item__info__country">Франция</div>
+			</div>
+		</div></div>
+		<div class="col-sm-6 col-md-2"><div class="list__item list__item--beige">
+			<div class="list__item__pattern" style="background-image: url(./img/wallpapers/beige.png)"></div>
+			<div class="list__item__info">
+				<div class="list__item__info__code">Артикул 30930</div>
+				<div class="list__item__info__like"></div>
+				<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+				<div class="list__item__info__size">0,7 x 10,05 м</div>
+				<div class="list__item__info__price">4 820</div>
+				<div class="list__item__info__country">Франция</div>
+			</div>
+		</div></div>
+		<div class="col-sm-6 col-md-2"><div class="list__item list__item--aqua">
+			<div class="list__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+			<div class="list__item__info">
+				<div class="list__item__info__code">Артикул 30930</div>
+				<div class="list__item__info__like"></div>
+				<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+				<div class="list__item__info__size">0,7 x 10,05 м</div>
+				<div class="list__item__info__price">4 820</div>
+				<div class="list__item__info__country">Франция</div>
+			</div>
+		</div></div>
+		<div class="col-sm-6 col-md-2"><div class="list__item list__item--orange">
+			<div class="list__item__pattern" style="background-image: url(./img/wallpapers/orange.png)"></div>
+			<div class="list__item__info">
+				<div class="list__item__info__code">Артикул 30930</div>
+				<div class="list__item__info__like"></div>
+				<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+				<div class="list__item__info__size">0,7 x 10,05 м</div>
+				<div class="list__item__info__price">4 820</div>
+				<div class="list__item__info__country">Франция</div>
+			</div>
+		</div></div>
+
+	</main>
+
+	<div class="row">
+		<div class="col-xs-12 col-sm-3">
+			<a href="#" class="button-with-arrow button-with-arrow--invert navigate navigate--prev">
+				<span>Предыдущая коллекция</span>
+				<div class="navigate__name">Bohemian Burlesque</div>
+			</a>
+		</div>
+		<div class="col-xs-12 col-sm-3 col-sm-offset-6">
+			<a href="#" class="button-with-arrow navigate navigate--next">
+				<span>Следующая коллекция</span>
+				<div class="navigate__name">Ornamenta</div>
+			</a>	
+		</div>
+	</div>
+
+	<footer class="footer row">
+		<div class="col-xs-12 footer__main-menu">
+			<a href="#">Обои</a>
+		    <a href="#">Кафель</a>
+		    <a href="#">Освещение</a>
+		    <a href="#">Текстиль</a>
+		    <a href="#">Лепнина</a>
+		    <a href="#">Краска</a>
+		    <a href="#">Напольные покрытия</a>
+		    <a href="#">Ковры</a>
+		    <a href="#">Мебель</a>
+		</div>
+		<div class="col-xs-12 footer__more-menu footer__more-menu--mobile"><div class="row">
+			<div class="col-xs-5 footer__more-menu__nav">
+				<a href="#">МАСТЕРА</a>
+				<a href="#">ДИЗАЙНЕРЫ</a>
+				<a href="#">О КОМПАНИИ</a>
+				<a href="#">МАГАЗИНЫ</a>
+				<a href="#">КОНТАКТЫ</a>
+			</div>
+			<div class="col-xs-7">
+				<a href="/" class="footer__more-menu__logo"></a>
+				<div class="footer__more-menu__socials">
+					<a href="#" target="_blank" class="vk"></a>
+					<a href="#" target="_blank" class="fb"></a>
+					<a href="#" target="_blank" class="tw"></a>
+				</div>
+				<div class="footer__more-menu__copyright">© 2010-2016 Торговый дом Домосфера. Все права защищены.</div>
+			</div>
+		</div></div>
+		<div class="col-xs-12 footer__more-menu footer__more-menu--desktop"><div class="row">
+			<div class="col-md-2">
+				<a href="/" class="footer__more-menu__logo"></a>
+			</div>
+			<div class="col-md-7 footer__more-menu__nav">
+				<a href="#">О КОМПАНИИ</a>
+				<a href="#">МАГАЗИНЫ</a>
+				<a href="#">КОНТАКТЫ</a>
+				<a href="#">МАСТЕРА</a>
+				<a href="#">ДИЗАЙНЕРЫ</a>
+				<div class="footer__more-menu__copyright">© 2010-2016 Торговый дом Домосфера. Все права защищены.</div>
+			</div>
+			<div class="col-md-3">
+				<div class="footer__more-menu__socials">
+					<a href="#" target="_blank" class="vk"></a>
+					<a href="#" target="_blank" class="fb"></a>
+					<a href="#" target="_blank" class="tw"></a>
+				</div>
+			</div>
+		</div></div>
+	</footer>
+	
+</div>
+<script src="./js/jquery-3.1.1.min.js"></script>
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./js/sidebar.js"></script>
+<script src="./js/filter.js"></script>
+<script src="./js/dogNails.js"></script> 
+</body>
+</html>

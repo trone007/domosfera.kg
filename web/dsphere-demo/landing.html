@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Домосфера</title>
+	<link href="./fonts/fonts.css" rel="stylesheet">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body><div class="container main-container" id="main-container">
+
+	<header class="header"><div class="row">
+		<div class="mobile-menu__handler mobile-menu__handler--open col-xs-4" data-sidebar-open="mobile-menu"><span>menu open</span></div>
+		<a href="/" class="header__title col-xs-8 col-md-2"></a>
+		<div class="header__navigation col-md-10">
+			<div class="header__navigation__more row">
+				<div class="header__region bs__dropdown col-md-2">
+					<button class="bs__dropdown__toggle" type="button" id="region-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Кыргызстан</button>
+					<ul class="header__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="region-dropdown">
+					    <li>
+					    	<a href="#">Кыргызстан</a>
+							<ul class="second-level">
+								<li>Бишкек</li>
+								<li>Кара-Балта</li>
+								<li>Ош</li>
+								<li>Талас</li>
+								<li>Токмак</li>
+							</ul>
+					    </li>
+					    <li><a href="#">Казахстан</a></li>
+					    <li><a href="#">Группа компаний</a></li>
+				  	</ul>
+				</div>
+				<a href="#" class="col-md-2 col-md-offset-2">мастера</a>
+				<a href="#" class="col-md-2">дизайнеры</a>
+				<a href="#" class="col-md-2">о компании</a>
+				<a href="#" class="header__navigation__more__favorites col-md-2"><span>13</span>избранное</a>
+			</div>
+			<div class="header__navigation__categories row">
+				<div class="header__navigation__categories__item bs__dropdown col-md-2">
+					<button class="bs__dropdown__toggle" type="button" id="header-cat1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Cat 1</button>
+					<ul class="header__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="header-cat1">
+					    <li><a href="#">Cartoon</a></li>
+					    <li><a href="#">Wallpaper</a></li>
+					    <li><a href="#">Walls</a></li>
+				  	</ul>
+				</div>
+				<div class="header__navigation__categories__item col-md-2">Cat 2</div>
+				<div class="header__navigation__categories__item col-md-2">Cat 3</div>
+				<div class="header__navigation__categories__item col-md-2">Cat 4</div>
+				<div class="header__navigation__categories__item col-md-2">Cat 5</div>
+				<div class="header__navigation__categories__item col-md-2">Cat 6</div>
+			</div>
+		</div>
+	</div></header>
+
+<div class="mobile-menu closed" id="mobile-menu">
+	<div class="mobile-menu__container">
+		<div class="mobile-menu__head clearfix">
+			<div class="select-container">
+				<select name="citySelector" id="citySelector">
+					<option value="bsk">Бишкек</option>
+					<option value="krb">Кара-Балта</option>
+					<option value="osh">Ош</option>
+					<option value="tls">Талас</option>
+					<option value="tmk">Токмак</option>
+					<option value="kzh">Казахстан</option>
+					<option value="oth">Другие</option>
+				</select>
+			</div>
+			<div class="mobile-menu__handler mobile-menu__handler--close" data-sidebar-close="mobile-menu"><span>menu close</span></div>
+		</div>
+	  	<ul class="mobile-menu__list">
+		    <li><a href="#">Обои</a></li>
+		    <li><a href="#">Кафель</a></li>
+		    <li><a href="#">Освещение</a></li>
+		    <li><a href="#">Текстиль</a></li>
+		    <li><a href="#">Лепнина</a></li>
+		    <li><a href="#">Напольные покрытия</a></li>
+		    <li><a href="#">Ковры</a></li>
+		    <li><a href="#">Мебель</a></li>
+	  	</ul>
+	  	<ul class="mobile-menu__small-list">
+	  		<li><a href="#">мастера</a></li>
+	  		<li><a href="#">дизайнеры</a></li>
+	  	</ul>
+	  	<ul class="mobile-menu__small-list">
+	  		<li><a href="#">избранное</a></li>
+	  		<li><a href="#">вход в личный кабинет</a></li>
+	  	</ul>
+	</div>
+	<div class="blackout mobile-menu__handler--close"></div>
+</div>
+
+	<div class="mobile-menu closed" id="mobile-menu">
+		<div class="mobile-menu__container">
+			<div class="mobile-menu__head clearfix">
+				<div class="select-container">
+					<select name="citySelector" id="citySelector">
+						<option value="bsk">Бишкек</option>
+						<option value="krb">Кара-Балта</option>
+						<option value="osh">Ош</option>
+						<option value="tls">Талас</option>
+						<option value="tmk">Токмак</option>
+						<option value="kzh">Казахстан</option>
+						<option value="oth">Другие</option>
+					</select>
+				</div>
+				<div class="mobile-menu__handler mobile-menu__handler--close" data-sidebar-close="mobile-menu"><span>menu close</span></div>
+			</div>
+		  	<ul class="mobile-menu__list">
+			    <li><a href="#">Обои</a></li>
+			    <li><a href="#">Кафель</a></li>
+			    <li><a href="#">Освещение</a></li>
+			    <li><a href="#">Текстиль</a></li>
+			    <li><a href="#">Лепнина</a></li>
+			    <li><a href="#">Напольные покрытия</a></li>
+			    <li><a href="#">Ковры</a></li>
+			    <li><a href="#">Мебель</a></li>
+		  	</ul>
+		  	<ul class="mobile-menu__small-list">
+		  		<li><a href="#">мастера</a></li>
+		  		<li><a href="#">дизайнеры</a></li>
+		  	</ul>
+		  	<ul class="mobile-menu__small-list">
+		  		<li><a href="#">избранное</a></li>
+		  		<li><a href="#">вход в личный кабинет</a></li>
+		  	</ul>
+		</div>
+		<div class="blackout mobile-menu__handler--close"></div>
+	</div>
+
+	<section class="section-hero" style="background-image: url(./img/hero-bg.png)">
+		<div class="col-md-5 col-md-offset-1">
+			<h1 class="title-1">Идеальные обои для ваших стен</h1>
+			<p class="lead">Самый обширный ассортимент обоев: цвета, фактуры и дизайнерские решения от надежных и качественных обойных брендов со всего мира.</p>
+		</div>
+		<div class="square"></div>
+	</section>
+
+	<section class="section-text row">
+		<div class="col-md-6">
+			<h2 class="title-2 section-text__title">Действительно<br>большой выбор</h2>
+			<p>Более 30 000 рулонов обоев в наличии — мы постоянно привозим новые коллекции и заботимся о поддержании ассортимента. В торговом доме «Галерея» вы всегда найдете именно то, что вам нужно. Просто расскажите консультантам, чего вам хочется или покажите дизайн-проект. И они с радостью помогут подобрать лучшие варианты.</p>
+			<a href="catalog-list.html" class="button-with-arrow">
+				<span class="arrow-link">Перейти в каталог</span>
+			</a>
+		</div>
+		<div class="col-md-6 goods-demo" style="background-image: url(./img/goods-demo.png);margin-top: 30px;">
+			<div class="goods-demo__content">
+				<div class="goods-demo__content__title">Muralto Florian 2</div>
+				<div class="goods-demo__content__country">Италия, Sirpi</div>
+				<div class="goods-demo__content__price"><span>от</span> 620</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section-carousel">
+		<h2 class="section-carousel__title title-2">Для всего дома</h2>
+		<p class="section-carousel__text">Более 30 000 рулонов обоев в наличии — мы постоянно привозим<br> новые коллекции и заботимся о поддержании ассортимента</p>
+		<ul class="section-carousel__room-list">
+			<li class="section-carousel__room-list__item active" data-room="livingroom">
+				<div class="icon"></div>
+				<div class="name">Гостинная</div>
+			</li>
+			<li class="section-carousel__room-list__item" data-room="bedroom">
+				<div class="icon"></div>
+				<div class="name">Спальня</div>
+			</li>
+			<li class="section-carousel__room-list__item" data-room="childroom">
+				<div class="icon"></div>
+				<div class="name">Детская</div>
+			</li>
+		</ul>
+		<div class="wallpaper-carousel">
+			<div class="wallpaper-carousel__frame">
+				<ul class="slide">
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--aqua">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+					</li>
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--beige">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/beige.png)"></div>
+					</li>
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--orange">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/orange.png)"></div>
+					</li>
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--aqua">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+					</li>
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--beige">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/beige.png)"></div>
+					</li>
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--orange">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/orange.png)"></div>
+					</li>
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--aqua">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+					</li>
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--beige">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/beige.png)"></div>
+					</li>
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--orange">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/orange.png)"></div>
+					</li>
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--aqua">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+					</li>
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--beige">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/beige.png)"></div>
+					</li>
+					<li class="wallpaper-carousel__item wallpaper-carousel__item--orange">
+						<div class="wallpaper-carousel__item__info">
+							<div class="wallpaper-carousel__item__price">4 820</div>
+							<div class="wallpaper-carousel__item__code">Артикул 30930</div>
+							<div class="wallpaper-carousel__item__size">0,7 x 10,05 м</div>
+							<a href="#" target="_blank" class="wallpaper-carousel__item__title">Sirpi Muralto Florian 2</a>
+							<div class="wallpaper-carousel__item__like"></div>
+						</div>
+						<div class="wallpaper-carousel__item__pattern" style="background-image: url(./img/wallpapers/orange.png)"></div>
+					</li>
+				</ul>
+			</div>
+			<div class="wallpaper-carousel__overlay wallpaper-carousel__overlay__text active" data-room="livingroom">
+				<div class="title-3">Более <mark>300 видов</mark> обоев для роскошной гостиной</div>
+				<p>Богатый вензель, дамаск и узоры — <br>впечатлите гостей от  <span class="price">400</span> за рулон</p>
+			</div>
+			<div class="wallpaper-carousel__overlay wallpaper-carousel__overlay__figure active" data-room="livingroom"></div>
+			<div class="wallpaper-carousel__overlay wallpaper-carousel__overlay__text" data-room="bedroom">
+				<div class="title-3">Более <mark>100 видов</mark> обоев для нежной спальни</div>
+				<p>Богатый вензель, дамаск и узоры — <br>впечатлите гостей от  <span class="price">400</span> за рулон</p>
+			</div>
+			<div class="wallpaper-carousel__overlay wallpaper-carousel__overlay__figure" data-room="bedroom"></div>
+			<div class="wallpaper-carousel__overlay wallpaper-carousel__overlay__text" data-room="childroom">
+				<div class="title-3">Более <mark>50 видов</mark> обоев для милой детской</div>
+				<p>Богатый вензель, дамаск и узоры — <br>впечатлите гостей от  <span class="price">400</span> за рулон</p>
+			</div>
+			<div class="wallpaper-carousel__overlay wallpaper-carousel__overlay__figure" data-room="childroom"></div>
+		</div>
+	</section>
+
+	<section class="section-text section-text--no-margins row">
+		<div class="col-md-6">
+			<h2 class="lead">Более 30 000 рулонов обоев в наличии — мы постоянно привозим новые коллекции и заботимся об ассортименте</h2>
+			<div class="list row">
+				<div class="col-sm-6 col-lg-4"><div class="list__item list__item--beige">
+					<div class="list__item__pattern" style="background-image: url(./img/wallpapers/beige.png)"></div>
+					<div class="list__item__info">
+						<div class="list__item__info__code">Артикул 30930</div>
+						<div class="list__item__info__like"></div>
+						<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+						<div class="list__item__info__size">0,7 x 10,05 м</div>
+						<div class="list__item__info__price">4 820</div>
+						<div class="list__item__info__country">Франция</div>
+					</div>
+				</div></div>
+				<div class="col-sm-6 col-lg-4"><div class="list__item list__item--aqua">
+					<div class="list__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+					<div class="list__item__info">
+						<div class="list__item__info__code">Артикул 30930</div>
+						<div class="list__item__info__like"></div>
+						<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+						<div class="list__item__info__size">0,7 x 10,05 м</div>
+						<div class="list__item__info__price">4 820</div>
+						<div class="list__item__info__country">Франция</div>
+					</div>
+				</div></div>
+				<div class="col-sm-6 col-lg-4"><div class="list__item list__item--aqua">
+					<div class="list__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+					<div class="list__item__info">
+						<div class="list__item__info__code">Артикул 30930</div>
+						<div class="list__item__info__like"></div>
+						<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+						<div class="list__item__info__size">0,7 x 10,05 м</div>
+						<div class="list__item__info__price">4 820</div>
+						<div class="list__item__info__country">Франция</div>
+					</div>
+				</div></div>
+			</div>
+		</div>
+		<div class="col-md-6 goods-demo" style="background-image: url(./img/goods-demo-2.png)">
+			<div class="goods-demo__content">
+				<div class="goods-demo__content__title">Grandeko</div>
+				<div class="goods-demo__content__country">Германия, Sirpi</div>
+				<div class="goods-demo__content__price"><span>от</span> 700</div>
+				<a href="#" class="button-with-arrow">
+					<span class="arrow-link">Перейти в каталог</span>
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section-text section-text--grey section-text--with-map row">
+		<div class="col-lg-5 col-lg-offset-1">
+			<h2 class="title-2 section-text__title">Всегда рядом с вами</h2>
+			<p>Сюда приятно зайти и здесь удобно выбирать. Все товары распределены по категориям и аккуратно расставлены. Обои, фрески, трафареты, шторы и лепнина — все находится на своем заранее подготовленном месте.</p>
+			<a href="#" class="button-with-arrow">
+				<span class="arrow-link">Найти ближайший магазин</span>
+			</a>
+		</div>
+		<div class="map">
+			<img src="./img/map.png" alt="map">
+		</div>
+	</section>	
+
+	<footer class="footer row">
+		<div class="col-xs-12 footer__main-menu">
+			<a href="#">Обои</a>
+		    <a href="#">Кафель</a>
+		    <a href="#">Освещение</a>
+		    <a href="#">Текстиль</a>
+		    <a href="#">Лепнина</a>
+		    <a href="#">Краска</a>
+		    <a href="#">Напольные покрытия</a>
+		    <a href="#">Ковры</a>
+		    <a href="#">Мебель</a>
+		</div>
+		<div class="col-xs-12 footer__more-menu footer__more-menu--mobile"><div class="row">
+			<div class="col-xs-5 footer__more-menu__nav">
+				<a href="#">МАСТЕРА</a>
+				<a href="#">ДИЗАЙНЕРЫ</a>
+				<a href="#">О КОМПАНИИ</a>
+				<a href="#">МАГАЗИНЫ</a>
+				<a href="#">КОНТАКТЫ</a>
+			</div>
+			<div class="col-xs-7">
+				<a href="/" class="footer__more-menu__logo"></a>
+				<div class="footer__more-menu__socials">
+					<a href="#" target="_blank" class="vk"></a>
+					<a href="#" target="_blank" class="fb"></a>
+					<a href="#" target="_blank" class="tw"></a>
+				</div>
+				<div class="footer__more-menu__copyright">© 2010-2016 Торговый дом Домосфера. Все права защищены.</div>
+			</div>
+		</div></div>
+		<div class="col-xs-12 footer__more-menu footer__more-menu--desktop"><div class="row">
+			<div class="col-md-2">
+				<a href="/" class="footer__more-menu__logo"></a>
+			</div>
+			<div class="col-md-7 footer__more-menu__nav">
+				<a href="#">О КОМПАНИИ</a>
+				<a href="#">МАГАЗИНЫ</a>
+				<a href="#">КОНТАКТЫ</a>
+				<a href="#">МАСТЕРА</a>
+				<a href="#">ДИЗАЙНЕРЫ</a>
+				<div class="footer__more-menu__copyright">© 2010-2016 Торговый дом Домосфера. Все права защищены.</div>
+			</div>
+			<div class="col-md-3">
+				<div class="footer__more-menu__socials">
+					<a href="#" target="_blank" class="vk"></a>
+					<a href="#" target="_blank" class="fb"></a>
+					<a href="#" target="_blank" class="tw"></a>
+				</div>
+			</div>
+		</div></div>
+	</footer>
+	
+</div>
+
+<script src="./js/jquery-3.1.1.min.js"></script>
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./js/sly.min.js"></script>
+<script src="./js/sidebar.js"></script>
+<script src="./js/dogNails.js"></script>
+<script src="./js/carousel.js"></script>
+
+</body>
+</html>

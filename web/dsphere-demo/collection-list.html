@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Каталог коллекциями</title>
+	<link href="./fonts/fonts.css" rel="stylesheet">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body><div class="container main-container" id="main-container">
+
+	<header class="header--new"><div class="header--new__wrap">
+		<div class="header--new__mobile-view">
+			<div class="mobile-menu__handler mobile-menu__handler--open" data-sidebar-open="mobile-menu"><span>menu open</span></div>
+			<a href="/" class="header--new__title"></a>
+		</div>
+		<div class="header--new__top">
+			<a href="/" class="header--new__title"></a>
+			<div class="header__region bs__dropdown">
+				<button class="bs__dropdown__toggle" type="button" id="region-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Кыргызстан</button>
+				<ul class="header__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="region-dropdown">
+					<li>
+						<a href="#">Кыргызстан</a>
+						<ul class="second-level">
+							<li>Бишкек</li>
+							<li>Кара-Балта</li>
+							<li>Ош</li>
+							<li>Талас</li>
+							<li>Токмак</li>
+						</ul>
+					</li>
+					<li><a href="#">Казахстан</a></li>
+					<li><a href="#">Группа компаний</a></li>
+				</ul>
+			</div>
+			<div class="header--new__block">
+				<a href="#" class="header--new__link">личный кабинет</a>
+				<a href="#" class="header--new__link header__navigation__more__favorites"><span>33</span>избранное</a>
+			</div>
+			<div class="header--new__block">
+				<a href="#" class="header--new__link">контакты</a>
+			</div>
+			<div class="header--new__block">
+				<a href="#" class="header--new__link">мастера</a>
+				<a href="#" class="header--new__link">дизайнеры</a>
+			</div>
+		</div>
+		
+
+		<div class="header--new__navigation__categories">
+			<div class="header--new__navigation__categories__item bs__dropdown">
+				<button class="bs__dropdown__toggle" type="button" id="header-cat1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Фотообои</button>
+				<ul class="header--new__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="header-cat1">
+					<li><a href="#">Cartoon</a></li>
+					<li><a href="#">Wallpaper</a></li>
+					<li><a href="#">Walls</a></li>
+				</ul>
+			</div>
+			<a href="#" class="header--new__navigation__categories__item">Ткани</a>
+			<a href="#" class="header--new__navigation__categories__item">Текстиль</a>
+			<a href="#" class="header--new__navigation__categories__item">Освещение</a>
+			<a href="#" class="header--new__navigation__categories__item">Обои</a>
+			<a href="#" class="header--new__navigation__categories__item">Не указана</a>
+			<a href="#" class="header--new__navigation__categories__item">Натяжные потолки</a>
+			<a href="#" class="header--new__navigation__categories__item">Мебель и ковры</a>
+			<a href="#" class="header--new__navigation__categories__item">Лепнина</a>
+			<a href="#" class="header--new__navigation__categories__item">Краски</a>
+			<a href="#" class="header--new__navigation__categories__item">Клей</a>
+			<a href="#" class="header--new__navigation__categories__item">Кафель</a>
+			<a href="#" class="header--new__navigation__categories__item">Картины</a>
+			<a href="#" class="header--new__navigation__categories__item">Инструменты</a>
+		</div>
+	</div></header>
+
+	<div class="mobile-menu closed" id="mobile-menu">
+		<div class="mobile-menu__container">
+			<div class="mobile-menu__head clearfix">
+				<div class="select-container">
+					<select name="citySelector" id="citySelector">
+						<option value="bsk">Бишкек</option>
+						<option value="krb">Кара-Балта</option>
+						<option value="osh">Ош</option>
+						<option value="tls">Талас</option>
+						<option value="tmk">Токмак</option>
+						<option value="kzh">Казахстан</option>
+						<option value="oth">Другие</option>
+					</select>
+				</div>
+				<div class="mobile-menu__handler mobile-menu__handler--close" data-sidebar-close="mobile-menu"><span>menu close</span></div>
+			</div>
+			<ul class="mobile-menu__list">
+				<li><a href="#">Обои</a></li>
+				<li><a href="#">Кафель</a></li>
+				<li><a href="#">Освещение</a></li>
+				<li><a href="#">Текстиль</a></li>
+				<li><a href="#">Лепнина</a></li>
+				<li><a href="#">Напольные покрытия</a></li>
+				<li><a href="#">Ковры</a></li>
+				<li><a href="#">Мебель</a></li>
+			</ul>
+			<ul class="mobile-menu__small-list">
+				<li><a href="#">мастера</a></li>
+				<li><a href="#">дизайнеры</a></li>
+			</ul>
+			<ul class="mobile-menu__small-list">
+				<li><a href="#">избранное</a></li>
+				<li><a href="#">вход в личный кабинет</a></li>
+			</ul>
+		</div>
+		<div class="blackout mobile-menu__handler--close"></div>
+	</div>
+
+	<div class="head row">
+		<h2 class="head__title title-1 col-md-6">Каталог обоев</h2>
+		<div class="head__switcher switcher col-md-6">
+			<a href="catalog-list.html" class="switcher__item">списком</a>
+			<a href="compare-list.html" class="switcher__item">в сравнении</a>
+			<a href="collection-list.html" class="switcher__item active">коллекциями</a>
+		</div>
+	</div>
+
+	<div class="filter row">
+		<div class="filter__categories col-md-8 closed" id="filter-sidebar">
+			<div class="blackout filter-sidebar__handler--close"></div>
+			<div class="filter__categories__list">
+				<div class="filter__categories__head clearfix">
+					<div class="filter__categories__head__title">Фильтры</div>
+					<div class="filter__categories__selected__clear">Сбросить</div>
+				</div>
+				<div class="filter__categories__list__item active" data-filtercategory="color">Цвет</div>
+				<div class="filter__categories__list__item" data-filtercategory="pattern">Рисунок</div>
+				<div class="filter__categories__list__item" data-filtercategory="type">Тип</div>
+				<div class="filter__categories__list__item" data-filtercategory="room">Помещение</div>
+				<div class="filter__categories__list__item" data-filtercategory="base">Основа</div>
+				<div class="filter__categories__list__item" data-filtercategory="size">Размер</div>
+				<div class="filter__categories__list__item" data-filtercategory="fabric">Фабрики</div>
+				<div class="filter__categories__list__item" data-filtercategory="price">Цена</div>
+				<div class="filter__categories__button filter-sidebar__handler--close">Готово</div>
+			</div>
+			<div class="filter__categories__content">
+				<div class="filter__categories__head">
+					<div class="filter__categories__head__back">цвет</div>
+				</div>
+				<ul class="filter__categories__content__item active" data-filtercategory="color">
+					<li class="filter-option color color--white" data-filter="color-white"></li>
+					<ol class="color_popup_wrap">
+						<div class="color_popup">
+							<div class="filter-item-wrap">
+								<ul class="filter__categories__content__item active" data-filtercategory="color">
+									<li class="filter-option color color--grey" data-filter="color-grey">
+										<span class="color-name">Серый</span>
+									</li>
+									<li class="filter-option color color--white" data-filter="color-white">
+										<span class="color-name">Белый</span>
+									</li>
+									<li class="filter-option color color--black" data-filter="color-black">
+										<span class="color-name">Черный</span>
+									</li>
+								</ul>	
+							</div>
+						</div>
+					</ol>					
+					<li class="filter-option color color--beige" data-filter="color-beige"></li>
+					<ol class="color_popup_wrap">
+						<div class="color_popup">
+							<div class="filter-item-wrap">
+								<ul class="filter__categories__content__item active" data-filtercategory="color">
+									<li class="filter-option color color--peach" data-filter="color-peach">
+										<span class="color-name">Персик</span>
+									</li>
+									<li class="filter-option color color--beige" data-filter="color-beige">
+										<span class="color-name">Бежевый</span>
+									</li>
+								</ul>	
+							</div>
+						</div>
+					</ol>
+					<li class="filter-option color color--yellow" data-filter="color-yellow"></li>
+					<ol class="color_popup_wrap">
+						<div class="color_popup">
+							<div class="filter-item-wrap">
+								<ul class="filter__categories__content__item active" data-filtercategory="color">
+									<li class="filter-option color color--gold" data-filter="color-gold">
+										<span class="color-name">Золотой</span>
+									</li>
+									<li class="filter-option color color--yellow" data-filter="color-yellow">
+										<span class="color-name">Жёлтый</span>
+									</li>
+									<li class="filter-option color color--bronze" data-filter="color-bronze">
+										<span class="color-name">Бронзовый</span>
+									</li>
+								</ul>	
+							</div>
+						</div>
+					</ol>
+					<li class="filter-option color color--orange" data-filter="color-orange"></li>
+					<ol class="color_popup_wrap">
+						<div class="color_popup">
+							<div class="filter-item-wrap">
+								<ul class="filter__categories__content__item active" data-filtercategory="color">
+									<li class="filter-option color color--orange" data-filter="color-orange">
+										<span class="color-name">Оранжевый</span>
+									</li>
+									<li class="filter-option color color--terracotta" data-filter="color-terracotta">
+										<span class="color-name">Терракот</span>
+									</li>
+									<li class="filter-option color color--brown" data-filter="color-brown">
+										<span class="color-name">Коричневый</span>
+									</li>
+								</ul>	
+							</div>
+						</div>
+					</ol>
+					<li class="filter-option color color--red" data-filter="color-red"></li>
+					<ol class="color_popup_wrap">
+						<div class="color_popup">
+							<div class="filter-item-wrap">
+								<ul class="filter__categories__content__item active" data-filtercategory="color">
+									<li class="filter-option color color--pink" data-filter="color-pink">
+										<span class="color-name">Розовый</span>
+									</li>
+									<li class="filter-option color color--red" data-filter="color-red">
+										<span class="color-name">Красный</span>
+									</li>
+									<li class="filter-option color color--winered" data-filter="color-winered">
+										<span class="color-name">Бордовый</span>
+									</li>
+								</ul>	
+							</div>
+						</div>
+					</ol>
+					<li class="filter-option color color--green" data-filter="color-green"></li>
+					<ol class="color_popup_wrap">
+						<div class="color_popup">
+							<div class="filter-item-wrap">
+								<ul class="filter__categories__content__item active" data-filtercategory="color">
+									<li class="filter-option color color--pistachio" data-filter="color-pistachio">
+										<span class="color-name">Фисташковый</span>
+									</li>
+									<li class="filter-option color color--green" data-filter="color-green">
+										<span class="color-name">Зеленый</span>
+									</li>
+									<li class="filter-option color color--khaki" data-filter="color-khaki">
+										<span class="color-name">Хаки</span>
+									</li>
+								</ul>	
+							</div>
+						</div>
+					</ol>
+					<li class="filter-option color color--blue" data-filter="color-blue"></li>
+					<ol class="color_popup_wrap">
+						<div class="color_popup">
+							<div class="filter-item-wrap">
+								<ul class="filter__categories__content__item active" data-filtercategory="color">
+									<li class="filter-option color color--turquoise" data-filter="color-turquoise">
+										<span class="color-name">Бирюзовый</span>
+									</li>
+									<li class="filter-option color color--blue" data-filter="color-blue">
+										<span class="color-name">Голубой</span>
+									</li>
+									<li class="filter-option color color--darkblue" data-filter="color-darkblue">
+										<span class="color-name">Синий</span>
+									</li>
+								</ul>	
+							</div>
+						</div>
+					</ol>
+					<li class="filter-option color color--lilac" data-filter="color-lilac"></li>
+					<ol class="color_popup_wrap">
+						<div class="color_popup">
+							<div class="filter-item-wrap">
+								<ul class="filter__categories__content__item active" data-filtercategory="color">
+									<li class="filter-option color color--lilac" data-filter="color-lilac">
+										<span class="color-name">Сиреневый</span>
+									</li>
+									<li class="filter-option color color--purple" data-filter="color-purple">
+										<span class="color-name">Фиолетовый</span>
+									</li>	
+								</ul>	
+							</div>
+						</div>
+					</ol>
+				</ul>
+				<ul class="filter__categories__content__item" data-filtercategory="pattern">
+					<li class="filter-option" data-filter="pattern-1">Без рисунка</li>
+					<li class="filter-option" data-filter="pattern-2">Геометрия</li>
+					<li class="filter-option" data-filter="pattern-3">Полоса</li>
+					<li class="filter-option" data-filter="pattern-4">В горошек</li>
+				</ul>
+				<ul class="filter__categories__content__item" data-filtercategory="type">
+					<li class="filter-option" data-filter="type-1">Простые</li>
+					<li class="filter-option" data-filter="type-2">Сложные</li>
+					<li class="filter-option" data-filter="type-3">Флизелиновые</li>
+					<li class="filter-option" data-filter="type-4">Хлопчато-бумажные</li>
+				</ul>
+				<ul class="filter__categories__content__item" data-filtercategory="room">
+					<li class="filter-option" data-filter="room-1">Спальня</li>
+					<li class="filter-option" data-filter="room-2">Детская</li>
+					<li class="filter-option" data-filter="room-3">Кухня</li>
+					<li class="filter-option" data-filter="room-4">Зал</li>
+				</ul>
+				<ul class="filter__categories__content__item" data-filtercategory="base">
+					<li class="filter-option" data-filter="base-1">Вариант 1</li>
+					<li class="filter-option" data-filter="base-2">Вариант 2</li>
+					<li class="filter-option" data-filter="base-3">Вариант 3</li>
+					<li class="filter-option" data-filter="base-4">Вариант 4</li>
+					<li class="filter-option" data-filter="base-5">Вариант 5</li>
+				</ul>
+				<div class="filter__categories__content__item slider-container" data-filtercategory="size">
+					<div class="size-slider"></div>
+					<div class="size-slider__min">10 м</div>
+					<div class="size-slider__max">1000 м</div>
+				</div>
+				<ul class="filter__categories__content__item" data-filtercategory="fabric">
+					<li class="filter-option" data-filter="fabric-1">США</li>
+					<li class="filter-option" data-filter="fabric-2">Франция</li>
+					<li class="filter-option" data-filter="fabric-3">Италия</li>
+					<li class="filter-option" data-filter="fabric-4">Австралия</li>
+					<li class="filter-option" data-filter="fabric-5">Уругвай</li>
+				</ul>
+				<div class="filter__categories__content__item slider-container" data-filtercategory="price">
+					<div class="price-slider"></div>
+					<div class="price-slider__min">100 сом</div>
+					<div class="price-slider__max">5000 сом</div>
+				</div>
+				<div class="filter__categories__button filter-sidebar__handler--close">Сохранить</div>
+			</div>
+			<div class="filter__categories__selected">
+				<div class="filter__categories__selected__board"></div>
+				<div class="filter__categories__selected__clear">очистить всё</div>
+			</div>
+		</div>
+		
+		<div class="switcher col-md-4">
+			<a href="#" class="switcher__item active">ПО ПОПУЛЯРНОСТИ</a>
+			<a href="#" class="switcher__item">ПО НОВИЗНЕ</a>
+			<a href="#" class="switcher__item">ПО ЦЕНЕ</a>
+		</div>
+		<div class="select-container switcher--mobile">
+			<select name="sorting" id="sortingSwitcher">
+				<option value="" disabled selected>СОРТИРОВАТЬ</option>
+				<option value="popularity">ПО ПОПУЛЯРНОСТИ</option>
+				<option value="freshness">ПО НОВИЗНЕ</option>
+				<option value="pricing">ПО ЦЕНЕ</option>
+			</select>
+		</div>
+		<div class="filter-sidebar__handler filter-sidebar__handler--open">фильтр</div>
+	</div>
+
+	<section class="section-collection-list row">
+		<div class="col-sm-12 col-md-6 collection">
+			<div class="collection__info">
+				<h2 class="collection__info__name title-2">Trianon XI</h2>
+				<h3 class="collection__info__from">Германия, Rasch</h3>
+			</div>
+			<div class="collection__image" style="background-image: url(./img/collection-intro.jpg);"></div>
+		</div>
+		<div class="col-sm-12 col-md-6"><div class="row list">
+			<div class="col-sm-6 col-md-4"><div class="list__item list__item--beige">
+				<div class="list__item__pattern" style="background-image: url(./img/wallpapers/beige.png)"></div>
+				<div class="list__item__info">
+					<div class="list__item__info__code">Артикул 30930</div>
+					<div class="list__item__info__like"></div>
+					<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+					<div class="list__item__info__price">4 820</div>
+					<div class="list__item__info__size">0,7 x 10,05 м</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-4"><div class="list__item list__item--aqua">
+				<div class="list__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+				<div class="list__item__info">
+					<div class="list__item__info__code">Артикул 30930</div>
+					<div class="list__item__info__like"></div>
+					<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+					<div class="list__item__info__price">4 820</div>
+					<div class="list__item__info__size">0,7 x 10,05 м</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-4"><div class="list__item list__item--orange">
+				<div class="list__item__pattern" style="background-image: url(./img/wallpapers/orange.png)"></div>
+				<div class="list__item__info">
+					<div class="list__item__info__code">Артикул 30930</div>
+					<div class="list__item__info__like"></div>
+					<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+					<div class="list__item__info__price">4 820</div>
+					<div class="list__item__info__size">0,7 x 10,05 м</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-4"><div class="list__item list__item--beige list__item--new">
+				<div class="list__item__pattern" style="background-image: url(./img/wallpapers/beige.png)"></div>
+				<div class="list__item__info">
+					<div class="list__item__info__code">Артикул 30930</div>
+					<div class="list__item__info__like"></div>
+					<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+					<div class="list__item__info__price">4 820</div>
+					<div class="list__item__info__size">0,7 x 10,05 м</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-4"><div class="list__item list__item--aqua list__item--sale">
+				<div class="list__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+				<div class="list__item__info">
+					<div class="list__item__info__code">Артикул 30930</div>
+					<div class="list__item__info__like"></div>
+					<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+					<div class="list__item__info__price" data-old-price="4 580">2 820</div>
+					<div class="list__item__info__size">0,7 x 10,05 м</div>
+				</div>
+			</div></div>
+			<a href="collection-page.html" class="col-sm-6 col-md-3 list__item--next">
+				<span class="arrow-link">Вся коллекция</span>
+				<div class="list__item--next__count">19<small>видов</small></div>
+			</a>
+		</div></div>
+	</section>
+
+	<section class="section-collection-list row">
+		<div class="col-sm-12 col-md-6 collection">
+			<div class="collection__info">
+				<h2 class="collection__info__name title-2">Trianon XI</h2>
+				<h3 class="collection__info__from">Германия, Rasch</h3>
+			</div>
+			<div class="collection__image" style="background-image: url(./img/collection-intro-2.jpg);"></div>
+		</div>
+		<div class="col-sm-12 col-md-6"><div class="row list">
+			<div class="col-sm-6 col-md-4"><div class="list__item list__item--beige">
+				<div class="list__item__pattern" style="background-image: url(./img/wallpapers/beige.png)"></div>
+				<div class="list__item__info">
+					<div class="list__item__info__code">Артикул 30930</div>
+					<div class="list__item__info__like"></div>
+					<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+					<div class="list__item__info__price">4 820</div>
+					<div class="list__item__info__size">0,7 x 10,05 м</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-4"><div class="list__item list__item--aqua">
+				<div class="list__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+				<div class="list__item__info">
+					<div class="list__item__info__code">Артикул 30930</div>
+					<div class="list__item__info__like"></div>
+					<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+					<div class="list__item__info__price">4 820</div>
+					<div class="list__item__info__size">0,7 x 10,05 м</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-4"><div class="list__item list__item--orange">
+				<div class="list__item__pattern" style="background-image: url(./img/wallpapers/orange.png)"></div>
+				<div class="list__item__info">
+					<div class="list__item__info__code">Артикул 30930</div>
+					<div class="list__item__info__like"></div>
+					<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+					<div class="list__item__info__price">4 820</div>
+					<div class="list__item__info__size">0,7 x 10,05 м</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-4"><div class="list__item list__item--beige list__item--new">
+				<div class="list__item__pattern" style="background-image: url(./img/wallpapers/beige.png)"></div>
+				<div class="list__item__info">
+					<div class="list__item__info__code">Артикул 30930</div>
+					<div class="list__item__info__like"></div>
+					<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+					<div class="list__item__info__price">4 820</div>
+					<div class="list__item__info__size">0,7 x 10,05 м</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-4"><div class="list__item list__item--aqua list__item--sale">
+				<div class="list__item__pattern" style="background-image: url(./img/wallpapers/aqua.png)"></div>
+				<div class="list__item__info">
+					<div class="list__item__info__code">Артикул 30930</div>
+					<div class="list__item__info__like"></div>
+					<a href="#" target="_blank" class="list__item__info__title">Sirpi Muralto Florian 2</a>
+					<div class="list__item__info__price" data-old-price="4 580">2 820</div>
+					<div class="list__item__info__size">0,7 x 10,05 м</div>
+				</div>
+			</div></div>
+			<a href="collection-page.html" class="col-sm-6 col-md-3 col-md-offset-1 list__item--next">
+				<span class="arrow-link">Вся коллекция</span>
+				<div class="list__item--next__count">19<small>видов</small></div>
+			</a>
+		</div></div>
+	</section>
+	
+	<div class="show-more">
+		<span class="show-more__phrase">Показать ещё</span>
+		<p><span class="show-more__current">12</span> из 16</p>
+	</div>
+
+	<footer class="footer row">
+		<div class="col-xs-12 footer__main-menu">
+			<a href="#">Обои</a>
+			<a href="#">Кафель</a>
+			<a href="#">Освещение</a>
+			<a href="#">Текстиль</a>
+			<a href="#">Лепнина</a>
+			<a href="#">Краска</a>
+			<a href="#">Напольные покрытия</a>
+			<a href="#">Ковры</a>
+			<a href="#">Мебель</a>
+		</div>
+		<div class="col-xs-12 footer__more-menu footer__more-menu--mobile"><div class="row">
+			<div class="col-xs-5 footer__more-menu__nav">
+				<a href="#">МАСТЕРА</a>
+				<a href="#">ДИЗАЙНЕРЫ</a>
+				<a href="#">О КОМПАНИИ</a>
+				<a href="#">МАГАЗИНЫ</a>
+				<a href="#">КОНТАКТЫ</a>
+			</div>
+			<div class="col-xs-7">
+				<a href="/" class="footer__more-menu__logo"></a>
+				<div class="footer__more-menu__socials">
+					<a href="#" target="_blank" class="vk"></a>
+					<a href="#" target="_blank" class="fb"></a>
+					<a href="#" target="_blank" class="tw"></a>
+				</div>
+				<div class="footer__more-menu__copyright">© 2010-2016 Торговый дом Домосфера. Все права защищены.</div>
+			</div>
+		</div></div>
+		<div class="col-xs-12 footer__more-menu footer__more-menu--desktop"><div class="row">
+			<div class="col-md-2">
+				<a href="/" class="footer__more-menu__logo"></a>
+			</div>
+			<div class="col-md-7 footer__more-menu__nav">
+				<a href="#">О КОМПАНИИ</a>
+				<a href="#">МАГАЗИНЫ</a>
+				<a href="#">КОНТАКТЫ</a>
+				<a href="#">МАСТЕРА</a>
+				<a href="#">ДИЗАЙНЕРЫ</a>
+				<div class="footer__more-menu__copyright">© 2010-2016 Торговый дом Домосфера. Все права защищены.</div>
+			</div>
+			<div class="col-md-3">
+				<div class="footer__more-menu__socials">
+					<a href="#" target="_blank" class="vk"></a>
+					<a href="#" target="_blank" class="fb"></a>
+					<a href="#" target="_blank" class="tw"></a>
+				</div>
+			</div>
+		</div></div>
+	</footer>
+	
+</div>
+<script src="./js/jquery-3.1.1.min.js"></script>
+<script src="./js/jquery-ui-custom.min.js"></script>
+<script src="./js/jquery.ui.touch-punch.min.js"></script>
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./js/sidebar.js"></script>
+<script src="./js/filter.js"></script>
+<script src="./js/dogNails.js"></script> 
+</body>
+</html>

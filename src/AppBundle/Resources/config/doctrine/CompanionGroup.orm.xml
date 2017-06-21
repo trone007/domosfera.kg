@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\CompanionGroup" table="companion_group">
+    <indexes>
+      <index name="idx_d325d3ee6f212f92" columns="companion_code"/>
+    </indexes>
+    <unique-constraints>
+      <unique-constraint name="companion_group_companion_code_vendor_code_key" columns="companion_code,vendor_code"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="companion_group_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="vendorCode" type="text" column="vendor_code" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="collectionCode" type="text" column="collection_code" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <many-to-one field="companionCode" target-entity="Companion" fetch="LAZY">
+      <join-columns>
+        <join-column name="companion_code" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

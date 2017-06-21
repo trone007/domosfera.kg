@@ -1,0 +1,112 @@
+<?php
+
+namespace AppBundle\Entity;
+
+/**
+ * @todo удалить сущность, не нуждается в дальнейшем использовании
+ */
+class Collections
+{
+    /**
+     * @var integer
+     */
+    private $complectCode;
+
+    /**
+     * @var string
+     */
+    private $vendorCode;
+
+    /**
+     * @var string
+     */
+    private $collectionCode;
+
+    /**
+     * @var integer
+     */
+    private $id;
+
+
+    /**
+     * Set complectCode
+     *
+     * @param integer $complectCode
+     *
+     * @return Collections
+     */
+    public function setComplectCode($complectCode)
+    {
+        $this->complectCode = $complectCode;
+
+        return $this;
+    }
+
+    /**
+     * Get complectCode
+     *
+     * @return integer
+     */
+    public function getComplectCode()
+    {
+        return $this->complectCode;
+    }
+
+    /**
+     * Set vendorCode
+     *
+     * @param string $vendorCode
+     *
+     * @return Collections
+     */
+    public function setVendorCode($vendorCode)
+    {
+        $this->vendorCode = $vendorCode;
+
+        return $this;
+    }
+
+    /**
+     * Get vendorCode
+     *
+     * @return string
+     */
+    public function getVendorCode()
+    {
+        return $this->vendorCode;
+    }
+
+    /**
+     * Set collectionCode
+     *
+     * @param string $collectionCode
+     *
+     * @return Collections
+     */
+    public function setCollectionCode($collectionCode)
+    {
+        $this->collectionCode = $collectionCode;
+
+        return $this;
+    }
+
+    /**
+     * Get collectionCode
+     *
+     * @return string
+     */
+    public function getCollectionCode()
+    {
+        return $this->collectionCode;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

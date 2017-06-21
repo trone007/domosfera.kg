@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>Class AppBundle\Image\AcImage | Docs</title>
+
+	<link rel="stylesheet" href="resources/style.css?c2f33731c1948fbed7c333554678bfa68d4817da">
+
+	<script>
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 123]);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+</head>
+
+<body>
+<div id="left">
+	<div id="menu">
+		<a href="index.html" title="Overview"><span>Overview</span></a>
+
+
+		<div id="groups">
+				<h3>Namespaces</h3>
+			<ul>
+				<li class="active">
+					<a href="namespace-AppBundle.html">
+						AppBundle<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-AppBundle.Controller.html">
+						Controller					</a>
+
+						</li>
+				<li>
+					<a href="namespace-AppBundle.DQL.html">
+						DQL					</a>
+
+						</li>
+				<li>
+					<a href="namespace-AppBundle.Entity.html">
+						Entity					</a>
+
+						</li>
+				<li>
+					<a href="namespace-AppBundle.Form.html">
+						Form					</a>
+
+						</li>
+				<li class="active">
+					<a href="namespace-AppBundle.Image.html">
+						Image<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-AppBundle.Image.geometry.html">
+						geometry<span></span>
+					</a>
+
+						<ul>
+				<li>
+					<a href="namespace-AppBundle.Image.Geometry.Exceptions.html">
+						Exceptions					</a>
+
+						</li>
+							</ul></li></ul></li></ul></li>
+			</ul>
+		</div>
+
+		<hr>
+
+
+		<div id="elements">
+			<h3>Classes</h3>
+			<ul>
+				<li><a href="class-AppBundle.Image.AcColor.html">AcColor</a></li>
+				<li class="active"><a href="class-AppBundle.Image.AcImage.html">AcImage</a></li>
+				<li><a href="class-AppBundle.Image.AcImageGIF.html">AcImageGIF</a></li>
+				<li><a href="class-AppBundle.Image.AcImageJPG.html">AcImageJPG</a></li>
+				<li><a href="class-AppBundle.Image.AcImagePNG.html">AcImagePNG</a></li>
+			</ul>
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+<div id="splitter"></div>
+
+<div id="right">
+<div id="rightInner">
+	<form id="search">
+		<input type="hidden" name="cx" value="">
+		<input type="hidden" name="ie" value="UTF-8">
+		<input type="text" name="q" class="text" placeholder="Search">
+	</form>
+
+	<div id="navigation">
+		<ul>
+			<li>
+				<a href="index.html" title="Overview"><span>Overview</span></a>
+			</li>
+			<li>
+				<a href="namespace-AppBundle.Image.html" title="Summary of AppBundle\Image"><span>Namespace</span></a>
+			</li>
+			<li class="active">
+<span>Class</span>			</li>
+		</ul>
+		<ul>
+				<li>
+					<a href="annotation-group-todo.html" title="List of elements with todo annotation">
+						<span>Todo</span>
+					</a>
+				</li>
+				<li>
+					<a href="annotation-group-deprecated.html" title="List of elements with deprecated annotation">
+						<span>Deprecated</span>
+					</a>
+				</li>
+		</ul>
+		<ul>
+		</ul>
+	</div>
+
+<div id="content" class="class">
+	<h1>Class AcImage</h1>
+
+
+	<div class="description">
+	<p>Класс, описывающий изображение, и содержащий методы для работы с ним.</p>
+	</div>
+
+
+
+	<div>
+		<h4>Direct known subclasses</h4>
+			<a href="class-AppBundle.Image.AcImageGIF.html">AppBundle\Image\AcImageGIF</a>, 
+			<a href="class-AppBundle.Image.AcImageJPG.html">AppBundle\Image\AcImageJPG</a>, 
+			<a href="class-AppBundle.Image.AcImagePNG.html">AppBundle\Image\AcImagePNG</a>
+	</div>
+
+
+
+
+
+
+	<div class="info">
+		
+		
+		<b>Namespace:</b> <a href="namespace-AppBundle.html">AppBundle</a>\<a href="namespace-AppBundle.Image.html">Image</a><br>
+		
+
+			<b>Located at</b> <a href="source-class-AppBundle.Image.AcImage.html#23-977" title="Go to source code">AppBundle/Image/AcImage.php</a>
+		<br>
+	</div>
+
+
+
+	<table class="summary methods" id="methods">
+	<caption>Methods summary</caption>
+	<tr data-order="createImage" id="_createImage">
+
+		<td class="attributes"><code>
+			 public static
+
+			<code><a href="class-AppBundle.Image.AcImageJPG.html">AppBundle\Image\AcImageJPG</a></code>|<code><a href="class-AppBundle.Image.AcImagePNG.html">AppBundle\Image\AcImagePNG</a></code>|<code><a href="class-AppBundle.Image.AcImageGIF.html">AppBundle\Image\AcImageGIF</a></code>
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_createImage">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#139-170" title="Go to source code">createImage</a>( <span>string <var>$filePath</var></span> )</code>
+
+		<div class="description short">
+			<p>Cоздаёт экземпляры классов AcImageJPG, AcImageGIF, AcImagePNG
+в зависимости от типа изображения.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Cоздаёт экземпляры классов AcImageJPG, AcImageGIF, AcImagePNG
+в зависимости от типа изображения.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$filePath</var></dt>
+					<dd>к файлу с изображением</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					<code><a href="class-AppBundle.Image.AcImageJPG.html">AppBundle\Image\AcImageJPG</a></code>|<code><a href="class-AppBundle.Image.AcImagePNG.html">AppBundle\Image\AcImagePNG</a></code>|<code><a href="class-AppBundle.Image.AcImageGIF.html">AppBundle\Image\AcImageGIF</a></code>
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isFileExists" id="_isFileExists">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isFileExists">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#671-690" title="Go to source code">isFileExists</a>( <span>string <var>$filePath</var></span> )</code>
+
+		<div class="description short">
+			<p>Проверяет, существует ли файл.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Проверяет, существует ли файл.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$filePath</var></dt>
+					<dd>к файлу</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isFileImage" id="_isFileImage">
+
+		<td class="attributes"><code>
+			 public static
+
+			boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isFileImage">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#693-706" title="Go to source code">isFileImage</a>( <span>string <var>$filePath</var></span> )</code>
+
+		<div class="description short">
+			<p>Проверяет, является ли файл изображением.</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Проверяет, является ли файл изображением.</p>
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$filePath</var></dt>
+					<dd>к файлу</dd>
+				</dl></div>
+
+				<h4>Returns</h4>
+				<div class="list">
+					boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setRewrite" id="_setRewrite">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setRewrite">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#722-732" title="Go to source code">setRewrite</a>( <span>boolean <var>$mode</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$mode</var></dt>
+					<dd></dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					IllegalArgumentException
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getRewrite" id="_getRewrite">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getRewrite">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#734-737" title="Go to source code">getRewrite</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getShortPHPVersion" id="_getShortPHPVersion">
+
+		<td class="attributes"><code>
+			 public static
+
+			string
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getShortPHPVersion">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#748-762" title="Go to source code">getShortPHPVersion</a>( )</code>
+
+		<div class="description short">
+			<p>Возвращает две первые цифры
+версии php, разделённые точкой.
+Например: 5.2, 5.3</p>
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Возвращает две первые цифры
+версии php, разделённые точкой.
+Например: 5.2, 5.3</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					string
+				</div>
+
+
+				<h4>Since</h4>
+				<div class="list">
+						2.0.1<br>
+				</div>
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="isSupportedGD" id="_isSupportedGD">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_isSupportedGD">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#764-767" title="Go to source code">isSupportedGD</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getGDinfo" id="_getGDinfo">
+
+		<td class="attributes"><code>
+			 public static
+
+			array|boolean
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getGDinfo">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#770-786" title="Go to source code">getGDinfo</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			<p>Возвращает результат работы функции gd_info()
+или false если библиотека gd не доступна</p>
+
+
+
+				<h4>Returns</h4>
+				<div class="list">
+					array|boolean
+				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setQuality" id="_setQuality">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setQuality">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#841-853" title="Go to source code">setQuality</a>( <span>integer <var>$q</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$q</var></dt>
+					<dd>изображения от 0 до 100</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					IllegalArgumentException
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getQuality" id="_getQuality">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getQuality">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#855-858" title="Go to source code">getQuality</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setTransparency" id="_setTransparency">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setTransparency">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#861-872" title="Go to source code">setTransparency</a>( <span>boolean <var>$mode</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$mode</var></dt>
+					<dd></dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					IllegalArgumentException
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getTransparency" id="_getTransparency">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getTransparency">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#874-877" title="Go to source code">getTransparency</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setBackgroundColor" id="_setBackgroundColor">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setBackgroundColor">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#879-901" title="Go to source code">setBackgroundColor</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getBackgroundColor" id="_getBackgroundColor">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getBackgroundColor">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#903-909" title="Go to source code">getBackgroundColor</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setMaxProportionLogo" id="_setMaxProportionLogo">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setMaxProportionLogo">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#939-951" title="Go to source code">setMaxProportionLogo</a>( <span>float <var>$maxPropotionsLogo</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$maxPropotionsLogo</var></dt>
+					<dd>0 &lt;= $maxPropotionsLogo &lt; 1</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					IllegalArgumentException
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getMaxProportionLogo" id="_getMaxProportionLogo">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getMaxProportionLogo">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#953-956" title="Go to source code">getMaxProportionLogo</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="setPaddingProportionLogo" id="_setPaddingProportionLogo">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_setPaddingProportionLogo">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#959-971" title="Go to source code">setPaddingProportionLogo</a>( <span>float <var>$paddingProportionLogo</var></span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+				<h4>Parameters</h4>
+				<div class="list"><dl>
+					<dt><var>$paddingProportionLogo</var></dt>
+					<dd>0 &lt;= $paddingProportionLogo &lt; 1</dd>
+				</dl></div>
+
+
+				<h4>Throws</h4>
+				<div class="list">
+					IllegalArgumentException
+				</div>
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getPaddingProportionLogo" id="_getPaddingProportionLogo">
+
+		<td class="attributes"><code>
+			 public static
+
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getPaddingProportionLogo">#</a>
+		<code><a href="source-class-AppBundle.Image.AcImage.html#973-976" title="Go to source code">getPaddingProportionLogo</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	</table>
+
+
+
+
+
+
+
+
+	<table class="summary constants" id="constants">
+	<caption>Constants summary</caption>
+	<tr data-order="PNG" id="PNG">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-AppBundle.Image.AcImage.html#28" title="Go to source code"><b>PNG</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PNG" class="anchor">#</a>
+				<code><span class="php-quote">'image/png'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="JPEG" id="JPEG">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-AppBundle.Image.AcImage.html#29" title="Go to source code"><b>JPEG</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#JPEG" class="anchor">#</a>
+				<code><span class="php-quote">'image/jpeg'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="GIF" id="GIF">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-AppBundle.Image.AcImage.html#30" title="Go to source code"><b>GIF</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#GIF" class="anchor">#</a>
+				<code><span class="php-quote">'image/gif'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PROPORTION" id="PROPORTION">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-AppBundle.Image.AcImage.html#32" title="Go to source code"><b>PROPORTION</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PROPORTION" class="anchor">#</a>
+				<code><span class="php-quote">'pr'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PIXELS" id="PIXELS">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-AppBundle.Image.AcImage.html#33" title="Go to source code"><b>PIXELS</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PIXELS" class="anchor">#</a>
+				<code><span class="php-quote">'px'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="PERCENT" id="PERCENT">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-AppBundle.Image.AcImage.html#34" title="Go to source code"><b>PERCENT</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#PERCENT" class="anchor">#</a>
+				<code><span class="php-quote">'%'</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="TOP_LEFT" id="TOP_LEFT">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-AppBundle.Image.AcImage.html#36" title="Go to source code"><b>TOP_LEFT</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#TOP_LEFT" class="anchor">#</a>
+				<code><span class="php-num">0</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="TOP_RIGHT" id="TOP_RIGHT">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-AppBundle.Image.AcImage.html#37" title="Go to source code"><b>TOP_RIGHT</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#TOP_RIGHT" class="anchor">#</a>
+				<code><span class="php-num">1</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="BOTTOM_RIGHT" id="BOTTOM_RIGHT">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-AppBundle.Image.AcImage.html#38" title="Go to source code"><b>BOTTOM_RIGHT</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#BOTTOM_RIGHT" class="anchor">#</a>
+				<code><span class="php-num">2</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="BOTTOM_LEFT" id="BOTTOM_LEFT">
+
+		<td class="attributes"><code>integer</code></td>
+		<td class="name">
+			<code>
+				<a href="source-class-AppBundle.Image.AcImage.html#39" title="Go to source code"><b>BOTTOM_LEFT</b></a>
+			</code>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#BOTTOM_LEFT" class="anchor">#</a>
+				<code><span class="php-num">3</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+	<table class="summary properties" id="properties">
+	<caption>Properties summary</caption>
+	<tr data-order="correctCorners" id="$correctCorners">
+		<td class="attributes"><code>
+			private static 
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AppBundle.Image.AcImage.html#41" title="Go to source code"><var>$correctCorners</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$correctCorners" class="anchor">#</a>
+				<code><span class="php-keyword1">array</span> (<span class="php-num">0</span>, <span class="php-num">1</span>, <span class="php-num">2</span>, <span class="php-num">3</span>)</code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="cornerLogo" id="$cornerLogo">
+		<td class="attributes"><code>
+			private static 
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AppBundle.Image.AcImage.html#42" title="Go to source code"><var>$cornerLogo</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$cornerLogo" class="anchor">#</a>
+				<code><span class="php-num">2</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="backgroundColor" id="$backgroundColor">
+		<td class="attributes"><code>
+			private static 
+			integer|<code><a href="class-AppBundle.Image.AcColor.html">AppBundle\Image\AcColor</a></code>
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AppBundle.Image.AcImage.html#76-80" title="Go to source code"><var>$backgroundColor</var></a>
+
+			<div class="description short">
+				<p>Цвет фона по умолчанию</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Цвет фона по умолчанию</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$backgroundColor" class="anchor">#</a>
+				<code>AppBundle\Image\AcColor::WHITE</code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="quality" id="$quality">
+		<td class="attributes"><code>
+			private static 
+			integer
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AppBundle.Image.AcImage.html#83-88" title="Go to source code"><var>$quality</var></a>
+
+			<div class="description short">
+				<p>Качество по умолчанию</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Качество по умолчанию</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$quality" class="anchor">#</a>
+				<code><span class="php-num">85</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="transparency" id="$transparency">
+		<td class="attributes"><code>
+			private static 
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AppBundle.Image.AcImage.html#91-95" title="Go to source code"><var>$transparency</var></a>
+
+			<div class="description short">
+				<p>Вкл/откл прозрачность</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Вкл/откл прозрачность</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$transparency" class="anchor">#</a>
+				<code><span class="php-keyword1">true</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="gdInfo" id="$gdInfo">
+		<td class="attributes"><code>
+			private static 
+			array
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AppBundle.Image.AcImage.html#98-103" title="Go to source code"><var>$gdInfo</var></a>
+
+			<div class="description short">
+				<p>Информация о поддерживаемых типах изображений</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Информация о поддерживаемых типах изображений</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$gdInfo" class="anchor">#</a>
+				<code></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="rewrite" id="$rewrite">
+		<td class="attributes"><code>
+			private static 
+			boolean
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AppBundle.Image.AcImage.html#106-110" title="Go to source code"><var>$rewrite</var></a>
+
+			<div class="description short">
+				<p>Разрешить перезаписывание существующих файлов</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Разрешить перезаписывание существующих файлов</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$rewrite" class="anchor">#</a>
+				<code><span class="php-keyword1">false</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="maxProportionLogo" id="$maxProportionLogo">
+		<td class="attributes"><code>
+			private static 
+			float
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AppBundle.Image.AcImage.html#113-117" title="Go to source code"><var>$maxProportionLogo</var></a>
+
+			<div class="description short">
+				<p>Какую часть максимальную часть лого может занимать от стороны исходного изображения</p>
+			</div>
+
+			<div class="description detailed hidden">
+				<p>Какую часть максимальную часть лого может занимать от стороны исходного изображения</p>
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$maxProportionLogo" class="anchor">#</a>
+				<code><span class="php-num">0.1</span></code>
+			</div>
+		</td>
+	</tr>
+	<tr data-order="paddingProportionLogo" id="$paddingProportionLogo">
+		<td class="attributes"><code>
+			private static 
+			float
+		</code></td>
+
+		<td class="name">
+				<a href="source-class-AppBundle.Image.AcImage.html#118" title="Go to source code"><var>$paddingProportionLogo</var></a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</td>
+		<td class="value">
+			<div>
+				<a href="#$paddingProportionLogo" class="anchor">#</a>
+				<code><span class="php-num">0.02</span></code>
+			</div>
+		</td>
+	</tr>
+	</table>
+
+
+
+
+
+
+</div>
+
+	<div id="footer">
+		Docs API documentation generated by <a href="http://apigen.org">ApiGen</a>
+	</div>
+</div>
+</div>
+<script src="resources/combined.js"></script>
+<script src="elementlist.js"></script>
+</body>
+</html>

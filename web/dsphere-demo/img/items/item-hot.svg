@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="46px" height="45px" viewBox="0 0 46 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>hit</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="20 0 14.4122067 5.33348746 6.94486187 4.75320772 5.85365854 12.5141602 0 16.7818749 3.91399838 23.5186684 2.41128193 30.4635302 9.5017917 33.1938504 13.0551381 39.3919778 20 37.0153739 26.9448619 39.3919778 30.4982083 33.1938504 37.5864062 30.4635302 36.0860016 23.5186684 40 16.7818749 34.1440296 12.5141602 33.0528263 4.75320772 25.5877933 5.33348746"></polygon>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-2" y="-2" width="44" height="43.3919778">
+            <rect x="-2" y="-2" width="44" height="43.3919778" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Collection" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cards" transform="translate(-194.000000, -439.000000)">
+            <g id="icon-hit" transform="translate(197.000000, 442.000000)">
+                <g id="Page-1-Copy-2">
+                    <use fill="#F26E19" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use stroke-opacity="0.5" stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="4" xlink:href="#path-1"></use>
+                </g>
+                <path d="M24.0122858,16.377916 C23.7012438,13.5109976 21.1231501,9.93312597 18.7681178,9 C19.1902463,11.2448345 18.234903,13.9997778 15.1458117,18.1775161 C15.168029,17.8664741 15.2568981,16.3112642 14.390424,14.8893579 C14.6348141,16.4667852 12.3677624,19.2892691 12.0345031,22.1775161 C11.7012438,25.0666519 13.791446,28.3308154 17.9016437,29 C15.6576979,24.066874 22.067829,22.3872473 20.3455451,19.0217729 C23.4008661,22.221062 23.9562982,25.6647412 21.290224,28.9333481 C25.0671625,28.9333481 27.5457228,25.155521 28.1900241,22.7338369 C28.8343253,20.3112642 27.7901129,16.2001777 24.3455451,12.7556099 C24.7454562,13.311042 25.1898019,15.44479 24.0122858,16.377916" id="Fill-1-Copy-2" fill="#FFBD00" fill-rule="evenodd"></path>
+            </g>
+        </g>
+    </g>
+</svg>

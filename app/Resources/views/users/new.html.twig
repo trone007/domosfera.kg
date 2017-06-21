@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+    <h1>Создание пользователя</h1>
+
+        {#{{ form_widget(form) }}#}
+
+    {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_label(form.name) }}
+                {{ form_errors(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_label(form.surname) }}
+                {{ form_errors(form.surname) }}
+                {{ form_widget(form.surname) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_label(form.username) }}
+                {{ form_errors(form.username) }}
+                {{ form_widget(form.username) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                {{ form_label(form.plainPassword.first) }}
+                {{ form_errors(form.plainPassword.first) }}
+                {{ form_widget(form.plainPassword.first) }}
+            </div>
+            <div class="col-md-4">
+                {{ form_label(form.plainPassword.second) }}
+                {{ form_errors(form.plainPassword.second) }}
+                {{ form_widget(form.plainPassword.second) }}
+            </div>
+        </div>
+        <div class="col-md-12" style="padding-top: 25px;">
+            <input type="submit" class="btn btn-info" value="Создать" />
+        </div>
+    {{ form_end(form) }}
+    {{ form_errors(form) }}
+    <div class="col-md-6">
+        <ul>
+            <li>
+                <a href="{{ path('users_index') }}">Вернуться к списку</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

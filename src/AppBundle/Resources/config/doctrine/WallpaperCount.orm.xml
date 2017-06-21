@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\WallpaperCount" table="wallpaper_count">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="wallpaper_count_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="shop" type="text" column="shop" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="wallpaperUuid" type="text" column="wallpaper_uuid" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="count" type="decimal" column="count" precision="10" scale="2" nullable="true"/>
+    <field name="showcaseCount" type="decimal" column="showcase_count" precision="10" scale="2" nullable="true"/>
+    <field name="totalCount" type="decimal" column="total_count" precision="10" scale="2" nullable="true"/>
+  </entity>
+</doctrine-mapping>

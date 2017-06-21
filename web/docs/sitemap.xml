@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+	<loc>http://apigen.org/api/index.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/namespace-AppBundle.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/namespace-AppBundle.Controller.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/namespace-AppBundle.DQL.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/namespace-AppBundle.Entity.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/namespace-AppBundle.Form.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/namespace-AppBundle.Image.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/namespace-AppBundle.Image.geometry.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/namespace-AppBundle.Image.Geometry.Exceptions.html</loc>
+</url>
+
+
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.AppBundle.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Controller.ChatController.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Controller.CollectionController.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Controller.ComplectController.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Controller.DefaultController.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Controller.NotebookController.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Controller.ParseDataController.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Controller.UsersController.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Controller.WallpaperController.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.DQL.Round.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Catalogs.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.ChatMessages.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Collection.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.CollectionGroup.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Collections.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Companion.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.CompanionGroup.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Complect.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.ComplectData.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.ComplectGroup.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Images.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Notebook.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.NotebookGroup.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.NotebookImage.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Notebooks.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Organization.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Region.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Shop.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Suffix.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Users.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.Wallpaper.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Entity.WallpaperCount.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Form.UsersType.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.AcColor.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.AcImage.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.AcImageGIF.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.AcImageJPG.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.AcImagePNG.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.geometry.Point.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.geometry.Rectangle.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.geometry.Size.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.Geometry.Exceptions.FileAlreadyExistsException.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.Geometry.Exceptions.FileNotFoundException.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.Geometry.Exceptions.FileNotSaveException.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.Geometry.Exceptions.GDnotInstalledException.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.Geometry.Exceptions.IllegalArgumentException.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.Geometry.Exceptions.InvalidChannelException.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.Geometry.Exceptions.InvalidFileException.html</loc>
+</url>
+<url>
+	<loc>http://apigen.org/api/class-AppBundle.Image.Geometry.Exceptions.UnsupportedFormatException.html</loc>
+</url>
+</urlset>

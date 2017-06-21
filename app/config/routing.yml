@@ -1,0 +1,29 @@
+app_users:
+    resource: "@AppBundle/Controller/UsersController.php"
+    prefix: /users
+    type:     annotation
+
+default:
+    resource: "@AppBundle/Controller"
+    prefix: /
+    type:     annotation
+
+wallpaper:
+    resource: "@AppBundle/Controller/WallpaperController.php"
+    prefix: /
+    type:     annotation
+
+notebook:
+    resource: "@AppBundle/Controller/NotebookController.php"
+    prefix:   /notebook
+    type:     annotation
+
+complect:
+    resource: "@AppBundle/Controller/ComplectController.php"
+    prefix:   /complect
+    type:     annotation
+
+collection:
+    resource: "@AppBundle/Controller/CollectionController.php"
+    prefix:   "/collection-made"
+    type:     annotation

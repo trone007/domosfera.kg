@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{ user.surname }} {{ user.name }}</h1>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Логин</th>
+                <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+                <th>Имя</th>
+                <td>{{ user.name }}</td>
+            </tr>
+            <tr>
+                <th>Фамилия</th>
+                <td>{{ user.surname }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="nav">
+        <li>
+            <a href="{{ path('users_index') }}">Вернуться к списку</a>
+        </li>
+        <li>
+            <a href="{{ path('users_edit', { 'id': user.id }) }}">Редактировать</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,20 @@
+<?php
+    $file_counter = "./counter.txt";
+        if (file_exists($file_counter)) {
+        $fp = fopen($file_counter, "r");
+        $counter = fread($fp, filesize($file_counter));
+        fclose($fp);
+    } else {
+        $counter = 0;
+    }
+
+    if(!is_numeric($counter) && !is_int($counter)) {
+        $counter = 0;
+    }
+
+    $counter++;
+
+    $fp = fopen($file_counter, "w");
+    fwrite($fp, $counter);
+    fclose($fp);
+?>

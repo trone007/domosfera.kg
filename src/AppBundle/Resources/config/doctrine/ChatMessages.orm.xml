@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\ChatMessages" table="chat_messages">
+    <indexes>
+      <index name="idx_ef20c9a6a76ed395" columns="user_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+      <sequence-generator sequence-name="chat_messages_id_seq" allocation-size="1" initial-value="1"/>
+    </id>
+    <field name="dateTime" type="datetime" column="date_time" nullable="true"/>
+    <field name="message" type="text" column="message" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="name" type="text" column="name" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">имя пользователя(временно)</option>
+      </options>
+    </field>
+    <field name="phone" type="text" column="phone" nullable="true">
+      <options>
+        <option name="fixed"/>
+        <option name="comment">телефон(временно)</option>
+      </options>
+    </field>
+    <field name="vendorCode" type="text" column="vendor_code" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="status" type="smallint" column="status" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="user" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="user_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

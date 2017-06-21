@@ -1,0 +1,11 @@
+source: [src]           # directory(-ies) to scan PHP files from
+destination: docs       # destination directory to generate API docs in
+visibilityLevels: [public] # array
+annotationGroups: [todo, deprecated] # array
+title: "Docs"
+baseUrl: http://apigen.org/api
+exclude: [Tests]
+extensions: [php] # array
+
+# templates parameters
+googleAnalytics: 123

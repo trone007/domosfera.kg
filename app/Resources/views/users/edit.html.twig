@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+    <h1>Редактировать пользователя</h1>
+
+    {{ form_start(edit_form) }}
+    <div class="row">
+        <div class="col-md-4">
+            {{ form_label(edit_form.name) }}
+            {{ form_errors(edit_form.name) }}
+            {{ form_widget(edit_form.name) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_label(edit_form.surname) }}
+            {{ form_errors(edit_form.surname) }}
+            {{ form_widget(edit_form.surname) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_label(edit_form.username) }}
+            {{ form_errors(edit_form.username) }}
+            {{ form_widget(edit_form.username) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            {{ form_label(edit_form.plainPassword.first) }}
+            {{ form_errors(edit_form.plainPassword.first) }}
+            {{ form_widget(edit_form.plainPassword.first) }}
+        </div>
+        <div class="col-md-4">
+            {{ form_label(edit_form.plainPassword.second) }}
+            {{ form_errors(edit_form.plainPassword.second) }}
+            {{ form_widget(edit_form.plainPassword.second) }}
+        </div>
+    </div>
+    <div class="col-md-12" style="padding-top: 25px;">
+        <input type="submit" class="btn btn-info" value="Редактировать" />
+    </div>
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('users_index') }}">Вернуться к списку</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Удалить">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Домосфера</title>
+	<link href="./fonts/fonts.css" rel="stylesheet">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="./styles.css">
+</head>
+<body><div class="container main-container" id="main-container">
+	
+	<header class="header--new"><div class="header--new__wrap">
+		<div class="header--new__mobile-view">
+			<div class="mobile-menu__handler mobile-menu__handler--open" data-sidebar-open="mobile-menu"><span>menu open</span></div>
+			<a href="/" class="header--new__title"></a>
+		</div>
+		<div class="header--new__top">
+			<a href="/" class="header--new__title"></a>
+			<div class="header__region bs__dropdown">
+				<button class="bs__dropdown__toggle" type="button" id="region-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Кыргызстан</button>
+				<ul class="header__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="region-dropdown">
+				    <li>
+				    	<a href="#">Кыргызстан</a>
+						<ul class="second-level">
+							<li>Бишкек</li>
+							<li>Кара-Балта</li>
+							<li>Ош</li>
+							<li>Талас</li>
+							<li>Токмак</li>
+						</ul>
+				    </li>
+				    <li><a href="#">Казахстан</a></li>
+				    <li><a href="#">Группа компаний</a></li>
+			  	</ul>
+			</div>
+			<div class="header--new__block">
+				<a href="#" class="header--new__link">личный кабинет</a>
+				<a href="#" class="header--new__link header__navigation__more__favorites"><span>33</span>избранное</a>
+			</div>
+			<div class="header--new__block">
+				<a href="#" class="header--new__link">контакты</a>
+			</div>
+			<div class="header--new__block">
+				<a href="#" class="header--new__link">мастера</a>
+				<a href="#" class="header--new__link">дизайнеры</a>
+			</div>
+		</div>
+		
+
+		<div class="header--new__navigation__categories">
+			<div class="header--new__navigation__categories__item bs__dropdown">
+				<button class="bs__dropdown__toggle" type="button" id="header-cat1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Фотообои</button>
+				<ul class="header--new__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="header-cat1">
+				    <li><a href="#">Cartoon</a></li>
+				    <li><a href="#">Wallpaper</a></li>
+				    <li><a href="#">Walls</a></li>
+			  	</ul>
+			</div>
+	        <a href="#" class="header--new__navigation__categories__item">Ткани</a>
+	        <a href="#" class="header--new__navigation__categories__item">Текстиль</a>
+	        <a href="#" class="header--new__navigation__categories__item">Освещение</a>
+	        <a href="#" class="header--new__navigation__categories__item">Обои</a>
+	        <a href="#" class="header--new__navigation__categories__item">Не указана</a>
+	        <a href="#" class="header--new__navigation__categories__item">Натяжные потолки</a>
+	        <a href="#" class="header--new__navigation__categories__item">Мебель и ковры</a>
+	        <a href="#" class="header--new__navigation__categories__item">Лепнина</a>
+	        <a href="#" class="header--new__navigation__categories__item">Краски</a>
+	        <a href="#" class="header--new__navigation__categories__item">Клей</a>
+	        <a href="#" class="header--new__navigation__categories__item">Кафель</a>
+	        <a href="#" class="header--new__navigation__categories__item">Картины</a>
+	        <a href="#" class="header--new__navigation__categories__item">Инструменты</a>
+		</div>
+	</div></header>
+
+	<div class="mobile-menu closed" id="mobile-menu">
+		<div class="mobile-menu__container">
+			<div class="mobile-menu__head clearfix">
+				<div class="select-container">
+					<select name="citySelector" id="citySelector">
+						<option value="bsk">Бишкек</option>
+						<option value="krb">Кара-Балта</option>
+						<option value="osh">Ош</option>
+						<option value="tls">Талас</option>
+						<option value="tmk">Токмак</option>
+						<option value="kzh">Казахстан</option>
+						<option value="oth">Другие</option>
+					</select>
+				</div>
+				<div class="mobile-menu__handler mobile-menu__handler--close" data-sidebar-close="mobile-menu"><span>menu close</span></div>
+			</div>
+		  	<ul class="mobile-menu__list">
+			    <li><a href="#">Обои</a></li>
+			    <li><a href="#">Кафель</a></li>
+			    <li><a href="#">Освещение</a></li>
+			    <li><a href="#">Текстиль</a></li>
+			    <li><a href="#">Лепнина</a></li>
+			    <li><a href="#">Напольные покрытия</a></li>
+			    <li><a href="#">Ковры</a></li>
+			    <li><a href="#">Мебель</a></li>
+		  	</ul>
+		  	<ul class="mobile-menu__small-list">
+		  		<li><a href="#">мастера</a></li>
+		  		<li><a href="#">дизайнеры</a></li>
+		  	</ul>
+		  	<ul class="mobile-menu__small-list">
+		  		<li><a href="#">избранное</a></li>
+		  		<li><a href="#">вход в личный кабинет</a></li>
+		  	</ul>
+		</div>
+		<div class="blackout mobile-menu__handler--close"></div>
+	</div>
+
+	<section class="section-text section-text--bordered">
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-1 col-md-8 col-md-offset-1">
+				<h1 class="title-1 section-text__title">Лучший каталог для ваших идей</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-1 col-md-6 col-md-offset-1">
+				Торговый дом Галерея — это ваш надежный партнер во всем, что касается интерьера. Здесь вы можете купить любые товары для ремонта и дизайна помещений от лучших зарубежных производителей, а также различные предметы интерьера, <mark>элементы декора</mark>, стильные <mark>светильники</mark> и элитные <mark>люстры.</mark>
+			</div>
+			<div class="col-sm-4 col-md-4">
+				В нашем каталоге представлены товары из разных стран: Англия, Бельгия, Германия, Голландия, Италия, Китай, Россия, США, Украина, Франция.
+			</div>
+		</div>
+	</section>
+
+	<section class="section-slider">
+		<div class="slider-arrow slider-arrow--left hidden">
+			<span class="arrow"></span>
+			<span class="neighbor-slide-name"></span>
+		</div>
+		<div class="slider peppermint" id="carousel">
+			<div class="slider-item" data-slide-name="Обои">
+				<div class="col-sm-8 col-md-8 slider-item__image" style="background-image: url(./img/design/1.png)">
+					<div class="slider-item__image__content">
+						<div class="slider-item__image__content__title">Muralto Florian 2</div>
+						<div class="slider-item__image__content__country">Италия, Sirpi</div>
+						<div class="slider-item__image__content__price">5 320</div>
+						<a href="landing.html" class="slider-item__image__content__more">
+							<span class="arrow-link">Все обои</span>
+						</a>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 slider-item__info">
+					<h2 class="title-2">Широкий выбор обоев</h2>
+					<div class="slider-item__info__text">Широкий выбор <mark>обоев</mark> позволит подобрать вам лучший вариант для вашего интерьера. В нашем магазине вы сможете купить обои любого типа: <mark>бумажные, текстильные, виниловые</mark>  и полностью <mark>флизелиновые.</mark> </div>
+					<div class="slider-item__info__pages">1/3</div>
+				</div>
+			</div>
+			<div class="slider-item" data-slide-name="Кафель">
+				<div class="col-sm-8 col-md-8 slider-item__image" style="background-image: url(./img/collection-intro.jpg)">
+					<div class="slider-item__image__content">
+						<div class="slider-item__image__content__title">Muralto Florian 2</div>
+						<div class="slider-item__image__content__country">Италия, Sirpi</div>
+						<div class="slider-item__image__content__price">5 320</div>
+						<a href="#" class="slider-item__image__content__more">
+							<span class="arrow-link">Все обои</span>
+						</a>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 slider-item__info">
+					<h2 class="title-2">Широкий выбор обоев</h2>
+					<div class="slider-item__info__text">Широкий выбор <mark>обоев</mark> позволит подобрать вам лучший вариант для вашего интерьера. В нашем магазине вы сможете купить обои любого типа: <mark>бумажные, текстильные, виниловые</mark>  и полностью <mark>флизелиновые.</mark> </div>
+					<div class="slider-item__info__pages">2/3</div>
+				</div>
+			</div>
+			<div class="slider-item" data-slide-name="Ещё">
+				<div class="col-sm-8 col-md-8 slider-item__image" style="background-image: url(./img/collection-intro-2.jpg)">
+					<div class="slider-item__image__content">
+						<div class="slider-item__image__content__title">Muralto Florian 2</div>
+						<div class="slider-item__image__content__country">Италия, Sirpi</div>
+						<div class="slider-item__image__content__price">5 320</div>
+						<a href="#" class="slider-item__image__content__more">
+							<span class="arrow-link">Все обои</span>
+						</a>
+					</div>
+				</div>
+				<div class="col-sm-4 col-md-4 slider-item__info">
+					<h2 class="title-2">Широкий выбор обоев</h2>
+					<div class="slider-item__info__text">Широкий выбор <mark>обоев</mark> позволит подобрать вам лучший вариант для вашего интерьера. В нашем магазине вы сможете купить обои любого типа: <mark>бумажные, текстильные, виниловые</mark>  и полностью <mark>флизелиновые.</mark> </div>
+					<div class="slider-item__info__pages">3/3</div>
+				</div>
+			</div>
+		</div>
+		<div class="slider-arrow slider-arrow--right">
+			<span class="neighbor-slide-name"></span>
+			<span class="arrow"></span>
+		</div>
+	</section>
+
+	<section class="section-collection">
+		<div class="section-collection__head">
+			<h3 class="title-3 section-collection__head__title">Дизайнеры</h3>
+			<span>Лучшие дизайнеры интерьеров Киргизии</span>
+		</div>
+		<div class="row list">
+			<div class="col-sm-6 col-md-3"><div class="list__item">
+				<div class="list__item__image" style="background-image: url(./img/design/1.png)"></div>
+				<div class="list__item__info">
+					<img class="list__item__info__logo" alt="Designer logo" src="http://shilkinstudio.ru/wp-content/uploads/2015/11/shilkinlogo.png"/>
+					<a href="#" target="_blank" class="list__item__info__title">Студия Алексея Шилкина</a>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-3"><div class="list__item">
+				<div class="list__item__image" style="background-image: url(./img/design/1.png)"></div>
+				<div class="list__item__info">
+					<img class="list__item__info__logo" alt="Designer logo" src="http://shilkinstudio.ru/wp-content/uploads/2015/11/shilkinlogo.png"/>
+					<a href="#" target="_blank" class="list__item__info__title">Студия Алексея Шилкина</a>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-3"><div class="list__item">
+				<div class="list__item__image" style="background-image: url(./img/design/1.png)"></div>
+				<div class="list__item__info">
+					<img class="list__item__info__logo" alt="Designer logo" src="http://shilkinstudio.ru/wp-content/uploads/2015/11/shilkinlogo.png"/>
+					<a href="#" target="_blank" class="list__item__info__title">Студия Алексея Шилкина</a>
+				</div>
+			</div></div>
+			<a href="#" class="col-sm-6 col-md-3 list__item--next">
+				<span class="arrow-link">Все дизайнеры</span>
+				<div class="list__item--next__count">91<small>дизайнер</small></div>
+			</a>
+		</div>
+	</section>
+
+	<section class="section-collection">
+		<div class="section-collection__head">
+			<h3 class="title-3 section-collection__head__title">Мастера</h3>
+			<span>Самый большой выбор мастеров по строительству и ремонту в Киргизии</span>
+		</div>
+		<div class="row list">
+			<div class="col-sm-6 col-md-2"><div class="list__item">
+				<div class="list__item__image" style="background-image: url(./img/userpic.png)"></div>
+				<div class="list__item__info">
+					<a href="#" target="_blank" class="list__item__info__title">Карцев<br>Денис</a>
+					<div class="list__item__info__text">Сантехник, отопление, бытовая техника</div>
+					<div class="list__item__info__text">Стаж: 5 лет</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-2"><div class="list__item">
+				<div class="list__item__image" style="background-image: url(./img/userpic.png)"></div>
+				<div class="list__item__info">
+					<a href="#" target="_blank" class="list__item__info__title">Карцев<br>Денис</a>
+					<div class="list__item__info__text">Сантехник, отопление, бытовая техника</div>
+					<div class="list__item__info__text">Стаж: 5 лет</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-2"><div class="list__item">
+				<div class="list__item__image" style="background-image: url(./img/userpic.png)"></div>
+				<div class="list__item__info">
+					<a href="#" target="_blank" class="list__item__info__title">Карцев<br>Денис</a>
+					<div class="list__item__info__text">Сантехник, отопление, бытовая техника</div>
+					<div class="list__item__info__text">Стаж: 5 лет</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-2"><div class="list__item">
+				<div class="list__item__image" style="background-image: url(./img/userpic.png)"></div>
+				<div class="list__item__info">
+					<a href="#" target="_blank" class="list__item__info__title">Карцев<br>Денис</a>
+					<div class="list__item__info__text">Сантехник, отопление, бытовая техника</div>
+					<div class="list__item__info__text">Стаж: 5 лет</div>
+				</div>
+			</div></div>
+			<div class="col-sm-6 col-md-2"><div class="list__item">
+				<div class="list__item__image" style="background-image: url(./img/userpic.png)"></div>
+				<div class="list__item__info">
+					<a href="#" target="_blank" class="list__item__info__title">Карцев<br>Денис</a>
+					<div class="list__item__info__text">Сантехник, отопление, бытовая техника</div>
+					<div class="list__item__info__text">Стаж: 5 лет</div>
+				</div>
+			</div></div>
+			<a href="#" class="col-sm-6 col-md-2 list__item--next">
+				<span class="arrow-link">Все мастера</span>
+				<div class="list__item--next__count">128<small>мастеров</small></div>
+			</a>
+		</div>
+	</section>
+
+	<footer class="footer row">
+		<div class="col-xs-12 footer__main-menu">
+			<a href="#">Обои</a>
+		    <a href="#">Кафель</a>
+		    <a href="#">Освещение</a>
+		    <a href="#">Текстиль</a>
+		    <a href="#">Лепнина</a>
+		    <a href="#">Краска</a>
+		    <a href="#">Напольные покрытия</a>
+		    <a href="#">Ковры</a>
+		    <a href="#">Мебель</a>
+		</div>
+		<div class="col-xs-12 footer__more-menu footer__more-menu--mobile"><div class="row">
+			<div class="col-xs-5 footer__more-menu__nav">
+				<a href="#">МАСТЕРА</a>
+				<a href="#">ДИЗАЙНЕРЫ</a>
+				<a href="#">О КОМПАНИИ</a>
+				<a href="#">МАГАЗИНЫ</a>
+				<a href="#">КОНТАКТЫ</a>
+			</div>
+			<div class="col-xs-7">
+				<a href="/" class="footer__more-menu__logo"></a>
+				<div class="footer__more-menu__socials">
+					<a href="#" target="_blank" class="vk"></a>
+					<a href="#" target="_blank" class="fb"></a>
+					<a href="#" target="_blank" class="tw"></a>
+				</div>
+				<div class="footer__more-menu__copyright">© 2010-2016 Торговый дом Домосфера. Все права защищены.</div>
+			</div>
+		</div></div>
+		<div class="col-xs-12 footer__more-menu footer__more-menu--desktop"><div class="row">
+			<div class="col-md-2">
+				<a href="/" class="footer__more-menu__logo"></a>
+			</div>
+			<div class="col-md-7 footer__more-menu__nav">
+				<a href="#">О КОМПАНИИ</a>
+				<a href="#">МАГАЗИНЫ</a>
+				<a href="#">КОНТАКТЫ</a>
+				<a href="#">МАСТЕРА</a>
+				<a href="#">ДИЗАЙНЕРЫ</a>
+				<div class="footer__more-menu__copyright">© 2010-2016 Торговый дом Домосфера. Все права защищены.</div>
+			</div>
+			<div class="col-md-3">
+				<div class="footer__more-menu__socials">
+					<a href="#" target="_blank" class="vk"></a>
+					<a href="#" target="_blank" class="fb"></a>
+					<a href="#" target="_blank" class="tw"></a>
+				</div>
+			</div>
+		</div></div>
+	</footer>
+
+</div>
+
+<script src="./js/jquery-3.1.1.min.js"></script>
+<script src="./js/peppermint.min.js"></script>
+<script src="./bootstrap/js/bootstrap.min.js"></script>
+<script src="./js/sidebar.js"></script>
+<script src="./js/dogNails.js"></script>
+<script src="./js/home.js"></script>
+
+</body>
+</html>

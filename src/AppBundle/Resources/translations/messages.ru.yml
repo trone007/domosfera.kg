@@ -1,0 +1,4 @@
+security:
+login:
+    # Security
+    "Bad credentials": "Неверный логин или пароль"
