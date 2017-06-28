@@ -6,8 +6,8 @@
     <title>Домосфера</title>
 
     <link href="/fonts/fonts.css" rel="stylesheet">
-    <link href="/bootstrap/css/bootstrap-theme.min.css"  rel="stylesheet">
-    <link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet">
+<!--    <link href="/bootstrap/css/bootstrap-theme.min.css"  rel="stylesheet">-->
+    <link href="/bootstrap/css/bootstrap.css"  rel="stylesheet">
     <?php $view['slots']->output('meta', '') ?>
 
 
@@ -19,53 +19,47 @@
 <div class="container main-container" id="main-container">
 
     <header class="header">
-        <div class="row">
-            <div class="mobile-menu__handler mobile-menu__handler--open col-xs-4" data-sidebar-open="mobile-menu"><span>menu open</span></div>
-            <a href="/new" class="header__title col-xs-8 col-md-2"></a>
-            <div class="header__navigation col-md-10">
-                <div class="header__navigation__more row">
-                    <div class="header__region bs__dropdown col-md-2">
-                        <button class="bs__dropdown__toggle" style="text-transform: uppercase" type="button" id="region-dropdown"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            <?php echo $view['session']->get('region') ?? 'Кыргызстан';?>
-                        </button>
-                        <ul class="header__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="region-dropdown">
-                            <?php foreach($view['session']->get('shops') as $key => $values):?>
-                                <li>
-                                   <?php echo $key ?>
-                                    <?php foreach ($values as $k => $val):?>
-                                        <ul class="second-level">
-                                            <li><a href="/change-region/<?php echo $k;?>"><?php echo $k;?></a></li>
-                                        </ul>
-                                    <?php endforeach;?>
-                                </li>
-                            <?php endforeach;?>
-                        </ul>
-                    </div>
-                    <a href="/new/favorites" class="header__navigation__more__favorites col-md-2"><span>0</span>избранное</a>
+        <div class="mobile-menu__handler mobile-menu__handler--open" data-sidebar-open="mobile-menu">
+            <span class="btn-hamburger">menu open</span>
+        </div>
+        <div class="container--flex box--light desktop-only--flex">
+                <a href="/new" class="header__title">
+                    <img src="/img/logo-old.svg" width="200" alt="Logo">
+                </a>
+                <div class="navigation">
+                    <div class="navigation__top">
+                        <div  class="navigation__item navigation__item--right bs__dropdown">
+                            <button class="bs__dropdown__toggle" style="text-transform: uppercase" type="button" id="region-dropdown"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <?php echo $view['session']->get('region') ?? 'Кыргызстан';?>
+                            </button>
+                            <ul class="header__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="region-dropdown">
+                                <?php foreach($view['session']->get('shops') as $key => $values):?>
+                                    <li>
+                                       <?php echo $key ?>
+                                        <?php foreach ($values as $k => $val):?>
+                                            <ul class="second-level">
+                                                <li><a href="/change-region/<?php echo $k;?>"><?php echo $k;?></a></li>
+                                            </ul>
+                                        <?php endforeach;?>
+                                    </li>
+                                <?php endforeach;?>
+                            </ul>
+                        </div>
+                        <a class="navigation__item" href="/new/shops">контакты</a>
+                        <a class="navigation__item" href="/new/favorites"><span class="favourite">0</span>избранное</a>
 
-                    <a href="/new/shops" class="col-md-2">контакты</a>
-<!--                    <a href="/login" class="col-md-2">личный кабинет</a>-->
-                </div>
-                <div class="header__navigation__categories row">
-                    <!--                <div class="header__navigation__categories__item bs__dropdown col-md-2">-->
-                    <!---->
-                    <!--                </div>-->
-                    <div class="header__navigation__categories__item col-md-2">
+
+    <!--                    <a href="/login" class="col-md-2">личный кабинет</a>-->
+                    </div>
+                    <div class="navigation__menu">
                         <a href="/new/landing">Обои</a>
-                    </div>
-                    <div class="header__navigation__categories__item col-md-2">
                         <a href="/new/landing">Фотообои</a>
-                    </div>
-                    <div class="header__navigation__categories__item col-md-2">
                         <a href="/new/landing">Лепнина</a>
-                    </div>
-                    <div class="header__navigation__categories__item col-md-2">
                         <a href="/new/landing">Кафель</a>
                     </div>
                 </div>
             </div>
-        </div>
     </header>
     <div class="mobile-menu closed" id="mobile-menu">
         <div class="mobile-menu__container">
@@ -79,7 +73,9 @@
                         <?php endforeach;?>
                     </select>
                 </div>
-                <div class="mobile-menu__handler mobile-menu__handler--close" data-sidebar-close="mobile-menu"><span>menu close</span></div>
+                <div class="mobile-menu__handler mobile-menu__handler--close" data-sidebar-close="mobile-menu">
+                    <span class="btn-cross">menu close</span>
+                </div>
             </div>
             <ul class="mobile-menu__list">
                 <li><a href="/new/catalog">Обои</a></li>
