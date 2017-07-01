@@ -1782,6 +1782,21 @@ mark {
 .section-text .list__item {
   margin-bottom: 50px;
 }
+.section-text__content {
+  margin: 30px 54px 10px;
+}
+.section-text__info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  line-height: 1.6;
+}
+.section-text__info p{
+  max-width: 39%;
+}
+.section-text__info p:first-child {
+  max-width: 55%;
+}
 @media (min-width: 992px) {
   .section-text {
     margin: 0 0 0 50px;
@@ -1822,7 +1837,7 @@ mark {
     padding: 0 0 35px;
   }
   .section-text__title {
-    margin: 30px 0;
+    margin: 0 0 18px;
   }
   .section-text .goods-demo {
     height: 420px;
