@@ -639,7 +639,7 @@ mark {
 }
 .header__title {
   min-height: 100%;
-  flex-basis: 15.4%;
+  flex-basis: 17%;
   text-align: center;
   border-right: 1px solid #fff;
 }
@@ -665,7 +665,7 @@ mark {
   text-transform: uppercase;
   border-bottom: 1px solid #fff;
   font-size: 13px;
-  line-height: 40px;
+  line-height: 55px;
   text-align: center;
 }
 .navigation__item {
@@ -699,7 +699,7 @@ mark {
   display: inline-block;
   padding: 5px 50px;
   font-size: 20px;
-  line-height: 2.3;
+  line-height: 2.2;
   border-right: 1px solid transparent;
   border-left: 1px solid transparent;
 }
