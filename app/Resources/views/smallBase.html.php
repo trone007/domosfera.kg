@@ -94,14 +94,14 @@
         <?php $view['slots']->output('stylesheets') ?>
 
 
-    <footer class="footer row">
-        <div class="col-xs-12 footer__main-menu">
+    <footer class="footer ">
+        <div class="footer__main-menu">
             <a href="/new/catalog">Обои</a>
             <a href="/new/catalog">Фотообои</a>
             <a href="/new/landing">Лепнина</a>
             <a href="/new/landing">Кафель</a>
         </div>
-        <div class="col-xs-12 footer__more-menu footer__more-menu--mobile"><div class="row">
+        <div class="footer__more-menu footer__more-menu--mobile"><div class="row">
                 <div class="col-xs-5 footer__more-menu__nav">
 
                     <a href="/new/landing">О КОМПАНИИ</a>
@@ -118,25 +118,25 @@
                     <div class="footer__more-menu__copyright">© 2010-2016 Торговый дом Домосфера. Все права защищены.</div>
                 </div>
             </div></div>
-        <div class="col-xs-12 footer__more-menu footer__more-menu--desktop"><div class="row">
-                <div class="col-md-2">
-                    <a href="/" class="footer__more-menu__logo"></a>
-                </div>
-                <div class="col-md-7 footer__more-menu__nav">
+        <div class="footer__more-menu footer__more-menu--desktop">
 
-                    <a href="/new/landing">О КОМПАНИИ</a>
-                    <a href="/new/landing">МАГАЗИНЫ</a>
-                    <a href="/new/landing">КОНТАКТЫ</a>
-                    <div class="footer__more-menu__copyright">© 2010-2017 Торговый дом Домосфера. Все права защищены.</div>
+            <a href="/" class="footer__logo"></a>
+
+            <div class="footer__more-menu__nav">
+
+                <a href="/new/landing">О КОМПАНИИ</a>
+                <a href="/new/landing">МАГАЗИНЫ</a>
+                <a href="/new/landing">КОНТАКТЫ</a>
+                <div class="footer__more-menu__copyright">© 2010-2017 Торговый дом Домосфера. Все права защищены.</div>
+            </div>
+            <div class="col-md-3">
+                <div class="footer__more-menu__socials">
+                    <a href="/new/landing" target="_blank" class="vk"></a>
+                    <a href="/new/landing" target="_blank" class="fb"></a>
+                    <a href="/new/landing" target="_blank" class="tw"></a>
                 </div>
-                <div class="col-md-3">
-                    <div class="footer__more-menu__socials">
-                        <a href="/new/landing" target="_blank" class="vk"></a>
-                        <a href="/new/landing" target="_blank" class="fb"></a>
-                        <a href="/new/landing" target="_blank" class="tw"></a>
-                    </div>
-                </div>
-            </div></div>
+            </div>
+        </div>
     </footer>
 
 </div>

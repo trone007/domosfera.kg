@@ -1370,7 +1370,7 @@ mark {
   font-size: 16px;
   line-height: 32px;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 .footer__main-menu a {
   width: 32%;
@@ -1395,7 +1395,7 @@ mark {
   display: block;
   margin: 5px 0;
 }
-.footer__more-menu__logo {
+.footer__logo {
   width: 137px;
   height: 45px;
   background: url("./img/footer/logo.svg") center center no-repeat/contain;
@@ -1442,23 +1442,29 @@ mark {
   .footer__more-menu__socials {
     margin-top: 20px;
     text-align: right;
+    padding-right: 41px;
   }
   .footer__more-menu__socials > * {
-    height: 46px;
-    width: 46px;
-    margin-right: 16px;
+    height: 45px;
+    width: 45px;
+    margin-right: 13px;
   }
   .footer__more-menu--mobile {
     display: none;
   }
   .footer__more-menu--desktop {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
-  .footer__more-menu__logo {
-    width: auto;
+  .footer__logo {
+    width: 20%;
+    flex-basis: 20%;
+    align-self: center;
   }
   .footer__more-menu__nav {
-    padding: 15px 0 15px 5%;
+    padding: 17px 0 20px 4.2%;
+    flex-grow: 2;
     border-right: 0;
     border-left: 1px solid #727784;
   }
@@ -1469,15 +1475,16 @@ mark {
   }
   .footer__more-menu__copyright {
     font-size: 13px;
-    margin-top: 10px;
+    margin-top: 5px;
   }
 }
 @media (min-width: 1200px) {
   .footer__main-menu {
     white-space: nowrap;
+    margin-left: 14px;
   }
   .footer__main-menu a {
-    margin: 0 2%;
+    margin: 0 1.5%;
   }
   .footer__more-menu__nav a {
     margin: 0 4% 0 0;
