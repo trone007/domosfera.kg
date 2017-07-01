@@ -38,11 +38,11 @@
     <div class="slider peppermint" id="carousel">
         <div class="slider-item" data-slide-name="Обои">
             <div class="col-sm-8 col-md-8 slider-item__image" style="background-image: url(/img/design/1.png)">
-                <div class="slider-item__image__content">
+                <div class="slider-item__content">
                     <div class="slider-item__image__content__title">Muralto Florian 2</div>
                     <div class="slider-item__image__content__country">Италия, Sirpi</div>
-                    <div class="slider-item__image__content__price">5 320</div>
-                    <a href="/new/landing" class="slider-item__image__content__more">
+                    <div class="slider-item__price price">5 320</div>
+                    <a href="/new/landing" class="button-with-arrow">
                         <span class="arrow-link">Все обои</span>
                     </a>
                 </div>
@@ -56,11 +56,11 @@
         </div>
         <div class="slider-item" data-slide-name="Кафель">
             <div class="col-sm-8 col-md-8 slider-item__image" style="background-image: url(/img/collection-intro.jpg)">
-                <div class="slider-item__image__content">
+                <div class="slider-item__content">
                     <div class="slider-item__image__content__title">Muralto Florian 2</div>
                     <div class="slider-item__image__content__country">Италия, Sirpi</div>
-                    <div class="slider-item__image__content__price">5 320</div>
-                    <a href=/new/landing" class="slider-item__image__content__more">
+                    <div class="slider-item__price price">5 320</div>
+                    <a href=/new/landing" class="button-with-arrow">
                         <span class="arrow-link">Все обои</span>
                     </a>
                 </div>
@@ -74,11 +74,11 @@
         </div>
         <div class="slider-item" data-slide-name="Ещё">
             <div class="col-sm-8 col-md-8 slider-item__image" style="background-image: url(/img/collection-intro-2.jpg)">
-                <div class="slider-item__image__content">
+                <div class="slider-item__content">
                     <div class="slider-item__image__content__title">Muralto Florian 2</div>
                     <div class="slider-item__image__content__country">Италия, Sirpi</div>
-                    <div class="slider-item__image__content__price">5 320</div>
-                    <a href="/new/landing" class="slider-item__image__content__more">
+                    <div class="slider-item__price price">5 320</div>
+                    <a href="/new/landing" class="button-with-arrow">
                         <span class="arrow-link">Все обои</span>
                     </a>
                 </div>

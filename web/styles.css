@@ -195,7 +195,7 @@ mark {
   }
   .title-2 {
     font-size: 36px;
-    line-height: 48px;
+    line-height: 1.24;
   }
   .title-3 {
     font-size: 28px;
@@ -312,11 +312,11 @@ mark {
 .filter__categories__button,
 .section-slider .slider-item__image__content__more {
   display: inline-block;
-  margin-top: 35px;
+  margin-top: 31px;
   color: #f92d50;
   background: #fff;
   box-shadow: 0 5px 15px rgba(30,29,35,0.19);
-  padding: 10px 18px 16px;
+  padding: 10px 23px 18px;
 }
 .button-with-arrow:hover,
 .filter__categories__button:hover,
@@ -1862,7 +1862,7 @@ mark {
   }
 }
 .section-slider {
-  margin: 50px 0;
+  margin: 22px 0;
   position: relative;
 }
 .section-slider .slider-arrow {
@@ -1923,15 +1923,14 @@ mark {
 }
 .section-slider .slider-item__image {
   height: 240px;
-  position: relative;
-  padding-right: 0;
+  padding: 4.6% 6.7% 0 0;
+  display: flex;
+  flex-direction: row-reverse;
   background-size: cover;
 }
-.section-slider .slider-item__image__content {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
+/*.section-slider .slider-item__content {*/
+  /*padding: 7.2% 8.5% 0 0;*/
+/*}*/
 .section-slider .slider-item__image__content__title {
   font-size: 28px;
   line-height: 40px;
@@ -1941,8 +1940,9 @@ mark {
   font-size: 18px;
   line-height: 20px;
 }
-.section-slider .slider-item__image__content__price {
-  margin-top: 10px;
+.section-slider .slider-item__price {
+  margin-top: 16px;
+  margin-bottom: 32px;
 }
 .section-slider .slider-item__info {
   background: #ebecf0;
@@ -1954,17 +1954,17 @@ mark {
 .section-slider .slider-item__info__pages {
   display: none;
   position: absolute;
-  left: 50px;
   bottom: 15px;
+  font-size: 18px;
 }
 @media (min-width: 768px) {
   .section-slider .slider-item__image {
     height: 420px;
   }
-  .section-slider .slider-item__image__content {
-    top: 20px;
-    right: 20px;
-  }
+  /*.section-slider .slider-item__image__content {*/
+    /*top: 20px;*/
+    /*right: 20px;*/
+  /*}*/
   .section-slider .slider-item__info {
     height: 420px;
   }
@@ -1973,16 +1973,17 @@ mark {
   .section-slider .slider-item__image {
     height: 540px;
   }
-  .section-slider .slider-item__image__content {
-    top: 40px;
-    right: 80px;
-  }
+  /*.section-slider .slider-item__image__content {*/
+    /*top: 58px;*/
+    /*right: 82px;*/
+  /*}*/
   .section-slider .slider-item__info {
     height: 540px;
-    padding: 50px;
+    padding: 4.5%;
   }
   .section-slider .slider-item__info__text {
-    margin-top: 30px;
+    margin-top: 34px;
+    line-height: 1.6;
   }
   .section-slider .slider-item__info__pages {
     display: block;
