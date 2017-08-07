@@ -82,7 +82,7 @@ class Wallpaper
     private $notebook;
 
     /**
-     * @var boolean
+     * @var string
      */
     private $glitter;
 
@@ -506,7 +506,7 @@ class Wallpaper
     /**
      * Set glitter
      *
-     * @param boolean $glitter
+     * @param string $glitter
      *
      * @return Wallpaper
      */
@@ -520,7 +520,7 @@ class Wallpaper
     /**
      * Get glitter
      *
-     * @return boolean
+     * @return string
      */
     public function getGlitter()
     {

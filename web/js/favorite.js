@@ -38,9 +38,9 @@ var toFavorite = function(vendor) {
     localStorage.setItem('vendors', vendors);
 };
 var updateFavorite = function() {
-    var vendors = localStorage.getItem('vendors').split(",");
+    var vendors = localStorage.getItem('vendors')!= null ? localStorage.getItem('vendors').split(",") : [];
     var count = 0;
-    if(vendors[0].length == 0) {
+    if(vendors.length > 0 && vendors[0].length == 0) {
         vendors.splice(0,1);
         localStorage.setItem('vendors', vendors);
     }

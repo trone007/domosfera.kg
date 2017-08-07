@@ -263,10 +263,11 @@
                 var i = 0;
                 $scope.colors = [];
                 $scope.pictures = [];
-                $scope.textures = [];
+                $scope.style = [];
                 $scope.sizes = [];
                 $scope.countries = [];
-                $scope.glitter = "";
+                $scope.type = [];
+                $scope.basis = [];
 
                 $('.filter__categories__selected__board').children().each(function(e,v) {
                     var filter = $(v).attr('filter'),
@@ -278,11 +279,14 @@
                         case 'picture':
                             $scope.pictures.push(value);
                             break;
-                        case 'texture':
-                            $scope.textures.push(value);
+                        case 'style':
+                            $scope.style.push(value);
                             break;
-                        case 'glitter':
-                            $scope.glitter = value;
+                        case 'type':
+                            $scope.type.push(value);
+                            break;
+                        case 'basis':
+                            $scope.basis.push(value);
                             break;
                         case 'size':
                             $scope.sizes.push(value);
@@ -411,8 +415,9 @@
                     'sizes': $scope.sizes,
                     'countries': $scope.countries,
                     'pictures': $scope.pictures,
-                    'textures': $scope.textures,
-                    'glitter': $scope.glitter,
+                    'style': $scope.style,
+                    'type': $scope.type,
+                    'basis': $scope.basis,
                     'halyava': $scope.searchProperties['halyava'],
                     'hot': $scope.searchProperties['hot'],
                     'new': $scope.searchProperties['new']
@@ -427,7 +432,7 @@
             $scope.minPriceM = <?php echo $maxMin['min_m_price'] ?: 0;?>;
             $scope.maxPriceM = <?php echo $maxMin['max_m_price'] ?: 0;?>;
 
-            $scope.changePriceType(1);
+            $scope.changePriceType(0);
 
             $scope.setJsonQ();
             filtersActivate($scope);
@@ -481,9 +486,9 @@
     <div class="head row">
         <h2 class="head__title title-1 col-md-6">Каталог обоев</h2>
         <div class="head__switcher switcher col-md-6">
-            <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>catalog" class="switcher__item">списком</a>
+            <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>catalog" class="switcher__item">список</a>
             /
-            <a href="#" class="switcher__item active">коллекциями</a>
+            <a href="#" class="switcher__item active">коллекции</a>
         </div>
     </div>
     <div class="mobile-menu closed" id="mobile-menu">
@@ -540,213 +545,237 @@
                     <div class="filter__categories__head__title">Фильтры</div>
                     <div class="filter__categories__selected__clear">Сбросить</div>
                 </div>
-                <div class="filter__categories__list__item active" data-filtercategory="color">Цвет</div>
-                <div class="filter__categories__list__item" data-filtercategory="pattern">Рисунок</div>
-                <div class="filter__categories__list__item" data-filtercategory="vendor">Артикул</div>
-                <div class="filter__categories__list__item" data-filtercategory="texture">Фактура</div>
-                <div class="filter__categories__list__item" data-filtercategory="glitter">Глиттер</div>
-                <div class="filter__categories__list__item" data-filtercategory="size">Ширина рулона</div>
-                <div class="filter__categories__list__item" data-filtercategory="country">Страна</div>
+                <?php if($nom == 'Обои'):?>
+                    <div class="filter__categories__list__item active" data-filtercategory="color">Цвет</div>
+                    <div class="filter__categories__list__item" data-filtercategory="style">Стиль</div>
+                    <div class="filter__categories__list__item" data-filtercategory="pattern">Рисунок</div>
+                    <div class="filter__categories__list__item" data-filtercategory="vendor">Артикул</div>
+                    <!--                <div class="filter__categories__list__item" data-filtercategory="texture">Фактура</div>-->
+                    <!--                <div class="filter__categories__list__item" data-filtercategory="type">Глиттер</div>-->
+                    <div class="filter__categories__list__item" data-filtercategory="size">Ширина рулона</div>
+                    <div class="filter__categories__list__item" data-filtercategory="type">Покрытие</div>
+                    <div class="filter__categories__list__item" data-filtercategory="basis">Основа</div>
+                <?php  endif;?>
                 <div class="filter__categories__list__item" data-filtercategory="price">Цена</div>
+
+                <div class="filter__categories__list__item" data-filtercategory="country">Страна</div>
                 <div class="filter__categories__button filter-sidebar__handler--close">Готово</div>
             </div>
             <div class="filter__categories__content">
-                <div class="filter__categories__head">
-                    <div class="filter__categories__head__back">цвет</div>
-                </div>
-                <ul class="filter__categories__content__item active" data-filtercategory="color">
-                    <li class="filter-option color color--white"></li>
-                    <ol class="color_popup_wrap">
-                        <div class="color_popup">
-                            <div class="filter-item-wrap">
-                                <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--grey" filter="color" filter-data='Серый' data-filter="color-grey">
-                                        <span class="color-name">Серый</span>
-                                    </li>
-                                    <li class="filter-option color color--white" filter="color" filter-data='Белый' data-filter="color-white">
-                                        <span class="color-name">Белый</span>
-                                    </li>
-                                    <li class="filter-option color color--black" filter="color" filter-data='Черный' data-filter="color-black">
-                                        <span class="color-name">Черный</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </ol>
-                    <li class="filter-option color color--beige"></li>
-                    <ol class="color_popup_wrap">
-                        <div class="color_popup">
-                            <div class="filter-item-wrap">
-                                <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--peach" filter="color" filter-data='Персиковый' data-filter="color-peach">
-                                        <span class="color-name">Персик</span>
-                                    </li>
-                                    <li class="filter-option color color--beige" filter="color" filter-data='Бежевый' data-filter="color-beige">
-                                        <span class="color-name">Бежевый</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </ol>
-                    <li class="filter-option color color--yellow"></li>
-                    <ol class="color_popup_wrap">
-                        <div class="color_popup">
-                            <div class="filter-item-wrap">
-                                <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--gold" filter="color" filter-data='Золотой' data-filter="color-gold">
-                                        <span class="color-name">Золотой</span>
-                                    </li>
-                                    <li class="filter-option color color--yellow" filter="color" filter-data='Жёлтый' data-filter="color-yellow">
-                                        <span class="color-name">Жёлтый</span>
-                                    </li>
-                                    <li class="filter-option color color--bronze" filter="color" filter-data='Бронзовый' data-filter="color-bronze">
-                                        <span class="color-name">Бронзовый</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </ol>
-                    <li class="filter-option color color--orange"></li>
-                    <ol class="color_popup_wrap">
-                        <div class="color_popup">
-                            <div class="filter-item-wrap">
-                                <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--orange" filter="color" filter-data='Оранжевый' data-filter="color-orange">
-                                        <span class="color-name">Оранжевый</span>
-                                    </li>
-                                    <li class="filter-option color color--terracotta" filter="color" filter-data='Терракот' data-filter="color-terracotta">
-                                        <span class="color-name">Терракот</span>
-                                    </li>
-                                    <li class="filter-option color color--brown" filter="color" filter-data='Коричневый' data-filter="color-brown">
-                                        <span class="color-name">Коричневый</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </ol>
-                    <li class="filter-option color color--red"></li>
-                    <ol class="color_popup_wrap">
-                        <div class="color_popup">
-                            <div class="filter-item-wrap">
-                                <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--pink" filter="color" filter-data='Розовый' data-filter="color-pink">
-                                        <span class="color-name">Розовый</span>
-                                    </li>
-                                    <li class="filter-option color color--red" filter="color" filter-data='Красный' data-filter="color-red">
-                                        <span class="color-name">Красный</span>
-                                    </li>
-                                    <li class="filter-option color color--wine--red" filter="color" filter-data='Бордо' data-filter="color-winered">
-                                        <span class="color-name">Бордовый</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </ol>
-                    <li class="filter-option color color--green"></li>
-                    <ol class="color_popup_wrap">
-                        <div class="color_popup">
-                            <div class="filter-item-wrap">
-                                <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--pistachio" filter="color" filter-data='Фисташковый' data-filter="color-pistachio">
-                                        <span class="color-name">Фисташковый</span>
-                                    </li>
-                                    <li class="filter-option color color--green" filter="color" filter-data='Зелёный' data-filter="color-green">
-                                        <span class="color-name">Зеленый</span>
-                                    </li>
-                                    <li class="filter-option color color--khaki" filter="color" filter-data='Хаки' data-filter="color-khaki">
-                                        <span class="color-name">Хаки</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </ol>
-                    <li class="filter-option color color--blue"></li>
-                    <ol class="color_popup_wrap">
-                        <div class="color_popup">
-                            <div class="filter-item-wrap">
-                                <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--turquoise" filter="color" filter-data='Бирюзовый' data-filter="color-turquoise">
-                                        <span class="color-name">Бирюзовый</span>
-                                    </li>
-                                    <li class="filter-option color color--blue" filter="color" filter-data='Голубой' data-filter="color-blue">
-                                        <span class="color-name">Голубой</span>
-                                    </li>
-                                    <li class="filter-option color color--darkblue" filter="color" filter-data='Синий' data-filter="color-darkblue">
-                                        <span class="color-name">Синий</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </ol>
-                    <li class="filter-option color color--lilac"></li>
-                    <ol class="color_popup_wrap">
-                        <div class="color_popup">
-                            <div class="filter-item-wrap">
-                                <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--lilac" filter="color" filter-data='Сиреневый' data-filter="color-lilac">
-                                        <span class="color-name">Сиреневый</span>
-                                    </li>
-                                    <li class="filter-option color color--purple" filter="color" filter-data='Фиолетовый' data-filter="color-purple">
-                                        <span class="color-name">Фиолетовый</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </ol>
-                </ul>
-                <ul class="filter__categories__content__item" data-filtercategory="pattern">
-                    <li class="filter-option" filter = "picture" filter-data = "Без рисунка"  data-filter="pattern-1">Без рисунка</li>
-                    <li class="filter-option" filter="picture"  filter-data ='Геометрия' data-filter="pattern-2">Геометрия</li>
-                    <li class="filter-option"  filter="picture" filter-data ='Полоса' data-filter="pattern-3">Полоса</li>
-                    <li class="filter-option"  filter="picture" filter-data ='Дамаск' data-filter="pattern-4">Дамаск</li>
-                    <li class="filter-option"  filter="picture" filter-data ='Цветы' data-filter="pattern-5">Цветы</li>
-                    <li class="filter-option"  filter="picture" filter-data ='Сюжет' data-filter="pattern-6">Сюжет</li>
-                    <li class="filter-option"  filter="picture" filter-data ='Узор' data-filter="pattern-7">Узор</li>
-                </ul>
-                <ul class="filter__categories__content__item" data-filtercategory="vendor" style="margin-bottom: 15px; ">
-                    <div class="col-xs-6" >
-                        <input type="text" class="form-control" id="vendor" ng-keyup="vendorSearch($event.keyCode)" ng-model="vendor"/>
+
+                <?php if($nom == 'Обои'):?>
+                    <div class="filter__categories__head">
+                        <div class="filter__categories__head__back">цвет</div>
                     </div>
-                    <input type="button" class="btn btn-default" ng-click="vendorSearch()" value="Найти">
-                </ul>
-                <ul class="filter__categories__content__item" data-filtercategory="texture">
-                    <li class="filter-option" filter="texture" filter-data="Дерево" data-filter="base-1">Дерево</li>
-                    <li class="filter-option" filter="texture" filter-data="Камень, Мрамор" data-filter="base-2">Камень,Мрамор</li>
-                    <li class="filter-option" filter="texture" filter-data="Камень, Прочее" data-filter="base-3">Камень,Прочее</li>
-                    <li class="filter-option" filter="texture" filter-data="Камень, Штукатурка" data-filter="base-4">Камень,Штукатурка</li>
-                    <li class="filter-option" filter="texture" filter-data="Кожа" data-filter="base-5">Кожа</li>
-                    <li class="filter-option" filter="texture" filter-data="Металл" data-filter="base-6">Металл</li>
-                    <li class="filter-option" filter="texture" filter-data="Текстиль Гладкий" data-filter="base-7">Текстиль Гладкий</li>
-                    <li class="filter-option" filter="texture" filter-data="Текстиль Грубый" data-filter="base-8">Текстиль Грубый</li>
-                    <li class="filter-option" filter="texture" filter-data="Текстиль Средний" data-filter="base-9">Текстиль Средний</li>
-                </ul>
-                <ul class="filter__categories__content__item" data-filtercategory="base">
-                    <li class="filter-option" filter="base" filter-data="true" data-filter="base-1">с глиттером</li>
-                    <li class="filter-option" filter="base" filter-data="false" data-filter="base-2">без глиттера</li>
-                    <li class="filter-option" filter="base" filter-data="null" data-filter="base-3">не указанно</li>
-                </ul>
-                <ul class="filter__categories__content__item" data-filtercategory="glitter">
-                    <li class="filter-option" filter="glitter" filter-data="true" data-filter="base-1">с глиттером</li>
-                    <li class="filter-option" filter="glitter" filter-data="false" data-filter="base-2">без глиттера</li>
-                    <li class="filter-option" filter="glitter" filter-data="null" data-filter="base-3">не указанно</li>
-                </ul>
-                <ul class="filter__categories__content__item" data-filtercategory="size">
-                    <li class="filter-option" filter = "size" filter-data = "0.53"  data-filter="size-1">0.53 метра</li>
-                    <li class="filter-option" filter="size"  filter-data ='0.7' data-filter="size-2">0.7 метра</li>
-                    <li class="filter-option"  filter="size" filter-data ='1.06' data-filter="size-3">1.06 метра</li>
-                </ul>
-                <ul class="filter__categories__content__item" data-filtercategory="country">
-                    <li class="filter-option" filter = "country" filter-data = "Россия"  data-filter="country-1">Россия</li>
-                    <li class="filter-option" filter="country"  filter-data ='Украина' data-filter="country-2">Украина</li>
-                    <li class="filter-option"  filter="country" filter-data ='Италия' data-filter="country-3">Италия</li>
-                    <li class="filter-option"  filter="country" filter-data ='Бельгия' data-filter="country-4">Бельгия</li>
-                    <li class="filter-option"  filter="country" filter-data ='США' data-filter="country-5">США</li>
-                    <li class="filter-option"  filter="country" filter-data ='Китай' data-filter="country-6">Китай</li>
-                    <li class="filter-option"  filter="country" filter-data ='Корея' data-filter="country-7">Корея</li>
-                    <li class="filter-option"  filter="country" filter-data ='Германия' data-filter="country-8">Германия</li>
-                    <li class="filter-option"  filter="country" filter-data ='Англия' data-filter="country-9">Англия</li>
-                    <li class="filter-option"  filter="country" filter-data ='Голландия' data-filter="country-10">Голландия</li>
-                </ul>
+                    <ul class="filter__categories__content__item active" data-filtercategory="color">
+                        <li class="filter-option color color--white"></li>
+                        <ol class="color_popup_wrap">
+                            <div class="color_popup">
+                                <div class="filter-item-wrap">
+                                    <ul class="filter__categories__content__item active" data-filtercategory="color">
+                                        <li class="filter-option color color--lightgrey" filter="color" filter-data='Светло-серый' data-filter="color-light-grey">
+                                            <span class="color-name">Светло-серый</span>
+                                        </li>
+                                        <li class="filter-option color color--grey" filter="color" filter-data='Серый' data-filter="color-grey">
+                                            <span class="color-name">Серый</span>
+                                        </li>
+                                        <li class="filter-option color color--white" filter="color" filter-data='Белый' data-filter="color-white">
+                                            <span class="color-name">Белый</span>
+                                        </li>
+                                        <li class="filter-option color color--black" filter="color" filter-data='Черный' data-filter="color-black">
+                                            <span class="color-name">Черный</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ol>
+                        <li class="filter-option color color--beige"></li>
+                        <ol class="color_popup_wrap">
+                            <div class="color_popup">
+                                <div class="filter-item-wrap">
+                                    <ul class="filter__categories__content__item active" data-filtercategory="color">
+                                        <li class="filter-option color color--milk" filter="color" filter-data='Молочный' data-filter="color-peach">
+                                            <span class="color-name">Молочный</span>
+                                        </li>
+                                        <li class="filter-option color color--beige" filter="color" filter-data='Бежевый' data-filter="color-beige">
+                                            <span class="color-name">Бежевый</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ol>
+                        <li class="filter-option color color--yellow"></li>
+                        <ol class="color_popup_wrap">
+                            <div class="color_popup">
+                                <div class="filter-item-wrap">
+                                    <ul class="filter__categories__content__item active" data-filtercategory="color">
+                                        <li class="filter-option color color--gold" filter="color" filter-data='Золотой' data-filter="color-gold">
+                                            <span class="color-name">Золотой</span>
+                                        </li>
+                                        <li class="filter-option color color--yellow" filter="color" filter-data='Желтый' data-filter="color-yellow">
+                                            <span class="color-name">Жёлтый</span>
+                                        </li>
+                                        <li class="filter-option color color--bronze" filter="color" filter-data='Бронзовый' data-filter="color-bronze">
+                                            <span class="color-name">Бронзовый</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ol>
+                        <li class="filter-option color color--orange"></li>
+                        <ol class="color_popup_wrap">
+                            <div class="color_popup">
+                                <div class="filter-item-wrap">
+                                    <ul class="filter__categories__content__item active" data-filtercategory="color">
+                                        <li class="filter-option color color--orange" filter="color" filter-data='Оранжевый' data-filter="color-orange">
+                                            <span class="color-name">Оранжевый</span>
+                                        </li>
+                                        <li class="filter-option color color--brown" filter="color" filter-data='Коричневый' data-filter="color-brown">
+                                            <span class="color-name">Коричневый</span>
+                                        </li>
+                                        <li class="filter-option color color--deep-brown" filter="color" filter-data='Коричневый глубокий' data-filter="color-deep-brown">
+                                            <span class="color-name">Коричневый глубокий</span>
+                                        </li>
+                                        <li class="filter-option color color--taup" filter="color" filter-data='Тауп' data-filter="color-taup">
+                                            <span class="color-name">Тауп</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ol>
+                        <li class="filter-option color color--red"></li>
+                        <ol class="color_popup_wrap">
+                            <div class="color_popup">
+                                <div class="filter-item-wrap">
+                                    <ul class="filter__categories__content__item active" data-filtercategory="color">
+                                        <li class="filter-option color color--red" filter="color" filter-data='Красный' data-filter="color-red">
+                                            <span class="color-name">Красный</span>
+                                        </li>
+                                        <li class="filter-option color color--light-pink" filter="color" filter-data='Розовый нежный' data-filter="color-light-pink">
+                                            <span class="color-name">Розовый нежный</span>
+                                        </li>
+                                        <li class="filter-option color color--modern-pink" filter="color" filter-data=' Розовый современный' data-filter="color-modern-pink">
+                                            <span class="color-name">Розовый современный</span>
+                                        </li>
+                                        <li class="filter-option color color--deep-red" filter="color" filter-data='Красный глубокий' data-filter="color-winered">
+                                            <span class="color-name">Красный глубокий</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ol>
+                        <li class="filter-option color color--green"></li>
+                        <ol class="color_popup_wrap">
+                            <div class="color_popup">
+                                <div class="filter-item-wrap">
+                                    <ul class="filter__categories__content__item active" data-filtercategory="color">
+                                        <li class="filter-option color color--modern-green" filter="color" filter-data='Зеленый современный' data-filter="color-pistachio">
+                                            <span class="color-name">Зеленый современный</span>
+                                        </li>
+                                        <li class="filter-option color color--light-green" filter="color" filter-data='Зеленый нежный' data-filter="color-green">
+                                            <span class="color-name">Зеленый нежный</span>
+                                        </li>
+                                        <li class="filter-option color color--deep-green" filter="color" filter-data='Зеленый глубоки' data-filter="color-khaki">
+                                            <span class="color-name">Зеленый глубокий</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ol>
+                        <li class="filter-option color color--blue"></li>
+                        <ol class="color_popup_wrap">
+                            <div class="color_popup">
+                                <div class="filter-item-wrap">
+                                    <ul class="filter__categories__content__item active" data-filtercategory="color">
+                                        <li class="filter-option color color--blue" filter="color" filter-data='Голубой' data-filter="color-blue">
+                                            <span class="color-name">Голубой</span>
+                                        </li>
+                                        <li class="filter-option color color--turquoise" filter="color" filter-data='Бирюзовый' data-filter="color-turquoise">
+                                            <span class="color-name">Бирюзовый</span>
+                                        </li>
+                                        <li class="filter-option color color--deep-blue" filter="color" filter-data='Синий глубокий' data-filter="color-darkblue">
+                                            <span class="color-name">Синий глубокий</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ol>
+                        <li class="filter-option color color--lilac"></li>
+                        <ol class="color_popup_wrap">
+                            <div class="color_popup">
+                                <div class="filter-item-wrap">
+                                    <ul class="filter__categories__content__item active" data-filtercategory="color">
+                                        <li class="filter-option color color--modern-lilac" filter="color" filter-data='Сиреневый современный' data-filter="color-modern-lilac">
+                                            <span class="color-name">Сиреневый современный</span>
+                                        </li>
+                                        <li class="filter-option color color--light-lilac" filter="color" filter-data='Сиреневый нежный' data-filter="color-light-lilac">
+                                            <span class="color-name">Сиреневый современный</span>
+                                        </li>
+                                        <li class="filter-option color color--deep-purple" filter="color" filter-data='Фиолетовый глубокий' data-filter="color-deep-purple">
+                                            <span class="color-name">Фиолетовый глубокий</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ol>
+                    </ul>
+                    <ul class="filter__categories__content__item" data-filtercategory="pattern">
+                        <?php $i = 0;?>
+                        <?php foreach($pictures as $picture):?>
+                            <?php if($picture[1] != null):?>
+                                <li class="filter-option"  filter="picture" filter-data ='<?php echo $picture[1]?>' data-filter="pattern-<?php echo $i++?>"><?php echo $picture[1]?></li>
+                            <?php else:?>
+                                <li class="filter-option"  filter="picture" filter-data ='NULL' data-filter="pattern-<?php echo $i++?>">NULL</li>
+                            <?php endif;?>
+                        <?php endforeach;?>
+                    </ul>
+                    <ul class="filter__categories__content__item" data-filtercategory="basis">
+                        <?php $i = 0;?>
+                        <?php foreach($basises as $basis):?>
+                            <?php if($basis[1] != null):?>
+                                <li class="filter-option"  filter="basis" filter-data ='<?php echo $basis[1]?>' data-filter="basis-<?php echo $i++?>"><?php echo $basis[1]?></li>
+                            <?php else:?>
+                                <li class="filter-option"  filter="basis" filter-data ='NULL' data-filter="basis-<?php echo $i++?>">NULL</li>
+                            <?php endif;?>
+                        <?php endforeach;?>
+                    </ul>
+                    <ul class="filter__categories__content__item" data-filtercategory="type">
+                        <?php $i = 0;?>
+                        <?php foreach($types as $type):?>
+                            <?php if($type[1] != null):?>
+                                <li class="filter-option"  filter="type" filter-data ='<?php echo $type[1]?>' data-filter="type-<?php echo $i++?>"><?php echo $type[1]?></li>
+                            <?php else:?>
+                                <li class="filter-option"  filter="type" filter-data ='NULL' data-filter="type-<?php echo $i++?>">NULL</li>
+                            <?php endif;?>
+                        <?php endforeach;?>
+                    </ul>
+                    <ul class="filter__categories__content__item" data-filtercategory="vendor" style="margin-bottom: 15px; ">
+                        <div class="col-xs-6" >
+                            <input type="text" class="form-control" id="vendor" ng-keyup="vendorSearch($event.keyCode)" ng-model="vendor"/>
+                        </div>
+                        <input type="button" class="btn btn-default" ng-click="vendorSearch()" value="Найти">
+                    </ul>
+                    <ul class="filter__categories__content__item" data-filtercategory="style">
+                        <?php $i = 0;?>
+                        <?php foreach($styles as $style):?>
+                            <?php if($style[1] != null):?>
+                                <li class="filter-option"  filter="style" filter-data ='<?php echo $style[1]?>' data-filter="basis-<?php echo $i++?>"><?php echo $style[1]?></li>
+                            <?php else:?>
+                                <li class="filter-option"  filter="style" filter-data ='NULL' data-filter="style-<?php echo $i++?>">NULL</li>
+                            <?php endif;?>
+                        <?php endforeach;?>
+                    </ul>
+                    <ul class="filter__categories__content__item" data-filtercategory="size">
+                        <?php $i = 0;?>
+                        <?php foreach($sizes as $size):?>
+                            <?php if($size[1] != null):?>
+                                <li class="filter-option"  filter="size" filter-data ='<?php echo $size[1]?>' data-filter="size-<?php echo $i++?>"><?php echo $size[1]?> метра</li>
+                            <?php else:?>
+                                <li class="filter-option"  filter="size" filter-data ='NULL' data-filter="size-<?php echo $i++?>">NULL</li>
+                            <?php endif;?>
+                        <?php endforeach;?>
+                    </ul>
+                <?php endif; ?>
                 <div class="filter__categories__content__item slider-container" data-filtercategory="price">
                     <div id="slider-range"></div>
                     <div class="price-slider__min"></div>
@@ -756,6 +785,31 @@
                         <label><input type="radio" name="price-type" ng-model="priceType" ng-change="changePriceType(1)" ng-value="1" checked="" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="1"><i>m <sup><small>2</small></sup></i></label>
                     </div>
                 </div>
+                <ul class="filter__categories__content__item country-block" data-filtercategory="country">
+                    <?php $i = 0;?>
+                    <?php foreach($countries as $key => $country):?>
+                        <?php if($key != null):?>
+                            <li class="filter-option country"  filter="country" filter-data ='<?php echo $key?>' data-filter="country-<?php echo $i++?>"><?php echo $key?></li>
+                        <?php else:?>
+                            <li class="filter-option country"  filter="country" filter-data ='NULL' data-filter="country-<?php echo $i++?>">NULL</li>
+                        <?php endif;?>
+                        <?php $j = 0;?>
+                        <ol class="color_popup_wrap">
+                            <div class="color_popup">
+                                <div class="filter-item-wrap">
+                                    <ul class="filter__categories__content__item active" data-filtercategory="country">
+                                        <?php foreach($country as $manufacturer):?>
+                                            <li class="filter-option" filter="country" filter-data='<?php echo $manufacturer?>' data-filter="country-<?php echo $i++?>">
+                                                <?php echo $manufacturer?>
+                                            </li>
+                                        <?php endforeach;?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ol>
+
+                    <?php endforeach;?>
+                </ul>
                 <div class="filter__categories__button filter-sidebar__handler--close">Сохранить</div>
             </div>
             <div class="filter__categories__selected">
@@ -797,10 +851,12 @@
             <div class="collection__image"
                  style="background-image: url(/get-interior-image/{{ catalog.catalog | escape }});"></div>
         </div>
-        <div class="col-sm-12 col-md-7"><div class="row list">
+        <div class="col-sm-12 col-md-7">
+            <div class="row list">
                 <div class="col-sm-6 col-md-4" ng-repeat="vendor in catalog.vendors | limitTo: 5" >
+                    <a href='/new/wallpaper/{{vendor.vendorCode}}'>
                     <div style="cursor:pointer;" ng-class="{
-                    'list__item--sale' : vendor.points == 1 || vendor.points == 2,
+                    'list__item--sale' :  (vendor.points == 1 || vendor.points == 2) && (vendor.priceOld != vendor.price),
                     'list__item--new' : vendor.points == 7,
                     'list__item--hot' : vendor.points == 5 || vendor.points == 4
                 }
@@ -809,17 +865,16 @@
                              style="background: url('/image?id={{vendor.image | escape }}&width=300&height=300') no-repeat"></div>
                         <div class="list__item__info">
                             <div class="list__item__info__code">{{vendor.vendorCode}}</div>
-                            <div class="list__item__info__like"></div>
-                            <a href="/new/wallpaper/{{vendor.vendorCode}}" target="_blank" class="list__item__info__title">
+                            <div class="list__item__info__title">
                                 {{vendor.catalog}}
-                            </a>
+                            </div>
                             <div class="list__item__info__title">{{vendor.manufacturer}}</div>
                             <div class="list__item__info__size">{{vendor.size}} x {{vendor.height|number:0}} м</div>
                             <div class="list__item__info__price" ng-if="vendor.points != 1 && vendor.points != 2"
                                  ng-class="{'meter' : priceType,
                                 'rul': !priceType}"
                             >{{(priceType ? vendor.m_price : vendor.price)| number:0}}</div>
-                            <div ng-if="vendor.points == 1 || vendor.points == 2"
+                            <div ng-if="(vendor.points == 1 || vendor.points == 2)  && (vendor.priceOld != vendor.price)"
 
                                  ng-class="{'meter-sale' : priceType,
                              'rul-sale': !priceType}"
@@ -828,10 +883,16 @@
                                  data-old-price="{{(priceType ? vendor.m_old_price : vendor.priceOld)|  number:0}}">
                                 {{(priceType ? vendor.m_price : vendor.price)| number:0}}
                             </div>
+                            <div ng-if="(vendor.points == 1 || vendor.points == 2)  && (vendor.priceOld == vendor.price)"
+                                 class="list__item__info__price"
+                                 >
+                                {{(priceType ? vendor.m_price : vendor.price)| number:0}}
+                            </div>
                             <div class="list__item__info__country">{{vendor.country}}
                                 ({{(priceType ? vendor.m_count : vendor.count)|number:0}} | {{(priceType ? vendor.m_totalCount : vendor.totalCount)|number:0}})</div>
                         </div>
                     </div>
+                    </a>
                 </div>
 
                 <a ng-hide="catalog.vendors.length < 5" href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>collection-page/{{catalog.vendors[0].vendorCode}}"

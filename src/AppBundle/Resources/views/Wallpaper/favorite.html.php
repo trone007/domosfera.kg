@@ -18,7 +18,7 @@
 
     hashCode = function(s){
         return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);
-    }
+    };
 
     angular
         .module('wallpaper', ['ngRoute'])
@@ -26,10 +26,15 @@
         .controller('mainCtrl', function($scope, PagerService, $http) {
             $scope.wallpapers={
             };
-            $scope.vendors = localStorage.getItem('vendors').split(",");
+            $scope.vendors = localStorage.getItem('vendors') != null ? localStorage.getItem('vendors').split(",") : [];
 
             $scope.redirectTo = function(url) {
                 window.open('/new/wallpaper/'+url, '_blank');
+            };
+
+            $scope.clear = function () {
+                localStorage.clear();
+                window.location.reload(true);
             };
 
             $scope.getWallpapers = function() {
@@ -53,6 +58,7 @@
 <div ng-app="wallpaper" ng-controller="mainCtrl" >
     <div class="head row">
         <h2 class="head__title title-1 col-md-6">Избранные</h2>
+        <div class="col-md-6 text-right"><button class="btn btn-default" ng-click="clear()">Очистить</div>
     </div>
 
     <main class = "list row">
@@ -62,24 +68,44 @@
                     'list__item--new' : row.points == 7,
                     'list__item--hot' : row.points == 1
                 }
-            " class = "list__item list__item--beige" points = "{{parseInt(row.points)}}">
+            " class = "list__item list__item--aqua" points = "{{parseInt(row.points)}}">
                 <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>wallpaper/{{row.id}}" target="_blank"  class="list__item__pattern"
                    style="background-image: url('/image?id={{row.image}}&width=231&height=174')"></a>
                 <div class="list__item__info">
                     <div class="list__item__info__code">{{row.vendorCode}}</div>
-                    <div class="list__item__info__code">{{row.manufacturer}}</div>
-                    <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>wallpaper/{{row.id}}" target="_blank" class="list__item__info__title" style="white-space: nowrap;
-    overflow: hidden;">&nbsp; {{row.catalog}}</a>
+                    <div class="list__item__info__title">{{row.manufacturer}}</div>
+                    <div class="list__item__info__title" style="white-space: nowrap;
+    overflow: hidden;">&nbsp; {{row.catalog}}</div>
                     <div class="list__item__info__size">{{row.height|number:0}} x {{row.size}}</div>
-                    <div ng-if="row.points == 5" class="list__item__info__price" data-old-price="{{priceType ? row.m_old_price : row.priceOld}}">
-                        {{(priceType ? row.m_price : row.price)| number:0}}
-                    </div>
-                    <div ng-if="row.points != 5" class="list__item__info__price" >
-                        {{(priceType ? row.m_price : row.price)| number:0}}
-                    </div>
 
-                    <div class="list__item__info__country">{{row.country}} ({{(priceType ? row.m_count : row.count)|number:0}} | {{(priceType ? row.m_totalCount : row.totalCount)|number:0}})</div>
+                    <div ng-if="(row.points == 1 || row.points == 2)  && (row.priceOld != row.price)"
+
+
+                         class="list__item__info__price"
+                         data-old-price="{{ row.priceOld |  number:0}}">
+                        {{ row.price)| number:0}}
+                    </div>
+                    <div ng-if="(row.points != 1 && row.points != 2)"
+                         ng-class="{'meter' : priceType,
+                             'rul': !priceType}"
+                         class="list__item__info__price"
+                    >
+                        {{  row.price| number:0}}
+                    </div>
+                    <div ng-if="(row.points == 1 || row.points == 2)  && (row.priceOld == row.price)"
+                         ng-class="{'meter' : priceType,
+                             'rul': !priceType}"
+                         class="list__item__info__price"
+                    >
+                        {{ row.price | number:0}}
+                    </div>
+                    <div class="list__item__info__country" >{{row.country}}
+                    </div>
                 </div>
+            </div>
+
+            <div class="list__item__info__qr">
+                <img src="http://qrcoder.ru/code/?http://gallery.kg/wallpaper/{{row.vendorCode()}}&3&0">
             </div>
         </div>
     </main>

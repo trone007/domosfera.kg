@@ -138,6 +138,20 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
         }
     }
 
+    private function getDictionary($dictionary)
+    {
+        return $this->getDoctrine()
+            ->getRepository('AppBundle:Wallpaper')
+            ->createQueryBuilder('w')
+            ->select("DISTINCT(w.{$dictionary})")
+            ->where('w.shop = :shop')
+            ->andWhere('w.nomenclature = :nomenclature')
+            ->setParameter('shop', 'kgb')
+            ->setParameter('nomenclature', $this->get('session')->get('nomenclature') ?? 'Обои')
+            ->orderBy("w.{$dictionary}")
+            ->getQuery()
+            ->getResult();
+    }
     /**
      * @Route("/collections")
      * @Route("/new/collections")
@@ -145,6 +159,7 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
      */
     public function catalogAction(Request $request)
     {
+        $this->get('session')->set('nomenclature', $_GET['nomenclature'] ?? 'Обои');
         try{
             $query = $this->getDoctrine()
             ->getRepository('AppBundle:Wallpaper')
@@ -153,7 +168,7 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
             ->where('w.shop = :shop')
             ->andWhere('w.nomenclature = :nomenclature')
             ->setParameter('shop', 'kgb')
-            ->setParameter('nomenclature', 'Обои')
+            ->setParameter('nomenclature', $this->get('session')->get('nomenclature'))
             ->setMaxResults(1);
 
             $maxMin = $query->getQuery()->getResult()[0];
@@ -161,7 +176,14 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
             echo $ex->getMessage();
         }
         return $this->render('AppBundle:Wallpaper:catalogs.html.php', array(
-            'maxMin'    => $maxMin
+            'maxMin'    => $maxMin,
+            'pictures'  => $this->getDictionary('picture'),
+            'basises'   => $this->getDictionary('basis'),
+            'types'   =>  $this->getDictionary('type'),
+            'styles'   => $this->getDictionary('style'),
+            'countries'   => $this->getDictionary('country'),
+            'sizes'   => $this->getDictionary('size'),
+            'nom'     => $this->get('session')->get('nomenclature')
         ));
     }
 
@@ -182,14 +204,15 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
 
         $colors = isset($query->colors) ? $query->colors : null;
         $pictures = isset($query->pictures) ? $query->pictures : null;
-        $textures = isset($query->textures) ? $query->textures : null;
+        $style = isset($query->style) ? $query->style : null;
         $sizes = isset($query->sizes) ? $query->sizes : null;
         $countries = isset($query->countries) ? $query->countries : null;
         $halyava = isset($query->halyava) ? $query->halyava : null;
         $hot = isset($query->hot) ? $query->hot : null;
         $new = isset($query->new) ? $query->new : null;
 
-        $glitter = isset($query->glitter) ? $query->glitter : null;
+        $type = isset($query->type) ? $query->type : null;
+        $basis = isset($query->basis) ? $query->basis : null;
 
 
         $catalogsTmp = $this
@@ -229,7 +252,7 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
 
             $queryString = '';
             foreach ($colors as $color) {
-                $queryString .= 'w.color1 = :color' . $i . ' OR w.color2 = :color' . $i . ' OR w.color3 = :color' . $i;
+                $queryString .= 'w.color1 = :color' . $i . ' OR w.color2 = :color' . $i;
 
                 if ($i < count($colors) - 1) {
                     $queryString .= ' OR ';
@@ -246,15 +269,22 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
 
             $queryString = '';
             foreach ($pictures as $picture) {
-                $queryString .= 'w.picture = :picture' . $i;
+                if($picture ==  'NULL') {
+                    $queryString .= 'w.picture IS NULL';
+
+                } else {
+                    $queryString .= 'w.picture = :picture' . $i;
+                }
 
                 if ($i < count($pictures) - 1) {
                     $queryString .= ' OR ';
                 }
 
-                $catalogsTmp->setParameter('picture' . $i++, $picture);
+                if($picture != 'NULL') {
+                    $catalogsTmp->setParameter('picture' . $i, $picture);
+                }
+                $i++;
             }
-
             $catalogsTmp->andWhere($queryString);
         }
 
@@ -262,14 +292,21 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
             $i = 0;
             $queryString = '';
             foreach ($sizes as $size) {
-                $queryString .= 'w.size = :size' . $i;
+                if($size ==  'NULL') {
+                    $queryString .= 'w.size IS NULL';
+                } else {
+                    $queryString .= 'w.size = :size' . $i;
+                }
 
                 if ($i < count($sizes) - 1) {
                     $queryString .= ' OR ';
                 }
-                $catalogsTmp->setParameter('size' . $i++, round($size, 2));
-            }
 
+                if($size != 'NULL') {
+                    $catalogsTmp->setParameter('size' . $i, $size);
+                }
+                $i++;
+            }
             $catalogsTmp->andWhere($queryString);
         }
 
@@ -278,48 +315,105 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
 
             $queryString = '';
             foreach ($countries as $country) {
-                $queryString .= 'w.country = :country' . $i;
+                if($country ==  'NULL') {
+                    $queryString .= 'w.country IS NULL';
+
+                } else {
+                    $queryString .= 'w.country = :country' . $i;
+                }
 
                 if ($i < count($countries) - 1) {
                     $queryString .= ' OR ';
                 }
 
-                $catalogsTmp->setParameter('country' . $i++, $country);
+                if($country != 'NULL') {
+                    $catalogsTmp->setParameter('country' . $i, $country);
+                }
+                $i++;
             }
 
             $catalogsTmp->andWhere($queryString);
         }
 
-        if ($textures) {
+        if ($style) {
             $i = 0;
 
             $queryString = '';
-            foreach ($textures as $texture) {
-                $queryString .= 'w.texture = :texture' . $i;
+            foreach ($style as $st) {
+                if($st ==  'NULL') {
+                    $queryString .= 'w.style IS NULL';
 
-                if ($i < count($textures) - 1) {
+                } else {
+                    $queryString .= 'w.style = :style' . $i;
+
+                }
+
+                if ($i < count($style) - 1) {
                     $queryString .= ' OR ';
                 }
 
-                $catalogsTmp->setParameter('texture' . $i++, $texture);
+                if($st != 'NULL') {
+                    $catalogsTmp->setParameter('style' . $i, $st);
+                }
+                $i++;
+
             }
 
             $catalogsTmp->andWhere($queryString);
         }
 
-        if ($glitter != "") {
-            if ($glitter == "null") {
-                $catalogsTmp->andWhere('w.glitter is NULL');
-            } else {
-                $catalogsTmp->andWhere('w.glitter = :glitter')
-                    ->setParameter('glitter', $glitter);
+        if ($type) {
+            $i = 0;
+
+            $queryString = '';
+            foreach ($type as $st) {
+                if($st ==  'NULL') {
+                    $queryString .= 'w.type IS NULL';
+
+                } else {
+                    $queryString .= 'w.type = :type' . $i;
+                }
+
+                if ($i < count($type) - 1) {
+                    $queryString .= ' OR ';
+                }
+
+                if($st != 'NULL') {
+                    $catalogsTmp->setParameter('type' . $i, $st);
+                }
+                $i++;
             }
+
+            $catalogsTmp->andWhere($queryString);
         }
 
+        if ($basis) {
+            $i = 0;
+
+            $queryString = '';
+            foreach ($basis as $st) {
+                if($st == 'NULL') {
+                    $queryString .= 'w.basis IS NULL';
+                } else {
+                    $queryString .= 'w.basis = :basis' . $i;
+                }
+
+                if ($i < count($basis) - 1) {
+                    $queryString .= ' OR ';
+                }
+
+                if($st != 'NULL') {
+                    $catalogsTmp->setParameter('basis' . $i, $st);
+                }
+                $i++;
+
+            }
+            $catalogsTmp->andWhere($queryString);
+        }
 
         if ($halyava) {
             $catalogsTmp->andWhere('w.points = 1 OR w.points = 2');
-//            $catalogsTmp->orderBy('halyava', 'DESC');
+//            $catalogsTmp->orderBy('w.points', 'DESC');
         }
         if ($hot) {
             $catalogsTmp->andWhere('w.points = 5 OR w.points = 4');
@@ -382,7 +476,18 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
             ->andWhere('w.shop = :shop')
             ->setParameter('shop',  $this->get('session')->get('shop'))
             ->setParameter('collectionCode', $catalogsTmp)
+            ->andWhere('w.nomenclature = :nomenclature')
+            ->setParameter('nomenclature',  $this->get('session')->get('nomenclature') ?? 'Обои')
             ->orderBy('cd.collectionCode', 'ASC');
+
+        if(!empty($orderBy) && count((array)$orderBy) > 0) {
+            $vendors->orderBy('w.' . $orderBy->column, $orderBy->type);
+            if($orderBy->column == 'price') {
+                if($priceType) {
+                    $vendors->orderBy('ROUND(w.price*w.marketPlan, 2)', $orderBy->type);
+                }
+            }
+        }
 
         if ($halyava) {
             $vendors->orderBy('halyava', 'DESC');
@@ -393,14 +498,7 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
         if ($new) {
             $vendors->orderBy('w.dateTime', 'DESC');
         }
-        if(!empty($orderBy) && count((array)$orderBy) > 0) {
-            $vendors->orderBy('w.' . $orderBy->column, $orderBy->type);
-            if($orderBy->column == 'price') {
-                if($priceType) {
-                    $vendors->orderBy('ROUND(w.price*w.marketPlan, 2)', $orderBy->type);
-                }
-            }
-        }
+        
         $vendors = $vendors->getQuery()
         ->getResult(Query::HYDRATE_ARRAY);
 
@@ -616,7 +714,7 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
                     ->getDoctrine()
                     ->getRepository('AppBundle:Catalogs')
                     ->createQueryBuilder('c')
-                    ->select('c.image')
+                    ->select('DISTINCT(c.image) as image')
                     ->where('c.name = :name')
                     ->andWhere('c.image IS NOT NULL')
                     ->setParameter('name', $vendor['catalog'])
@@ -629,7 +727,7 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
                     ->getDoctrine()
                     ->getRepository('AppBundle:NotebookImage')
                     ->createQueryBuilder('ni')
-                    ->select('ni.image')
+                    ->select('DISTINCT(ni.image) as image')
                     ->leftJoin(
                         'AppBundle:Notebooks',
                         'n',
@@ -643,13 +741,14 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = ' . $field;
                     ->getResult(Query::HYDRATE_ARRAY);
             }
 
-            if(empty($image[0]['image'])) {
-                $image[0]['image'] = $vendor['image'];
-                $image[1]['image'] = $vendors[1]['image'];
-            }
+//            if(empty($image[0]['image'])) {
+//                $image[0]['image'] = $vendor['image'];
+//                $image[1]['image'] = $vendors[1]['image'];
+//            }
 
-            $catalogs[$vendor['collectionCode']]['image'] = $image;
         }
+
+        $catalogs[$vendor['collectionCode']]['image'] = $image;
         return $this->render('AppBundle:Wallpaper:collectionPage.html.php', array(
             'catalog' => $catalogs
         ));

@@ -26,6 +26,13 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
  */
 class WallpaperController extends Controller
 {
+    /**
+     * @Route("/get-dictionary/{dictionary}")
+     */
+    public function getDictionaryAction($dictionary)
+    {
+        return new Response(json_encode($this->getDictionary($dictionary)));
+    }
 
     private function getDictionary($dictionary)
     {
@@ -34,9 +41,10 @@ class WallpaperController extends Controller
             ->createQueryBuilder('w')
             ->select("DISTINCT(w.{$dictionary})")
             ->where('w.shop = :shop')
-            ->andWhere('w.nomenclature = :nomenclature')
+            ->andWhere('w.mainNomenclature =  :nomenclature')
             ->setParameter('shop', 'kgb')
             ->setParameter('nomenclature', $this->get('session')->get('nomenclature') ?? 'Обои')
+            ->orderBy("w.{$dictionary}")
             ->getQuery()
             ->getResult();
     }
@@ -55,7 +63,7 @@ class WallpaperController extends Controller
                 ->createQueryBuilder('w')
                 ->select('MAX(w.price) AS max_price, MIN(w.price) AS min_price, MAX( ROUND(w.price * w.marketPlan, 2) )as max_m_price, MIN( ROUND(w.price * w.marketPlan, 2) )as min_m_price')
                 ->where('w.shop = :shop')
-                ->andWhere('w.nomenclature = :nomenclature')
+                ->andWhere('w.mainNomenclature =  :nomenclature')
                 ->setParameter('shop', 'kgb')
                 ->setParameter('nomenclature', $this->get('session')->get('nomenclature') ?? 'Обои')
                 ->setMaxResults(1);
@@ -65,13 +73,35 @@ class WallpaperController extends Controller
             echo $ex->getMessage();
         }
 
+        $user = $this->getUser();
+
+        $manufacturers = $this->getDoctrine()
+            ->getRepository('AppBundle:Wallpaper')
+            ->createQueryBuilder('w')
+            ->select("DISTINCT w.country, w.manufacturer")
+            ->where('w.shop = :shop')
+            ->andWhere('w.mainNomenclature =  :nomenclature')
+            ->setParameter('shop', 'kgb')
+            ->setParameter('nomenclature', $this->get('session')->get('nomenclature') ?? 'Обои')
+            ->getQuery()
+            ->getResult();
+
+        $countries = [];
+        foreach($manufacturers as $manufacturer) {
+            $countries[$manufacturer['country']][] = $manufacturer['manufacturer'];
+        }
+
         return $this->render('AppBundle:Wallpaper:index.html.php', array(
             'maxMin'    => $maxMin,
             'pictures'  => $this->getDictionary('picture'),
             'basises'   => $this->getDictionary('basis'),
             'types'   =>  $this->getDictionary('type'),
             'styles'   => $this->getDictionary('style'),
-            'countries'   => $this->getDictionary('country')
+            'rooms'   => $this->getDictionary('glitter'),
+            'countries'   => $countries,
+            'sizes'   => $this->getDictionary('size'),
+            'user'    => $user ? $user->getUsername() : null,
+            'nom'     => $this->get('session')->get('nomenclature')
         ));
     }
 
@@ -166,6 +196,7 @@ class WallpaperController extends Controller
 
         $type = isset($query->type) ? $query->type : null;
         $basis = isset($query->basis) ? $query->basis : null;
+        $rooms = isset($query->rooms) ? $query->rooms : null;
         try {
             $wallpapers = $this->getDoctrine()->getRepository('AppBundle:Wallpaper')
                 ->createQueryBuilder('w')
@@ -200,10 +231,10 @@ class WallpaperController extends Controller
                     'AppBundle:WallpaperCount',
                     'wc',
                     \Doctrine\ORM\Query\Expr\Join::WITH,
-                    'wc.wallpaperUuid = w.uuid AND w.shop = wc.shop'
+                    'wc.wallpaperUuid = w.uuid AND wc.shop = :shop'
                 )
                 ->where('w.shop = :shop')
-                ->andWhere('w.nomenclature = :nomenclature')
+                ->andWhere('w.mainNomenclature =  :nomenclature')
                 ->setParameter('shop', 'kgb')
                 ->setParameter('nomenclature', $this->get('session')->get('nomenclature') ?? 'Обои');
 
@@ -228,7 +259,7 @@ class WallpaperController extends Controller
 
                 $queryString = '';
                 foreach ($colors as $color) {
-                    $queryString .= 'w.color1 = :color' . $i . ' OR w.color2 = :color' . $i . ' OR w.color3 = :color' . $i;
+                    $queryString .= 'w.color1 = :color' . $i . ' OR w.color2 = :color' . $i;
 
                     if ($i < count($colors) - 1) {
                         $queryString .= ' OR ';
@@ -245,15 +276,22 @@ class WallpaperController extends Controller
 
                 $queryString = '';
                 foreach ($pictures as $picture) {
-                    $queryString .= 'w.picture = :picture' . $i;
+                    if($picture ==  'NULL') {
+                        $queryString .= 'w.picture IS NULL';
+
+                    } else {
+                        $queryString .= 'w.picture = :picture' . $i;
+                    }
 
                     if ($i < count($pictures) - 1) {
                         $queryString .= ' OR ';
                     }
 
-                    $wallpapers->setParameter('picture' . $i++, $picture);
+                    if($picture != 'NULL') {
+                        $wallpapers->setParameter('picture' . $i, $picture);
+                    }
+                    $i++;
                 }
-
                 $wallpapers->andWhere($queryString);
             }
 
@@ -261,14 +299,21 @@ class WallpaperController extends Controller
                 $i = 0;
                 $queryString = '';
                 foreach ($sizes as $size) {
-                    $queryString .= 'w.size = :size' . $i;
+                    if($size ==  'NULL') {
+                        $queryString .= 'w.size IS NULL';
+                    } else {
+                        $queryString .= 'w.size = :size' . $i;
+                    }
 
                     if ($i < count($sizes) - 1) {
                         $queryString .= ' OR ';
                     }
-                    $wallpapers->setParameter('size' . $i++, round($size, 2));
-                }
 
+                    if($size != 'NULL') {
+                        $wallpapers->setParameter('size' . $i, $size);
+                    }
+                    $i++;
+                }
                 $wallpapers->andWhere($queryString);
             }
 
@@ -277,13 +322,47 @@ class WallpaperController extends Controller
 
                 $queryString = '';
                 foreach ($countries as $country) {
-                    $queryString .= 'w.country = :country' . $i;
+                    if($country ==  'NULL') {
+                        $queryString .= 'w.country IS NULL';
+
+                    } else {
+                        $queryString .= 'w.country = :country' . $i . ' OR w.manufacturer = :manufacturer'. $i;
+                    }
 
                     if ($i < count($countries) - 1) {
                         $queryString .= ' OR ';
                     }
 
-                    $wallpapers->setParameter('country' . $i++, $country);
+                    if($country != 'NULL') {
+                        $wallpapers->setParameter('country' . $i, $country);
+                        $wallpapers->setParameter('manufacturer' . $i, $country);
+                    }
+                    $i++;
+                }
+
+                $wallpapers->andWhere($queryString);
+            }
+
+            if ($rooms) {
+                $i = 0;
+
+                $queryString = '';
+                foreach ($rooms as $room) {
+                    if($room ==  'NULL') {
+                        $queryString .= 'w.glitter IS NULL';
+
+                    } else {
+                        $queryString .= 'w.glitter = :room' . $i;
+                    }
+
+                    if ($i < count($rooms) - 1) {
+                        $queryString .= ' OR ';
+                    }
+
+                    if($room != 'NULL') {
+                        $wallpapers->setParameter('room' . $i, $room);
+                    }
+                    $i++;
                 }
 
                 $wallpapers->andWhere($queryString);
@@ -294,13 +373,23 @@ class WallpaperController extends Controller
 
                 $queryString = '';
                 foreach ($style as $st) {
-                    $queryString .= 'w.style = :style' . $i;
+                    if($st ==  'NULL') {
+                        $queryString .= 'w.style IS NULL';
+
+                    } else {
+                        $queryString .= 'w.style = :style' . $i;
+
+                    }
 
                     if ($i < count($style) - 1) {
                         $queryString .= ' OR ';
                     }
 
-                    $wallpapers->setParameter('style' . $i++, $st);
+                    if($st != 'NULL') {
+                        $wallpapers->setParameter('style' . $i, $st);
+                    }
+                    $i++;
+
                 }
 
                 $wallpapers->andWhere($queryString);
@@ -311,13 +400,21 @@ class WallpaperController extends Controller
 
                 $queryString = '';
                 foreach ($type as $st) {
-                    $queryString .= 'w.type = :type' . $i;
+                    if($st ==  'NULL') {
+                        $queryString .= 'w.type IS NULL';
+
+                    } else {
+                        $queryString .= 'w.type = :type' . $i;
+                    }
 
                     if ($i < count($type) - 1) {
                         $queryString .= ' OR ';
                     }
 
-                    $wallpapers->setParameter('type' . $i++, $st);
+                    if($st != 'NULL') {
+                        $wallpapers->setParameter('type' . $i, $st);
+                    }
+                    $i++;
                 }
 
                 $wallpapers->andWhere($queryString);
@@ -350,13 +447,21 @@ class WallpaperController extends Controller
 
                 $queryString = '';
                 foreach ($basis as $st) {
-                    $queryString .= 'w.basis = :basis' . $i;
+                    if($st == 'NULL') {
+                        $queryString .= 'w.basis IS NULL';
+                    } else {
+                        $queryString .= 'w.basis = :basis' . $i;
+                    }
 
                     if ($i < count($basis) - 1) {
                         $queryString .= ' OR ';
                     }
 
-                    $wallpapers->setParameter('basis' . $i++, $st);
+                    if($st != 'NULL') {
+                        $wallpapers->setParameter('basis' . $i, $st);
+                    }
+                    $i++;
+
                 }
                 $wallpapers->andWhere($queryString);
             }
@@ -401,7 +506,7 @@ class WallpaperController extends Controller
                     MIN( ROUND(w.price * w.marketPlan, 2) )as min_m_price'
                 )
                 ->where('w.shop = :shop')
-                ->andWhere('w.nomenclature = :nomenclature')
+                ->andWhere('w.mainNomenclature =  :nomenclature')
                 ->setParameter('shop', 'kgb')
                 ->setParameter('nomenclature', $this->get('session')->get('nomenclature') ?? 'Обои');
 
@@ -575,26 +680,7 @@ class WallpaperController extends Controller
             'shop'       => 'kgb'
         ]);
 
-        $sortOrder = [
-            'kgb',
-            'kgopt1',
-            'kgb5',
-            'kgb6',
-            'kgb3',
-            'kgb2',
-            'kgb8',
-            'kgto',
-            'kgkb',
-            'kzopt1',
-            'kzsh',
-            'kzsh2',
-            'kzsh3',
-            'kztt82',
-            'kgopt2',
-            'kzopt2',
-            'kzao',
-            'kzaa'
-        ];
+        $sortOrder = $this->getSort();
 
         foreach($sortOrder as $so) {
             $shopData[$so] = [
@@ -606,12 +692,15 @@ class WallpaperController extends Controller
                 'reserve' => 0
             ];
         }
+        $total = 0;
 
         foreach ($count as $shop) {
             $name = $this->getDoctrine()->getRepository('AppBundle:Shop')->findOneByUuid($shop->Магазин);
-            if(!$name) continue;
-            $name = $name->getName();
-
+            if(!$name) {
+                $name = $shop->Организация;
+            } else {
+                $name = $name->getName();
+            }
             $shopData[(string)$shop->Магазин]['code'] = (string)$shop->Магазин;
             $shopData[(string)$shop->Магазин]['class'] = (string)$shop->Классификатор;
             $shopData[(string)$shop->Магазин]['name'] = $name;
@@ -619,7 +708,7 @@ class WallpaperController extends Controller
 
             $shopData[(string)$shop->Магазин]['count'] += (float)$shop->СвободныйОстаток;
             $shopData[(string)$shop->Магазин]['reserve'] += (float)$shop->Резерв;
-
+            $total += (float)$shop->Резерв + (float)$shop->СвободныйОстаток;
         }
 
         foreach($shopData as $key => $sd) {
@@ -634,12 +723,30 @@ class WallpaperController extends Controller
         if(is_string($user)) {
             $user = '';
         }
+        $images = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:NotebookImage')
+            ->createQueryBuilder('ni')
+            ->select('DISTINCT(ni.image) as image')
+            ->leftJoin(
+                'AppBundle:Notebooks',
+                'n',
+                \Doctrine\ORM\Query\Expr\Join::WITH,
+                'n.uuid = ni.notebook'
+            )
+            ->where('n.catalogCode = :catalog')
+            ->andWhere('ni.image IS NOT NULL')
+            ->setParameter('catalog', $wallpaper->getCatalog())
+            ->getQuery()
+            ->getResult();
 
         return $this->render('AppBundle:Wallpaper:wallpaper.html.php', array(
             'wallpaper'    => $wallpaper,
             'shops' => $shopData,
             'complectsData' => $complectsData,
-            'user' => $user
+            'user' => $user,
+            'images' => $images,
+            'total'  => $total
         ));
     }
 
@@ -695,26 +802,7 @@ class WallpaperController extends Controller
             ->getQuery()
             ->getResult(Query::HYDRATE_ARRAY);
 
-        $sortOrder = [
-            'kgb',
-            'kgopt1',
-            'kgb5',
-            'kgb6',
-            'kgb3',
-            'kgb2',
-            'kgb8',
-            'kgto',
-            'kgkb',
-            'kzopt1',
-            'kzsh',
-            'kzsh2',
-            'kzsh3',
-            'kztt82',
-            'kgopt2',
-            'kzopt2',
-            'kzao',
-            'kzaa'
-        ];
+        $sortOrder = $this->getSort();
 
         foreach($sortOrder as $so) {
             $shopData[$so] = [
@@ -1177,5 +1265,182 @@ RIGHT JOIN complect_data cd ON cd.vendor_code = c.vendor_code';
         $roots = $roots->getQuery()->getResult(Query::HYDRATE_ARRAY);
 
         return ['complects' => $wallpapers, 'roots' => $roots];
+    }
+
+    private function getSort() {
+        switch(strtolower($this->get('session')->get('region'))) {
+            case 'кыргызстан':
+            case 'бишкек':
+                return [
+                    'kgb',
+                    'kgopt1',
+                    'kgb5',
+                    'kgb6',
+                    'kgb3',
+                    'kgb2',
+                    'kgb8',
+                    'kgto',
+                    'kgkb',
+                    'kzopt1',
+                    'kzsh',
+                    'kzsh2',
+                    'kzsh3',
+                    'kztt82',
+                    'kgopt2',
+                    'kzopt2',
+                    'kzao',
+                    'kzaa'
+                ];
+                break;
+            case 'токмак':
+                return [
+                    'kgto',
+                    'kgopt1',
+                    'kgb',
+                    'kgb3',
+                    'kgb5',
+                    'kgb8',
+                    'kgb2',
+                    'kgkb',
+                    'kzopt1',
+                    'kzsh',
+                    'kzsh2',
+                    'kzsh3',
+                    'kztt82',
+                    'kgopt2',
+                    'kzopt2',
+                    'kzao',
+                    'kzaa'
+                ];
+                break;
+            case 'кара-балта':
+                return [
+                    'kgkb',
+                    'kgopt1',
+                    'kgb',
+                    'kgb3',
+                    'kgb5',
+                    'kgb8',
+                    'kgb2',
+                    'kgto',
+                    'kzopt1',
+                    'kzsh',
+                    'kzsh2',
+                    'kzsh3',
+                    'kztt82',
+                    'kgopt2',
+                    'kzopt2',
+                    'kzao',
+                    'kzaa'
+                ];
+                break;
+            case 'ош':
+                return [
+                    'kgo',
+                    'kgopt2',
+                    'kgopt1',
+                    'kgb',
+                    'kgb5',
+                    'kgb3',
+                    'kgb8',
+                    'kgb2',
+                    'kgkb',
+                    'kgto',
+                    'kzopt1',
+                    'kzsh',
+                    'kzsh2',
+                    'kzsh3',
+                    'kztt82',
+                    'kzopt2',
+                    'kzao',
+                    'kzaa'
+                ];
+                break;
+            case 'тараз':
+                return [
+                    'kztt82',
+                    'kzopt1',
+                    'kzsh',
+                    'kzsh2',
+                    'kzsh3',
+                    'kgopt1',
+                    'kgb',
+                    'kgb5',
+                    'kgb3',
+                    'kgb8',
+                    'kgb2',
+                    'kgkb',
+                    'kgto',
+                    'kgo',
+                    'kgopt2',
+                    'kzopt2',
+                    'kzao',
+                    'kzaa'
+                ];
+                break;
+            case 'шымкент':
+                return [
+                    'kztt82',
+                    'kzopt1',
+                    'kzsh',
+                    'kzsh3',
+                    'kgopt1',
+                    'kgb',
+                    'kgb5',
+                    'kgb3',
+                    'kgb8',
+                    'kgb2',
+                    'kgkb',
+                    'kgto',
+                    'kgo',
+                    'kgopt2',
+                    'kzopt2',
+                    'kzao',
+                    'kzaa'
+                ];
+                break;
+            case 'актобе':
+                return [
+                    'kzao',
+                    'kzopt2',
+                    'kzopt1',
+                    'kzsh',
+                    'kztt82',
+                    'kzsh3',
+                    'kgopt1',
+                    'kgb',
+                    'kgb5',
+                    'kgb3',
+                    'kgb8',
+                    'kgb2',
+                    'kgkb',
+                    'kgto',
+                    'kgo',
+                    'kgopt2',
+                    'kzaa'
+                ];
+                break;
+            case 'актау':
+                return [
+                    'kzaa',
+                    'kzopt2',
+                    'kzao',
+                    'kzopt1',
+                    'kzsh',
+                    'kztt82',
+                    'kzsh3',
+                    'kgopt1',
+                    'kgb',
+                    'kgb5',
+                    'kgb3',
+                    'kgb8',
+                    'kgb2',
+                    'kgkb',
+                    'kgto',
+                    'kgo',
+                    'kgopt2'
+                ];
+                break;
+        }
     }
 }

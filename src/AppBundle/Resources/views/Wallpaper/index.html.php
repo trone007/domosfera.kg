@@ -22,8 +22,14 @@
 
     angular
         .module('wallpaper', ['ngRoute'])
+        .config(['$locationProvider', function($locationProvider) {
+            $locationProvider.hashPrefix('!').html5Mode({
+                enabled: true,
+                requireBase: false
+            });
+        }])
         .factory('PagerService', PagerService)
-        .controller('mainCtrl', function($scope, PagerService, $http) {
+        .controller('mainCtrl', function($scope, PagerService, $http, $location) {
             $scope.wallpapers={
             };
 
@@ -87,10 +93,10 @@
 
                     var data = response.data;
 
-                    $scope.maxPrice = parseFloat(data.max_price);
-                    $scope.minPrice = parseFloat(data.min_price);
-                    $scope.maxPriceM = parseFloat(data.max_m_price);
-                    $scope.minPriceM = parseFloat(data.min_m_price);
+//                    $scope.maxPrice = parseFloat(data.max_price);
+//                    $scope.minPrice = parseFloat(data.min_price);
+//                    $scope.maxPriceM = parseFloat(data.max_m_price);
+//                    $scope.minPriceM = parseFloat(data.min_m_price);
 //                    $scope.changePriceType($scope.priceType);
                 }, function errorCallback(response){
 
@@ -148,6 +154,16 @@
                         break;
 
                 }
+                var e = $('.filter-option[data-filter="price"]');
+
+                if(e) {
+                    $(e).remove();
+                    if(!$filterBoard.html()) {
+                        $filterBoardContainer.removeClass('filled');
+                        $clearAll.removeClass('is-visible');
+                        $filterSidebarOpen.removeClass('active');
+                    }
+                }
 
                 $( "#slider-range" ).slider({
                     range: true,
@@ -189,6 +205,11 @@
 
                 $('.price-slider__min').html($( "#slider-range" ).slider( "values", 0 ));
                 $('.price-slider__max').html($( "#slider-range" ).slider( "values", 1 ));
+
+                if(typeof $scope.jsonQ !== 'undefined') {
+                    $scope.wallappers = [];
+                    $scope.filterChange(false);
+                }
             };
 
             $scope.vendorSearch = function(key = false) {
@@ -243,6 +264,7 @@
                 $scope.countries = [];
                 $scope.type = [];
                 $scope.basis = [];
+                $scope.rooms = [];
 
                 $('.filter__categories__selected__board').children().each(function(e,v) {
                     var filter = $(v).attr('filter'),
@@ -256,6 +278,9 @@
                             break;
                         case 'style':
                             $scope.style.push(value);
+                            break;
+                        case 'room':
+                            $scope.rooms.push(value);
                             break;
                         case 'type':
                             $scope.type.push(value);
@@ -303,10 +328,6 @@
                 $scope.jsonQ.priceStart = $scope.minPrice;
                 $scope.jsonQ.priceFinish = $scope.maxPrice;
 
-//                $scope.searchProperties = [];
-////                $scope.searchProperties['hot'] = false;
-//                $scope.searchProperties['halyava'] = false;
-//                $scope.searchProperties['new'] = false;
                 $('.search__property').removeClass('active');
 
                 $scope.hash = hashCode(JSON.stringify($scope.jsonQ));
@@ -394,6 +415,7 @@
                     'style': $scope.style,
                     'type': $scope.type,
                     'basis': $scope.basis,
+                    'rooms': $scope.rooms,
                     'halyava': $scope.searchProperties['halyava'],
                     'hot': $scope.searchProperties['hot'],
                     'new': $scope.searchProperties['new']
@@ -408,7 +430,17 @@
             $scope.minPriceM = <?php echo $maxMin['min_m_price'] ?: 0;?>;
             $scope.maxPriceM = <?php echo $maxMin['max_m_price'] ?: 0;?>;
 
-            $scope.changePriceType(1);
+            $scope.user = '<?php echo $user;?>';
+
+            $scope.changePriceType(0);
+            var filter = $location.search().filter;
+            var value = $location.search().value;
+            if (typeof filter !== 'undefined') {
+                var a = $($('.filter__categories__content__item[data-filtercategory="' + filter + '"]')
+                    .children('.filter-option:contains("'+value+'")')[0]);
+                setTimeout(function(){a.click();$('.filter__categories__list__item[data-filtercategory="' + filter + '"]').click()}, 1000);
+
+            }
 
             $scope.setJsonQ();
             filtersActivate($scope);
@@ -440,9 +472,9 @@
         <h2 class="head__title title-1 col-md-6">Каталог обоев</h2>
         <div class="head__switcher switcher col-md-6">
             <?php if($prefix == 'new'):?>
-                <a href="#" class="switcher__item active">списком</a>
+                <a href="#" class="switcher__item active">список</a>
                 /
-                <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>collections" class="switcher__item">коллекциями</a>
+                <a href="javascript:window.location.href='/<?php echo $prefix != '' ? $prefix . '/' : ''?>collections'" class="switcher__item">коллекции</a>
             <?php endif; ?>
         </div>
     </div>
@@ -500,6 +532,7 @@
                     <div class="filter__categories__head__title">Фильтры</div>
                     <div class="filter__categories__selected__clear">Сбросить</div>
                 </div>
+                <?php if($nom == 'Обои'):?>
                 <div class="filter__categories__list__item active" data-filtercategory="color">Цвет</div>
                 <div class="filter__categories__list__item" data-filtercategory="style">Стиль</div>
                 <div class="filter__categories__list__item" data-filtercategory="pattern">Рисунок</div>
@@ -507,13 +540,18 @@
 <!--                <div class="filter__categories__list__item" data-filtercategory="texture">Фактура</div>-->
 <!--                <div class="filter__categories__list__item" data-filtercategory="type">Глиттер</div>-->
                 <div class="filter__categories__list__item" data-filtercategory="size">Ширина рулона</div>
-                <div class="filter__categories__list__item" data-filtercategory="country">Страна</div>
                 <div class="filter__categories__list__item" data-filtercategory="type">Покрытие</div>
                 <div class="filter__categories__list__item" data-filtercategory="basis">Основа</div>
+                <?php  endif;?>
                 <div class="filter__categories__list__item" data-filtercategory="price">Цена</div>
+
+                <div class="filter__categories__list__item" data-filtercategory="country">Страна</div>
+                <div class="filter__categories__list__item" data-filtercategory="room">Комната</div>
                 <div class="filter__categories__button filter-sidebar__handler--close">Готово</div>
             </div>
             <div class="filter__categories__content">
+
+                <?php if($nom == 'Обои'):?>
                 <div class="filter__categories__head">
                     <div class="filter__categories__head__back">цвет</div>
                 </div>
@@ -523,6 +561,9 @@
                         <div class="color_popup">
                             <div class="filter-item-wrap">
                                 <ul class="filter__categories__content__item active" data-filtercategory="color">
+                                    <li class="filter-option color color--light-grey" filter="color" filter-data='Светло-серый' data-filter="color-light-grey">
+                                        <span class="color-name">Светло-серый</span>
+                                    </li>
                                     <li class="filter-option color color--grey" filter="color" filter-data='Серый' data-filter="color-grey">
                                         <span class="color-name">Серый</span>
                                     </li>
@@ -541,8 +582,8 @@
                         <div class="color_popup">
                             <div class="filter-item-wrap">
                                 <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--peach" filter="color" filter-data='Персиковый' data-filter="color-peach">
-                                        <span class="color-name">Персик</span>
+                                    <li class="filter-option color color--milk" filter="color" filter-data='Молочный' data-filter="color-peach">
+                                        <span class="color-name">Молочный</span>
                                     </li>
                                     <li class="filter-option color color--beige" filter="color" filter-data='Бежевый' data-filter="color-beige">
                                         <span class="color-name">Бежевый</span>
@@ -559,7 +600,7 @@
                                     <li class="filter-option color color--gold" filter="color" filter-data='Золотой' data-filter="color-gold">
                                         <span class="color-name">Золотой</span>
                                     </li>
-                                    <li class="filter-option color color--yellow" filter="color" filter-data='Жёлтый' data-filter="color-yellow">
+                                    <li class="filter-option color color--yellow" filter="color" filter-data='Желтый' data-filter="color-yellow">
                                         <span class="color-name">Жёлтый</span>
                                     </li>
                                     <li class="filter-option color color--bronze" filter="color" filter-data='Бронзовый' data-filter="color-bronze">
@@ -577,11 +618,14 @@
                                     <li class="filter-option color color--orange" filter="color" filter-data='Оранжевый' data-filter="color-orange">
                                         <span class="color-name">Оранжевый</span>
                                     </li>
-                                    <li class="filter-option color color--terracotta" filter="color" filter-data='Терракот' data-filter="color-terracotta">
-                                        <span class="color-name">Терракот</span>
-                                    </li>
                                     <li class="filter-option color color--brown" filter="color" filter-data='Коричневый' data-filter="color-brown">
                                         <span class="color-name">Коричневый</span>
+                                    </li>
+                                    <li class="filter-option color color--deep-brown" filter="color" filter-data='Коричневый глубокий' data-filter="color-deep-brown">
+                                        <span class="color-name">Коричневый глубокий</span>
+                                    </li>
+                                    <li class="filter-option color color--taup" filter="color" filter-data='Тауп' data-filter="color-taup">
+                                        <span class="color-name">Тауп</span>
                                     </li>
                                 </ul>
                             </div>
@@ -592,14 +636,17 @@
                         <div class="color_popup">
                             <div class="filter-item-wrap">
                                 <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--pink" filter="color" filter-data='Розовый' data-filter="color-pink">
-                                        <span class="color-name">Розовый</span>
-                                    </li>
                                     <li class="filter-option color color--red" filter="color" filter-data='Красный' data-filter="color-red">
                                         <span class="color-name">Красный</span>
                                     </li>
-                                    <li class="filter-option color color--wine--red" filter="color" filter-data='Бордо' data-filter="color-winered">
-                                        <span class="color-name">Бордовый</span>
+                                    <li class="filter-option color color--light-pink" filter="color" filter-data='Розовый нежный' data-filter="color-light-pink">
+                                        <span class="color-name">Розовый нежный</span>
+                                    </li>
+                                    <li class="filter-option color color--modern-pink" filter="color" filter-data=' Розовый современный' data-filter="color-modern-pink">
+                                        <span class="color-name">Розовый современный</span>
+                                    </li>
+                                    <li class="filter-option color color--deep-red" filter="color" filter-data='Красный глубокий' data-filter="color-winered">
+                                        <span class="color-name">Красный глубокий</span>
                                     </li>
                                 </ul>
                             </div>
@@ -610,14 +657,14 @@
                         <div class="color_popup">
                             <div class="filter-item-wrap">
                                 <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--pistachio" filter="color" filter-data='Фисташковый' data-filter="color-pistachio">
-                                        <span class="color-name">Фисташковый</span>
+                                    <li class="filter-option color color--modern-green" filter="color" filter-data='Зеленый современный' data-filter="color-pistachio">
+                                        <span class="color-name">Зеленый современный</span>
                                     </li>
-                                    <li class="filter-option color color--green" filter="color" filter-data='Зеленый' data-filter="color-green">
-                                        <span class="color-name">Зеленый</span>
+                                    <li class="filter-option color color--light-green" filter="color" filter-data='Зеленый нежный' data-filter="color-green">
+                                        <span class="color-name">Зеленый нежный</span>
                                     </li>
-                                    <li class="filter-option color color--khaki" filter="color" filter-data='Хаки' data-filter="color-khaki">
-                                        <span class="color-name">Хаки</span>
+                                    <li class="filter-option color color--deep-green" filter="color" filter-data='Зеленый глубоки' data-filter="color-khaki">
+                                        <span class="color-name">Зеленый глубокий</span>
                                     </li>
                                 </ul>
                             </div>
@@ -628,14 +675,14 @@
                         <div class="color_popup">
                             <div class="filter-item-wrap">
                                 <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--turquoise" filter="color" filter-data='Бирюзовый' data-filter="color-turquoise">
-                                        <span class="color-name">Бирюзовый</span>
-                                    </li>
                                     <li class="filter-option color color--blue" filter="color" filter-data='Голубой' data-filter="color-blue">
                                         <span class="color-name">Голубой</span>
                                     </li>
-                                    <li class="filter-option color color--darkblue" filter="color" filter-data='Синий' data-filter="color-darkblue">
-                                        <span class="color-name">Синий</span>
+                                    <li class="filter-option color color--turquoise" filter="color" filter-data='Бирюзовый' data-filter="color-turquoise">
+                                        <span class="color-name">Бирюзовый</span>
+                                    </li>
+                                    <li class="filter-option color color--deep-blue" filter="color" filter-data='Синий глубокий' data-filter="color-darkblue">
+                                        <span class="color-name">Синий глубокий</span>
                                     </li>
                                 </ul>
                             </div>
@@ -646,11 +693,14 @@
                         <div class="color_popup">
                             <div class="filter-item-wrap">
                                 <ul class="filter__categories__content__item active" data-filtercategory="color">
-                                    <li class="filter-option color color--lilac" filter="color" filter-data='Сиреневый' data-filter="color-lilac">
-                                        <span class="color-name">Сиреневый</span>
+                                    <li class="filter-option color color--modern-lilac" filter="color" filter-data='Сиреневый современный' data-filter="color-modern-lilac">
+                                        <span class="color-name">Сиреневый современный</span>
                                     </li>
-                                    <li class="filter-option color color--purple" filter="color" filter-data='Фиолетовый' data-filter="color-purple">
-                                        <span class="color-name">Фиолетовый</span>
+                                    <li class="filter-option color color--light-lilac" filter="color" filter-data='Сиреневый нежный' data-filter="color-light-lilac">
+                                        <span class="color-name">Сиреневый современный</span>
+                                    </li>
+                                    <li class="filter-option color color--deep-purple" filter="color" filter-data='Фиолетовый глубокий' data-filter="color-deep-purple">
+                                        <span class="color-name">Фиолетовый глубокий</span>
                                     </li>
                                 </ul>
                             </div>
@@ -662,6 +712,8 @@
                     <?php foreach($pictures as $picture):?>
                         <?php if($picture[1] != null):?>
                         <li class="filter-option"  filter="picture" filter-data ='<?php echo $picture[1]?>' data-filter="pattern-<?php echo $i++?>"><?php echo $picture[1]?></li>
+                        <?php else:?>
+                            <li class="filter-option"  filter="picture" filter-data ='NULL' data-filter="pattern-<?php echo $i++?>">NULL</li>
                         <?php endif;?>
                     <?php endforeach;?>
                 </ul>
@@ -670,6 +722,8 @@
                     <?php foreach($basises as $basis):?>
                         <?php if($basis[1] != null):?>
                         <li class="filter-option"  filter="basis" filter-data ='<?php echo $basis[1]?>' data-filter="basis-<?php echo $i++?>"><?php echo $basis[1]?></li>
+                        <?php else:?>
+                            <li class="filter-option"  filter="basis" filter-data ='NULL' data-filter="basis-<?php echo $i++?>">NULL</li>
                         <?php endif;?>
                     <?php endforeach;?>
                 </ul>
@@ -678,6 +732,8 @@
                     <?php foreach($types as $type):?>
                         <?php if($type[1] != null):?>
                         <li class="filter-option"  filter="type" filter-data ='<?php echo $type[1]?>' data-filter="type-<?php echo $i++?>"><?php echo $type[1]?></li>
+                        <?php else:?>
+                            <li class="filter-option"  filter="type" filter-data ='NULL' data-filter="type-<?php echo $i++?>">NULL</li>
                         <?php endif;?>
                     <?php endforeach;?>
                 </ul>
@@ -687,38 +743,37 @@
                     </div>
                     <input type="button" class="btn btn-default" ng-click="vendorSearch()" value="Найти">
                 </ul>
-<!--                <ul class="filter__categories__content__item" data-filtercategory="texture">-->
-<!--                    <li class="filter-option" filter="texture" filter-data="Дерево" data-filter="base-1">Дерево</li>-->
-<!--                    <li class="filter-option" filter="texture" filter-data="Камень, Мрамор" data-filter="base-2">Камень,Мрамор</li>-->
-<!--                    <li class="filter-option" filter="texture" filter-data="Камень, Прочее" data-filter="base-3">Камень,Прочее</li>-->
-<!--                    <li class="filter-option" filter="texture" filter-data="Камень, Штукатурка" data-filter="base-4">Камень,Штукатурка</li>-->
-<!--                    <li class="filter-option" filter="texture" filter-data="Кожа" data-filter="base-5">Кожа</li>-->
-<!--                    <li class="filter-option" filter="texture" filter-data="Металл" data-filter="base-6">Металл</li>-->
-<!--                    <li class="filter-option" filter="texture" filter-data="Текстиль Гладкий" data-filter="base-7">Текстиль Гладкий</li>-->
-<!--                    <li class="filter-option" filter="texture" filter-data="Текстиль Грубый" data-filter="base-8">Текстиль Грубый</li>-->
-<!--                    <li class="filter-option" filter="texture" filter-data="Текстиль Средний" data-filter="base-9">Текстиль Средний</li>-->
-<!--                </ul>-->
                 <ul class="filter__categories__content__item" data-filtercategory="style">
                     <?php $i = 0;?>
                     <?php foreach($styles as $style):?>
                         <?php if($style[1] != null):?>
-                            <li class="filter-option"  filter="style" filter-data ='<?php echo $style[1]?>' data-filter="basis-<?php echo $i++?>"><?php echo $style[1]?></li>
+                            <li class="filter-option"  filter="style" filter-data ='<?php echo $style[1]?>' data-filter="style-<?php echo $i++?>"><?php echo $style[1]?></li>
+                        <?php else:?>
+                            <li class="filter-option"  filter="style" filter-data ='NULL' data-filter="style-<?php echo $i++?>">NULL</li>
+                        <?php endif;?>
+                    <?php endforeach;?>
+                </ul>
+                <ul class="filter__categories__content__item" data-filtercategory="room">
+                    <?php $i = 0;?>
+                    <?php foreach($rooms as $room):?>
+                        <?php if($room[1] != null):?>
+                            <li class="filter-option"  filter="room" filter-data ='<?php echo $room[1]?>' data-filter="room-<?php echo $i++?>"><?php echo $room[1]?></li>
+                        <?php else:?>
+                            <li class="filter-option"  filter="room" filter-data ='NULL' data-filter="room-<?php echo $i++?>">NULL</li>
                         <?php endif;?>
                     <?php endforeach;?>
                 </ul>
                 <ul class="filter__categories__content__item" data-filtercategory="size">
-                    <li class="filter-option" filter = "size" filter-data = "0.53"  data-filter="size-1">0.53 метра</li>
-                    <li class="filter-option" filter="size"  filter-data ='0.7' data-filter="size-2">0.7 метра</li>
-                    <li class="filter-option" filter="size" filter-data ='1.06' data-filter="size-3">1.06 метра</li>
-                </ul>
-                <ul class="filter__categories__content__item" data-filtercategory="country">
                     <?php $i = 0;?>
-                    <?php foreach($countries as $country):?>
-                        <?php if($country[1] != null):?>
-                            <li class="filter-option"  filter="country" filter-data ='<?php echo $country[1]?>' data-filter="country-<?php echo $i++?>"><?php echo $country[1]?></li>
+                    <?php foreach($sizes as $size):?>
+                        <?php if($size[1] != null):?>
+                            <li class="filter-option"  filter="size" filter-data ='<?php echo $size[1]?>' data-filter="size-<?php echo $i++?>"><?php echo $size[1]?> метра</li>
+                        <?php else:?>
+                            <li class="filter-option"  filter="size" filter-data ='NULL' data-filter="size-<?php echo $i++?>">NULL</li>
                         <?php endif;?>
                     <?php endforeach;?>
                 </ul>
+                <?php endif; ?>
                 <div class="filter__categories__content__item slider-container" data-filtercategory="price">
                     <div id="slider-range"></div>
                     <div class="price-slider__min"></div>
@@ -728,6 +783,31 @@
                         <label><input type="radio" name="price-type" ng-model="priceType" ng-change="changePriceType(1)" ng-value="1" checked="" class="ng-pristine ng-untouched ng-valid ng-not-empty" value="1"><i>m <sup><small>2</small></sup></i></label>
                     </div>
                 </div>
+                <ul class="filter__categories__content__item country-block" data-filtercategory="country">
+                    <?php $i = 0;?>
+                    <?php foreach($countries as $key => $country):?>
+                        <?php if($key != null):?>
+                            <li class="filter-option country"  filter="country" filter-data ='<?php echo $key?>' data-filter="country-<?php echo $i++?>"><?php echo $key?></li>
+                        <?php else:?>
+                            <li class="filter-option country"  filter="country" filter-data ='NULL' data-filter="country-<?php echo $i++?>">NULL</li>
+                        <?php endif;?>
+                        <?php $j = 0;?>
+                        <ol class="color_popup_wrap">
+                            <div class="color_popup">
+                                <div class="filter-item-wrap">
+                                    <ul class="filter__categories__content__item active" data-filtercategory="country">
+                                        <?php foreach($country as $manufacturer):?>
+                                            <li class="filter-option" filter="country" filter-data='<?php echo $manufacturer?>' data-filter="country-<?php echo $i++?>">
+                                                <?php echo $manufacturer?>
+                                            </li>
+                                        <?php endforeach;?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </ol>
+
+                    <?php endforeach;?>
+                </ul>
                 <div class="filter__categories__button filter-sidebar__handler--close">Сохранить</div>
             </div>
             <div class="filter__categories__selected">
@@ -778,23 +858,18 @@
     margin: 30px 0;
 ">
         <div class="col-sm-6 col-md-2" ng-repeat="row in items">
-            <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>wallpaper/{{row.id}}"
+            <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>wallpaper/{{row.vendorCode}}"
                target="_blank" style="cursor:pointer;" ng-class="{
-                    'list__item--sale' : row.points == 1 || row.points == 2,
+                    'list__item--sale' : (row.points == 1 || row.points == 2) && (row.priceOld != row.price),
                     'list__item--new' : row.points == 7,
                     'list__item--hot' : row.points == 5 || row.points == 4
                 }
-            " class = "list__item list__item--aqua" points = "{{parseInt(row.points)}}">
+            " class = "list__item list__item--aqua" points = "{{ row.points }}">
                     <div class="list__item__pattern" style="background-image: url('/image?id={{row.image}}&width=175&height=243')"></div>
                     <div class="list__item__info">
                         <div class="list__item__info__code">
                             {{row.vendorCode}}
                         </div>
-                        <div ng-class="{'list__item__info__like--active' : checkFavorite(row.vendorCode) }"
-                             class="list__item__info__like" ng-click="toFavorite(row.vendorCode)">
-                        </div>
-
-
                         <div class="list__item__info__title">
                             {{row.catalog}}&nbsp;
                         </div>
@@ -802,7 +877,7 @@
                             {{row.manufacturer}}&nbsp;
                         </div>
                         <div class="list__item__info__size">{{row.size}} x {{row.height|number:0}} м</div>
-                        <div ng-if="row.points == 1 || row.points == 2"
+                        <div ng-if="(row.points == 1 || row.points == 2)  && (row.priceOld != row.price)"
 
                              ng-class="{'meter-sale' : priceType,
                              'rul-sale': !priceType}"
@@ -811,14 +886,24 @@
                              data-old-price="{{(priceType ? row.m_old_price : row.priceOld)|  number:0}}">
                             {{(priceType ? row.m_price : row.price)| number:0}}
                         </div>
-                        <div ng-if="row.points != 1 && row.points != 2"
+                        <div ng-if="(row.points != 1 && row.points != 2)"
                              ng-class="{'meter' : priceType,
                              'rul': !priceType}"
                              class="list__item__info__price"
                         >
                             {{(priceType ? row.m_price : row.price)| number:0}}
                         </div>
-                        <div class="list__item__info__country">{{row.country}} ({{(priceType ? row.m_count : row.count)|number:0}} | {{(priceType ? row.m_totalCount : row.totalCount)|number:0}})</div>
+                        <div ng-if="(row.points == 1 || row.points == 2)  && (row.priceOld == row.price)"
+                             ng-class="{'meter' : priceType,
+                             'rul': !priceType}"
+                             class="list__item__info__price"
+                        >
+                            {{(priceType ? row.m_price : row.price)| number:0}}
+                        </div>
+                        <div class="list__item__info__country" >{{row.country}} <span ng-if="user">(
+                            {{(priceType ? row.m_count : row.count)|number:0}} |
+                                {{(priceType ? row.m_totalCount : row.totalCount) | number:0}})</span>
+                        </div>
                     </div>
                 </a>
         </div>

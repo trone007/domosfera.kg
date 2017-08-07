@@ -1,4 +1,0 @@
-services:
-#    external.example:
-#        class: ExternalBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]

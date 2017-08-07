@@ -63,7 +63,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="glitter" type="boolean" column="glitter" nullable="true"/>
+    <field name="glitter" type="text" column="glitter" nullable="true"/>
     <field name="color1" type="text" column="color_1" nullable="true">
       <options>
         <option name="fixed"/>

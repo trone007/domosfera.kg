@@ -1,6 +1,10 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
 security:
+
+    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+
+
     providers:
         main:
             entity: { class: AppBundle:Users, property: username }
@@ -18,7 +22,7 @@ security:
 #                logout_path: /logout
             logout:
                 path:   /logout
-                target: /login
+                target: /new
             security: true
             anonymous: true
 
@@ -29,11 +33,9 @@ security:
         - { path: /login/*, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: /login_check/*, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: /update-count$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: /upload-d\w+, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: /ne\w+, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: /imag\w+, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: /get\-\w+, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: /*$, role: ROLE_USER }
+        - { path: /upload-data, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /new/*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: /*$, role: ROLE_USER }
 
             # activate different ways to authenticate
 

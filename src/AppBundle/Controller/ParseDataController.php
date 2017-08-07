@@ -296,20 +296,22 @@ class ParseDataController extends Controller
         header('Content-type: text/plain');
 
         $shops = $this->getDoctrine()->getRepository('AppBundle:Shop')->findAll();
+        $nomenclature = ['Обои', 'Фотообои', 'Лепнина', 'Кафель'];
 
         foreach ($shops as $shop) {
             set_time_limit(0);
+            foreach ($nomenclature as $nom) {
+                $url = 'http://www.gallery.kg/api/'
+                    . urlencode('домосфера') . '/'
+                    . urlencode('остатки') . '?'
+                    . urlencode('магазин') . '=' . $shop->getUuid() . '&'
+                    . urlencode('видНоменклатуры') . '='
+                    . urlencode($nom);
 
-            $url = 'http://www.gallery.kg/api/'
-                . urlencode('домосфера') . '/'
-                . urlencode('остатки') . '?'
-                . urlencode('магазин') . '=' . $shop->getUuid() . '&'
-                . urlencode('видНоменклатуры') . '='
-                . urlencode('Обои');
+                $count = @simplexml_load_file($url)->Остаток;
 
-            $count = @simplexml_load_file($url)->Остаток;
-
-            $this->updateCount($count, $shop->getUuid());
+                $this->updateCount($count, $shop->getUuid());
+            }
             echo 'Wallpapers imported successfull', PHP_EOL;
 //            die;
         }
@@ -602,8 +604,8 @@ class ParseDataController extends Controller
             $wallpaper->setPrice($row->Цена);
             $wallpaper->setCatalog($row->Каталог);
             $wallpaper->setNotebook($row->Тетрадь);
-            $wallpaper->setMainNomenclature($row->ВидНоменклатурыОригинальный);
-            $wallpaper->setNomenclature($row->ВидНоменклатуры);
+            $wallpaper->setMainNomenclature($row->ВидНоменклатуры);
+            $wallpaper->setNomenclature($row->ВидНоменклатурыОригинальный);
             $wallpaper->setCountry($row->Страна);
             $wallpaper->setCurrency($row->Валюта);
             $wallpaper->setOrganization($row->Организация);
@@ -652,6 +654,10 @@ class ParseDataController extends Controller
 
                     case 'коллекция':
                         $wallpaper->setCollectionCode($filter->Значение);
+                        break;
+
+                    case 'комната':
+                        $wallpaper->setGlitter((string)$filter->Значение);
                         break;
                 }
             }

@@ -18,35 +18,127 @@
     $(document).ready(carousel);
 </script>
 <?php $view['slots']->stop()?>
+<?php switch($_GET['nomenclature']){
+    default:
+    case 'Обои': ?>
+        <section class="section-hero" style="background-image: url(/img/hero-bg.png)">
+            <div class="col-md-5 col-md-offset-1">
+                <h1 class="title-1">Идеальные обои для ваших стен</h1>
+                <p class="lead">Самый обширный ассортимент обоев: цвета, фактуры и дизайнерские решения от надежных и качественных обойных брендов со всего мира.</p>
+            </div>
+            <div class="square"></div>
+        </section>
 
-<section class="section-hero" style="background-image: url(/img/hero-bg.png)">
-    <div class="col-md-5 col-md-offset-1">
-        <h1 class="title-1">Идеальные обои для ваших стен</h1>
-        <p class="lead">Самый обширный ассортимент обоев: цвета, фактуры и дизайнерские решения от надежных и качественных обойных брендов со всего мира.</p>
-    </div>
-    <div class="square"></div>
-</section>
+        <section class="section-text row">
+            <div class="col-md-6">
+                <h2 class="title-2 section-text__title">Самый большой<br/> ассортимент обоев</h2>
+                <p>Более 30 000 рулонов обоев в наличии и на заказ—
+                    мы постоянно привозим новые коллекции и заботимся о поддержании ассортимента.
+                    В торговом доме «Галерея» вы всегда найдете именно то, что вам нужно.
+                    Просто расскажите консультантам, чего вам хочется или покажите дизайн-проект.
+                    И они с радостью помогут подобрать лучшие варианты.</p>
+                <a href="/new/catalog" class="button-with-arrow">
+                    <span class="arrow-link">Перейти в каталог</span>
+                </a>
+            </div>
+            <div class="col-md-6 goods-demo" style="background-image: url(/img/goods-demo.png);margin-top: 30px;">
+                <div class="goods-demo__content">
+                    <div class="goods-demo__content__title">Muralto Florian 2</div>
+                    <div class="goods-demo__content__country">Италия, Sirpi</div>
+                    <div class="goods-demo__content__price"><span>от</span> 620</div>
+                </div>
+            </div>
+        </section>
+   <?php break; ?>
+    <?php case 'Фотообои': ?>
+        <section class="section-hero" style="background-image: url(/img/hero-bg.png)">
+            <div class="col-md-5 col-md-offset-1">
+                <h1 class="title-1">Эксклюзивные фотообои высокого класса</h1>
+                <p class="lead">Изготовленные по индивидуальному
+                    заказу на профессиональном оборудовании с применением европейских материалов</p>
+            </div>
+            <div class="square"></div>
+        </section>
 
-<section class="section-text row">
-    <div class="col-md-6">
-        <h2 class="title-2 section-text__title">Самый большой<br/> ассортимент обоев</h2>
-        <p>Более 30 000 рулонов обоев в наличии и на заказ—
-            мы постоянно привозим новые коллекции и заботимся о поддержании ассортимента.
-            В торговом доме «Галерея» вы всегда найдете именно то, что вам нужно.
-            Просто расскажите консультантам, чего вам хочется или покажите дизайн-проект.
-            И они с радостью помогут подобрать лучшие варианты.</p>
-        <a href="/new/catalog" class="button-with-arrow">
-            <span class="arrow-link">Перейти в каталог</span>
-        </a>
-    </div>
-    <div class="col-md-6 goods-demo" style="background-image: url(/img/goods-demo.png);margin-top: 30px;">
-        <div class="goods-demo__content">
-            <div class="goods-demo__content__title">Muralto Florian 2</div>
-            <div class="goods-demo__content__country">Италия, Sirpi</div>
-            <div class="goods-demo__content__price"><span>от</span> 620</div>
-        </div>
-    </div>
-</section>
+        <section class="section-text row">
+            <div class="col-md-6">
+                <h2 class="title-2 section-text__title">Самый большой выбор - Более 500<br/>  готовых и 20 миллионов
+                    изображений под заказ</h2>
+                <p>Потрясающие изображения для интерьерной печати создадут неповторимую атмосферу вашего дома. Пейзажи и города на готовых фотообоях, а также романтические рисунки,
+                    цветы и текстуры на прочной фактурной основе от 500 сом за м2</p>
+                <a href="/new/catalog?nomenclature=Фотообои" class="button-with-arrow">
+                    <span class="arrow-link">Перейти в каталог</span>
+                </a>
+            </div>
+            <div class="col-md-6 goods-demo" style="background-image: url(/img/goods-demo.png);margin-top: 30px;">
+                <div class="goods-demo__content">
+                    <div class="goods-demo__content__title">Muralto Florian 2</div>
+                    <div class="goods-demo__content__country">Италия, Sirpi</div>
+                    <div class="goods-demo__content__price"><span>от</span> 620</div>
+                </div>
+            </div>
+        </section>
+   <?php break; ?>
+    <?php case 'Лепнина': ?>
+        <section class="section-hero" style="background-image: url(/img/hero-bg.png)">
+            <div class="col-md-5 col-md-offset-1">
+                <h1 class="title-1">Лепнина придает дому шарм</h1>
+                <p class="lead">Более 2500 видов лепнины в наличии:
+                    качественные полиуретан и полистирол с выдающейся белизной и четким рисунком
+                    повышенной прочностью и долговечностью для интерьера в классическом и современном стилях,
+                    колонны и камины, карнизы и молдинги</p>
+            </div>
+            <div class="square"></div>
+        </section>
+
+        <section class="section-text row">
+            <div class="col-md-6">
+                <h2 class="title-2 section-text__title">Прочный полиуретан<br/>и недорогой полистирол</h2>
+                <p>колонны и полуколонны, потолочный карниз, стеновые молдинги,
+                    угловые элементы, напольный плинтус, готовые и сборные камины</p>
+                <a href="/new/catalog?nomenclature=Лепнина" class="button-with-arrow">
+                    <span class="arrow-link">Перейти в каталог</span>
+                </a>
+            </div>
+            <div class="col-md-6 goods-demo" style="background-image: url(/img/goods-demo.png);margin-top: 30px;">
+                <div class="goods-demo__content">
+                    <div class="goods-demo__content__title">Muralto Florian 2</div>
+                    <div class="goods-demo__content__country">Италия, Sirpi</div>
+                    <div class="goods-demo__content__price"><span>от</span> 620</div>
+                </div>
+            </div>
+        </section>
+   <?php break; ?>
+    <?php case 'Кафель': ?>
+        <section class="section-hero" style="background-image: url(/img/hero-bg.png)">
+            <div class="col-md-5 col-md-offset-1">
+                <h1 class="title-1">Кафель - для роскошного дома</h1>
+                <p class="lead">Более 900 видов кафеля в наличии и 10 000 под заказ:
+                    качественная российская плитка, испанская и итальянская, керамический гранит в классическом и современных стилях,
+                    с фактурами камня, дерева и текстиля, мозаика и керамогранит для ванной,
+                    гостиной, кухни и террасы, бесплатный дизайн проект - мы поможем вам с выбором!</p>
+            </div>
+            <div class="square"></div>
+        </section>
+
+        <section class="section-text row">
+            <div class="col-md-6">
+                <h2 class="title-2 section-text__title">Более 900 видов керамической плитки</h2>
+                <p>Керамическая плитка в ванную комнату и туалет. Лучшие решения при отделке санузлов для индивидуального дизайна.</p>
+                <a href="/new/catalog?nomenclature=Кафель" class="button-with-arrow">
+                    <span class="arrow-link">Перейти в каталог</span>
+                </a>
+            </div>
+            <div class="col-md-6 goods-demo" style="background-image: url(/img/goods-demo.png);margin-top: 30px;">
+                <div class="goods-demo__content">
+                    <div class="goods-demo__content__title">Muralto Florian 2</div>
+                    <div class="goods-demo__content__country">Италия, Sirpi</div>
+                    <div class="goods-demo__content__price"><span>от</span> 620</div>
+                </div>
+            </div>
+        </section>
+   <?php break; ?>
+<?php } ?>
 
 <section class="section-carousel">
     <h2 class="section-carousel__title title-2">Для всего дома</h2>
@@ -114,7 +206,7 @@
                             <div class="list__item__pattern" style="background-image: url('/image?id=<?php echo $data->getImage()?>&width=300&height=300'"></div>
                             <div class="list__item__info">
                                 <div class="list__item__info__code"><?php echo $data->getVendorCode();?></div>
-                                <div class="list__item__info__like" onclick="toFavorite('<?php echo $data->getVendorCode()?>')"></div>
+<!--                                <div class="list__item__info__like" onclick="toFavorite('--><?php //echo $data->getVendorCode()?>//')"></div>
                                 <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>wallpaper/<?php echo $data->getVendorCode();?>" target="_blank" class="list__item__info__title"><?php echo $data->getCatalog();?></a>
                                 <div class="list__item__info__title">
                                     <?php echo $data->getManufacturer()?>

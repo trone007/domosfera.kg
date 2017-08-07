@@ -79,6 +79,27 @@
         });
 
     });
+$(document).ready(function() {
+    var slideIndex = 1;
+
+    plusSlides = function (n) {
+        showSlides(slideIndex += n);
+    }
+
+    showSlides = function (n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slides[slideIndex-1].style.display = "block";
+        $(slides[slideIndex-1]).find('img').blowup();
+    }
+    showSlides(slideIndex);
+
+});
 </script>
 <?php $view['slots']->stop()?>
 
@@ -99,29 +120,48 @@
                     <td class="article"><?php echo $wallpaper->getVendorCode()?></td>
                 </tr>
                 <tr>
-                    <td>Группа</td>
-                    <td><a href="#"><?php echo $wallpaper->getCatalog()?></a></td>
-                </tr>
-                <tr>
                     <td>Страна</td>
-                    <td><a href="#"><?php echo $wallpaper->getCountry()?></a></td>
+                    <td><a href="<?php echo $prefix ?'/'.$prefix : '' ?>/catalog?filter=country&value=<?php echo $wallpaper->getCountry()?>&nomenclature=<?php echo $wallpaper->getNomenclature();?>">
+                            <?php echo $wallpaper->getCountry()?>
+                        </a>
+                    </td>
                 </tr>
                 <tr>
                     <td>Фабрика</td>
-                    <td><a href="#"><?php echo $wallpaper->getManufacturer()?></a></td>
+                    <td><a href="<?php echo $prefix ?'/'.$prefix : '' ?>/catalog?filter=country&value=<?php echo $wallpaper->getManufacturer()?>&nomenclature=<?php echo $wallpaper->getNomenclature();?>">
+                        <?php echo $wallpaper->getManufacturer()?>
+                        </a>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Вид обоев</td>
-                    <td><a href="#"><?php echo $wallpaper->getBasis()?></a></td>
+                    <td>Каталог</td>
+                    <td><?php echo $wallpaper->getCatalog()?></td>
+                </tr>
+                <tr>
+                    <td>Покрытие</td>
+                    <td><a href="<?php echo $prefix ?'/'.$prefix : '' ?>/catalog?filter=type&value=<?php echo $wallpaper->getType()?>&nomenclature=<?php echo $wallpaper->getNomenclature();?>">
+                            <?php echo $wallpaper->getType()?>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Основа</td>
+                    <td><a href="<?php echo $prefix ?'/'.$prefix : '' ?>/catalog?filter=basis&value=<?php echo $wallpaper->getBasis()?>&nomenclature=<?php echo $wallpaper->getNomenclature();?>">
+                            <?php echo $wallpaper->getBasis()?>
+                        </a>
+                    </td>
                 </tr>
                 <tr>
                     <td>Рулон</td>
-                    <td class="size"><?php echo $wallpaper->getSize() . 'x' .  round(1/$wallpaper->getMarketPlan()/$wallpaper->getSize(), 2);?> м</td>
+                    <td class="size"><a href="<?php echo $prefix ?'/'.$prefix : '' ?>/catalog?filter=size&value=<?php echo $wallpaper->getSize()?>&nomenclature=<?php echo $wallpaper->getNomenclature();?>" >
+                    <?php echo $wallpaper->getSize() . 'x' .  round(1/$wallpaper->getMarketPlan()/$wallpaper->getSize(), 2);?> м
+                    </a>
+                    </td>
                 </tr>
-                <tr>
-                    <td>Остатки</td>
-                    <td class="remains remains--green"></td>
-                </tr>
+<!--                <tr>-->
+<!--                    <td>Остатки</td>-->
+<!--                    <td class="remains remains--green"></td>-->
+<!--                </tr>-->
             </table>
             <div class="product__info__addition">
                 <div class="product__info__addition__like js-like js-like--false" onclick="toFavorite('<?php echo $wallpaper->getVendorCode()?>')">В&nbsp;избранное</div>
@@ -131,8 +171,18 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-7 col-md-8 product__image">
-            <img src="/image?id=<?php echo $wallpaper->getImage()?>&width=1000&height=1000" alt="Product image">
+        <div class="col-xs-12 col-sm-7 col-md-8  slideshow-container">
+            <div class="mySlides fadet">
+                <img src="/image?id=<?php echo $wallpaper->getImage()?>&width=1000&height=1000" style="width:100%" alt="Product image">
+            </div>
+
+            <?php foreach ($images as $image):?>
+                <div class="mySlides fadet">
+                    <img src="/image?id=<?php echo $image['image']?>&width=1000&height=1000" style="width:100%" alt="Product image">
+                </div>
+            <?php endforeach; ?>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
     </div>
 </section>
@@ -149,8 +199,7 @@
                             <div class="list__item__pattern" style="background-image: url('/image?id=<?php echo $data->getImage()?>&width=300&height=300'"></div>
                             <div class="list__item__info">
                                 <div class="list__item__info__code"><?php echo $data->getVendorCode();?></div>
-                                <div class="list__item__info__like" onclick="toFavorite('<?php echo $data->getVendorCode()?>')"></div>
-                                <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>wallpaper/<?php echo $data->getVendorCode();?>" target="_blank" class="list__item__info__title"><?php echo $data->getCatalog();?></a>
+                                <div class="list__item__info__title"><?php echo $data->getCatalog();?></div>
                                 <div class="list__item__info__title">
                                     <?php echo $data->getManufacturer()?>
                                 </div>
@@ -158,7 +207,7 @@
                                 <div class="list__item__info__price">
                                     <?php echo $data->getPrice()?>
                                 </div>
-                                <div class="list__item__info__country"><?php echo $data->getCountry(), "({$shops['kgb']['count']})";?></div>
+                                <div class="list__item__info__country"><?php echo $data->getCountry();?></div>
 
                             </div>
                         </div>
@@ -184,8 +233,12 @@
                 <tr>
                     <td><?php echo $shop['name'] ?></td>
                     <td><?php echo $shop['lot'] ?></td>
-                    <td><?php echo Round($shop['reserve']/$wallpaper->getMarketPlan(),2) ?></td>
-                    <td><?php echo Round($shop['count'],2)  ?></td>
+                    <td><?php echo !empty($user) ? Round($shop['reserve'],2) : ''; ?></td>
+                    <td><?php echo !empty($user) ?
+                            Round($shop['count'],2) :
+                            (($shop['reserve'] + $shop['count']) / $wallpaper->getMarketPlan()  < 100
+                                ? 'Заканчивается' : 'Много');
+                        ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>
@@ -224,9 +277,64 @@ footer.container {
 .list {
     margin: 60px 0 0 0;
 }
+.slideshow-container {
+    max-width: 1100px;
+    position: relative;
+    margin: auto;
+}
+.mySlides img {
+    max-height: 476px;
 
+}
+
+.mySlides {
+    display: none;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 15px;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Fading animation */
+.fadet {
+    /*-webkit-animation-name: fade;*/
+    /*-webkit-animation-duration: 1.5s;*/
+    animation-name: fade;
+    animation-duration: 10s;
+}
+
+@-webkit-keyframes fadet {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+@keyframes fadet {
+    from {opacity: .4}
+    to {opacity: 1}
+}
 </style>
-<?php if($prefix == ''):?>
+<?php if($prefix == '' && !empty($user)):?>
 <footer class="container">
     <div class="col-lg-offset-4 col-lg-4 col-sm-12 col-xs-12">
         <div class="lg-col-12 head-block text-center">
