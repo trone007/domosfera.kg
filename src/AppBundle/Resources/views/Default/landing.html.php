@@ -20,15 +20,15 @@
 <?php $view['slots']->stop()?>
 
 <section class="section-hero" style="background-image: url(/img/hero-bg.png)">
-    <div class="col-md-5 col-md-offset-1">
+    <div class="section-hero__content">
         <h1 class="title-1">Идеальные обои для ваших стен</h1>
         <p class="lead">Самый обширный ассортимент обоев: цвета, фактуры и дизайнерские решения от надежных и качественных обойных брендов со всего мира.</p>
     </div>
     <div class="square"></div>
 </section>
 
-<section class="section-text row">
-    <div class="col-md-6">
+<section class="section-text section-columns">
+    <div class="column-text">
         <h2 class="title-2 section-text__title">Самый большой<br/> ассортимент обоев</h2>
         <p>Более 30 000 рулонов обоев в наличии и на заказ—
             мы постоянно привозим новые коллекции и заботимся о поддержании ассортимента.
@@ -39,7 +39,7 @@
             <span class="arrow-link">Перейти в каталог</span>
         </a>
     </div>
-    <div class="col-md-6 goods-demo" style="background-image: url(/img/goods-demo.png);margin-top: 30px;">
+    <div class="goods-demo column-image" style="background-image: url(/img/goods-demo.png);margin-top: 30px;">
         <div class="goods-demo__content">
             <div class="goods-demo__content__title">Muralto Florian 2</div>
             <div class="goods-demo__content__country">Италия, Sirpi</div>
@@ -101,11 +101,10 @@
     </div>
 </section>
 
-<section class="section-text section-text--no-margins row">
-    <div class="col-md-6">
+<section class="section-text section-text--no-margins section-columns">
+    <div class="column-catalog">
         <h2 class="lead">Более 30 000 рулонов обоев в наличии и на заказ— мы постоянно привозим новые коллекции и заботимся об ассортименте</h2>
         <div class="list row">
-
             <?php $i=0; foreach($wallpapers as $data):?>
                 <div class="col-sm-6 col-md-4">
                     <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>wallpaper/<?php echo $data->getVendorCode();?>"
@@ -133,7 +132,7 @@
             <?php endforeach;?>
         </div>
     </div>
-    <div class="col-md-6 goods-demo" style="background-image: url(/img/goods-demo-2.png)">
+    <div class="column-image--narrow goods-demo" style="background-image: url(/img/goods-demo-2.png)">
         <div class="goods-demo__content">
             <div class="goods-demo__content__title">Grandeko</div>
             <div class="goods-demo__content__country">Германия, Sirpi</div>

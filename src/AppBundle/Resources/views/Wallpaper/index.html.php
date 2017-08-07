@@ -746,9 +746,9 @@
                 Всего артикулов: {{wallpapers.length}}
             </div>
         </div>
-        <div class="select-container switcher--mobile">
-            <select name="sorting" ng-blur="searchPropertiesFnMob()"
-
+        <div class="select-container switcher--mobile select-box" >
+            <select name="sorting"
+                    ng-blur="searchPropertiesFnMob()"
                     ng-focus="searchPropertiesFnMob()"
                     ng-model="sortingMob" id="sortingSwitcher">
                 <option value="" disabled selected>СОРТИРОВАТЬ</option>
@@ -759,6 +759,9 @@
             </select>
         </div>
         <div class="filter-sidebar__handler filter-sidebar__handler--open">фильтр</div>
+        <div style="clear: both">
+            Всего артикулов: {{wallpapers.length}}
+        </div>
     </div>
     <div class="text-center">
         <ul ng-if="pager.pages.length" class="pagination" style="cursor:pointer">
@@ -777,7 +780,7 @@
     <main class="list row" style ="
     margin: 30px 0;
 ">
-        <div class="col-sm-6 col-md-2" ng-repeat="row in items">
+        <div class="col-sm-6 col-md-3 col-lg-2" ng-repeat="row in items">
             <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>wallpaper/{{row.id}}"
                target="_blank" style="cursor:pointer;" ng-class="{
                     'list__item--sale' : row.points == 1 || row.points == 2,
