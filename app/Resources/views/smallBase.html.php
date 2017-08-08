@@ -6,8 +6,8 @@
     <title>Домосфера</title>
 
     <link href="/fonts/fonts.css" rel="stylesheet">
-    <link href="/bootstrap/css/bootstrap-theme.min.css"  rel="stylesheet">
-    <link href="/bootstrap/css/bootstrap.min.css"  rel="stylesheet">
+<!--    <link href="/bootstrap/css/bootstrap-theme.min.css"  rel="stylesheet">-->
+    <link href="/bootstrap/css/bootstrap.css"  rel="stylesheet">
     <?php $view['slots']->output('meta', '') ?>
 
 
@@ -19,27 +19,35 @@
 <div class="container main-container" id="main-container">
 
     <header class="header">
-        <div class="row">
-            <div class="mobile-menu__handler mobile-menu__handler--open col-xs-4" data-sidebar-open="mobile-menu"><span>menu open</span></div>
-            <a href="/new" class="header__title col-xs-8 col-md-2"></a>
-            <div class="header__navigation col-md-10">
-                <div class="header__navigation__more row">
-                    <div class="header__region bs__dropdown col-md-2">
-                        <button class="bs__dropdown__toggle" style="text-transform: uppercase" type="button" id="region-dropdown"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+<!--        <div class="mobile-menu__handler mobile-menu__handler--open" data-sidebar-open="mobile-menu">-->
+<!--            <span class="btn-hamburger">menu open</span>-->
+<!--        </div>-->
+        <div class="container--flex box--light">
+            <div class="mobile-menu__handler mobile-menu__handler--open" data-sidebar-open="mobile-menu">
+                <span class="btn-hamburger">menu open</span>
+            </div>
+            <a href="/new" class="header__title">
+                <img src="/img/logo-old.svg" width="200" alt="Logo">
+            </a>
+            <div class="navigation">
+                <div class="navigation__top">
+                    <div  class="navigation__item navigation__item--right bs__dropdown">
+                        <button class="bs__dropdown__toggle" type="button" id="region-dropdown" data-target=""
+                                 aria-haspopup="true" aria-expanded="true">
                             <?php echo $view['session']->get('region') ?? 'Кыргызстан';?>
                         </button>
                         <ul class="header__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="region-dropdown">
                             <?php foreach($view['session']->get('shops') as $key => $values):?>
                                 <li>
-                                   <?php echo $key ?>
-                                    <?php foreach ($values as $k => $val):?>
-                                        <ul class="second-level">
+                                    <span class="sublist-title"><?php echo $key ?></span>
+                                    <ul class="second-level">
+                                        <?php foreach ($values as $k => $val):?>
                                             <li><a href="/change-region/<?php echo $k;?>"><?php echo $k;?></a></li>
-                                        </ul>
-                                    <?php endforeach;?>
+                                        <?php endforeach;?>
+                                    </ul>
                                 </li>
                             <?php endforeach;?>
+
                         </ul>
                     </div>
                     <?php if($app->getUser()) :?>
@@ -70,10 +78,10 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
     </header>
     <div class="mobile-menu closed" id="mobile-menu">
-        <div class="mobile-menu__container">
+        <div class="mobile-menu__container custom-scroll">
             <div class="mobile-menu__head clearfix">
                 <div class="select-container">
                     <select name="citySelector" id="citySelector">
@@ -84,7 +92,9 @@
                         <?php endforeach;?>
                     </select>
                 </div>
-                <div class="mobile-menu__handler mobile-menu__handler--close" data-sidebar-close="mobile-menu"><span>menu close</span></div>
+                <div class="mobile-menu__handler mobile-menu__handler--close" data-sidebar-close="mobile-menu">
+                    <span class="btn-cross">menu close</span>
+                </div>
             </div>
             <ul class="mobile-menu__list">
                 <li><a href="/new/catalog">Обои</a></li>
@@ -110,42 +120,41 @@
             <a href="/new/catalog?nomenclature=Лепнина">Лепнина</a>
             <a href="/new/catalog?nomenclature=Кафель">Кафель</a>
         </div>
-        <div class="col-xs-12 footer__more-menu footer__more-menu--mobile"><div class="row">
-                <div class="col-xs-5 footer__more-menu__nav">
+        <div class="footer__more-menu footer__more-menu--mobile">
+            <div class="footer__more-menu__nav">
+                <a href="/new/landing">О КОМПАНИИ</a>
+                <a href="/new/landing">МАГАЗИНЫ</a>
+                <a href="/new/landing">КОНТАКТЫ</a>
+            </div>
+            <div class="footer__contacts">
+                <a href="/" class="footer__logo"></a>
+                <div class="footer__more-menu__socials">
+                    <a href="/new/landing" target="_blank" class="vk"></a>
+                    <a href="/new/landing" target="_blank" class="fb"></a>
+                    <a href="/new/landing" target="_blank" class="tw"></a>
+                </div>
+                <div class="footer__more-menu__copyright">© 2010-2016 Торговый дом Домосфера. Все права защищены.</div>
+            </div>
+        </div>
+        <div class="footer__more-menu footer__more-menu--desktop">
 
-                    <a href="/new/landing">О КОМПАНИИ</a>
-                    <a href="/new/landing">МАГАЗИНЫ</a>
-                    <a href="/new/landing">КОНТАКТЫ</a>
-                </div>
-                <div class="col-xs-7">
-                    <a href="/" class="footer__more-menu__logo"></a>
-                    <div class="footer__more-menu__socials">
-                        <a href="/new/landing" target="_blank" class="vk"></a>
-                        <a href="/new/landing" target="_blank" class="fb"></a>
-                        <a href="/new/landing" target="_blank" class="tw"></a>
-                    </div>
-                    <div class="footer__more-menu__copyright">© 2010-2016 Торговый дом Домосфера. Все права защищены.</div>
-                </div>
-            </div></div>
-        <div class="col-xs-12 footer__more-menu footer__more-menu--desktop"><div class="row">
-                <div class="col-md-2">
-                    <a href="/" class="footer__more-menu__logo"></a>
-                </div>
-                <div class="col-md-7 footer__more-menu__nav">
+            <a href="/" class="footer__logo"></a>
 
-                    <a href="/new/landing">О КОМПАНИИ</a>
-                    <a href="/new/landing">МАГАЗИНЫ</a>
-                    <a href="/new/landing">КОНТАКТЫ</a>
-                    <div class="footer__more-menu__copyright">© 2010-2017 Торговый дом Домосфера. Все права защищены.</div>
+            <div class="footer__more-menu__nav">
+
+                <a href="/new/landing">О КОМПАНИИ</a>
+                <a href="/new/landing">МАГАЗИНЫ</a>
+                <a href="/new/landing">КОНТАКТЫ</a>
+                <div class="footer__more-menu__copyright">© 2010-2017 Торговый дом Домосфера. Все права защищены.</div>
+            </div>
+            <div class="col-md-3">
+                <div class="footer__more-menu__socials">
+                    <a href="/new/landing" target="_blank" class="vk"></a>
+                    <a href="/new/landing" target="_blank" class="fb"></a>
+                    <a href="/new/landing" target="_blank" class="tw"></a>
                 </div>
-                <div class="col-md-3">
-                    <div class="footer__more-menu__socials">
-                        <a href="/new/landing" target="_blank" class="vk"></a>
-                        <a href="/new/landing" target="_blank" class="fb"></a>
-                        <a href="/new/landing" target="_blank" class="tw"></a>
-                    </div>
-                </div>
-            </div></div>
+            </div>
+        </div>
     </footer>
 
 </div>
@@ -158,6 +167,20 @@
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/favorite.js"></script>
 <?php $view['slots']->output('scripts', '') ?>
+<script>
+    $(document).ready(function (e) {
+        $('#region-dropdown').click(function (e) {
+            var list = $(this).parent('.bs__dropdown');
+            $(list).toggleClass('open');
+        })
+        $('.sublist-title').click(function (e) {
+            var title = $(this);
+            title.toggleClass('active');
+            title.next('.second-level').toggleClass('open');
+        })
+    })
+
+</script>
 
 
 </body>

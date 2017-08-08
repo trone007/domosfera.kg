@@ -16,17 +16,16 @@
 
 
 <section class="section-text section-text--bordered">
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-1 col-md-8 col-md-offset-1">
-            <h1 class="title-1 section-text__title">Лучший каталог для ваших идей</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-1 col-md-6 col-md-offset-1">
-            Торговый дом Галерея — это ваш надежный партнер во всем, что касается интерьера. Здесь вы можете купить любые товары для ремонта и дизайна помещений от лучших зарубежных производителей, а также различные предметы интерьера, <mark>элементы декора</mark>, стильные <mark>светильники</mark> и элитные <mark>люстры.</mark>
-        </div>
-        <div class="col-sm-4 col-md-4">
-            В нашем каталоге представлены товары из разных стран: Англия, Бельгия, Германия, Голландия, Италия, Китай, Россия, США, Украина, Франция.
+    <div class="section-text__content">
+        <h1 class="title-1 section-text__title">Лучший каталог для ваших идей</h1>
+        <div class="section-text__info">
+            <p>Торговый дом Галерея — это ваш надежный партнер во всем, что касается интерьера.
+                Здесь вы можете купить любые товары для ремонта и дизайна помещений от лучших
+                зарубежных производителей, а также различные предметы интерьера,
+                <mark>элементы декора</mark>, стильные <mark>светильники</mark>
+                и элитные <mark>люстры.</mark></p>
+            <p>В нашем каталоге представлены товары из разных стран: Англия, Бельгия,
+                Германия, Голландия, Италия, Китай, Россия, США, Украина, Франция.</p>
         </div>
     </div>
 </section>
@@ -39,11 +38,11 @@
     <div class="slider peppermint" id="carousel">
         <div class="slider-item" data-slide-name="Обои">
             <div class="col-sm-8 col-md-8 slider-item__image" style="background-image: url(/img/design/1.png)">
-                <div class="slider-item__image__content">
+                <div class="slider-item__content">
                     <div class="slider-item__image__content__title">Muralto Florian 2</div>
                     <div class="slider-item__image__content__country">Италия, Sirpi</div>
-                    <div class="slider-item__image__content__price">5 320</div>
-                    <a href="/new/landing" class="slider-item__image__content__more">
+                    <div class="slider-item__price price">5 320</div>
+                    <a href="/new/landing" class="button-with-arrow">
                         <span class="arrow-link">Все обои</span>
                     </a>
                 </div>
@@ -57,11 +56,11 @@
         </div>
         <div class="slider-item" data-slide-name="Кафель">
             <div class="col-sm-8 col-md-8 slider-item__image" style="background-image: url(/img/collection-intro.jpg)">
-                <div class="slider-item__image__content">
+                <div class="slider-item__content">
                     <div class="slider-item__image__content__title">Muralto Florian 2</div>
                     <div class="slider-item__image__content__country">Италия, Sirpi</div>
-                    <div class="slider-item__image__content__price">5 320</div>
-                    <a href=/new/landing" class="slider-item__image__content__more">
+                    <div class="slider-item__price price">5 320</div>
+                    <a href=/new/landing" class="button-with-arrow">
                         <span class="arrow-link">Все обои</span>
                     </a>
                 </div>
@@ -75,11 +74,11 @@
         </div>
         <div class="slider-item" data-slide-name="Ещё">
             <div class="col-sm-8 col-md-8 slider-item__image" style="background-image: url(/img/collection-intro-2.jpg)">
-                <div class="slider-item__image__content">
+                <div class="slider-item__content">
                     <div class="slider-item__image__content__title">Muralto Florian 2</div>
                     <div class="slider-item__image__content__country">Италия, Sirpi</div>
-                    <div class="slider-item__image__content__price">5 320</div>
-                    <a href="/new/landing" class="slider-item__image__content__more">
+                    <div class="slider-item__price price">5 320</div>
+                    <a href="/new/landing" class="button-with-arrow">
                         <span class="arrow-link">Все обои</span>
                     </a>
                 </div>
