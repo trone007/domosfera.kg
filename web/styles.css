@@ -123,7 +123,7 @@ table {
 }
 body {
   color: #1c1f24;
-  font: 15px/22px 'Avenir Next Cyr';
+  font: 15px/22px 'AvenirNext';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -742,6 +742,7 @@ select {
   font-size: 13px;
   line-height: 55px;
   text-align: center;
+  white-space: nowrap;
   position: relative;
 }
 .navigation__item {
@@ -1866,9 +1867,7 @@ select {
     margin-left: 10px;
   }
 }
-.section-text {
-  padding-top: 23px;
-}
+
 .section-text--grey {
   padding: 50px 0 20px;
   background-color: #f7f7f7;
@@ -1934,6 +1933,7 @@ select {
 @media (min-width: 992px) {
   .section-text {
     margin: 0 0 0 50px;
+    padding-top: 23px;
   }
   .section-text__content {
     margin: 0 54px 10px;
