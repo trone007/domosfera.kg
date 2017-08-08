@@ -113,8 +113,8 @@
         <?php $view['slots']->output('stylesheets') ?>
 
 
-    <footer class="footer row">
-        <div class="col-xs-12 footer__main-menu">
+    <footer class="footer">
+        <div class=" footer__main-menu">
             <a href="/new/catalog">Обои</a>
             <a href="/new/catalog?nomenclature=Фотообои">Фотообои</a>
             <a href="/new/catalog?nomenclature=Лепнина">Лепнина</a>
