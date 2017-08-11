@@ -35,6 +35,7 @@
                         <button class="bs__dropdown__toggle" type="button" id="region-dropdown" data-target=""
                                  aria-haspopup="true" aria-expanded="true">
                             <?php echo $view['session']->get('region') ?? 'Кыргызстан';?>
+                            <span class="chevron"></span>
                         </button>
                         <ul class="header__navigation__categories__item__menu bs__dropdown__menu" aria-labelledby="region-dropdown">
                             <?php foreach($view['session']->get('shops') as $key => $values):?>
@@ -169,6 +170,8 @@
 <?php $view['slots']->output('scripts', '') ?>
 <script>
     $(document).ready(function (e) {
+        $($('.sublist-title')[0]).addClass('active');
+        $($('.second-level')[0]).addClass('open');
         $('#region-dropdown').click(function (e) {
             var list = $(this).parent('.bs__dropdown');
             $(list).toggleClass('open');

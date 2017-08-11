@@ -525,7 +525,7 @@
     <!--    </div>-->
     <!--</div>-->
     <div class="filter row">
-        <div class="filter__categories col-md-8 closed" id="filter-sidebar">
+        <div class="filter__categories col-md-7 col-lg-8 closed" id="filter-sidebar">
             <div class="blackout filter-sidebar__handler--close"></div>
             <div class="filter__categories__list">
                 <div class="filter__categories__head clearfix">
@@ -810,13 +810,10 @@
                 </ul>
                 <div class="filter__categories__button filter-sidebar__handler--close">Сохранить</div>
             </div>
-            <div class="filter__categories__selected">
-                <div class="filter__categories__selected__board"></div>
-                <div class="filter__categories__selected__clear">очистить всё</div>
-            </div>
+
         </div>
 
-        <div class="switcher col-md-4">
+        <div class="switcher col-md-5 col-lg-4">
             <a href="#" class="switcher__item active" ng-click="searchPropertiesFn($event, 'hot')">ХИТЫ</a>
             <a href="#" class="switcher__item" ng-click="searchPropertiesFn($event, 'halyava')">РАСПРОДАЖА</a>
             <a href="#" class="switcher__item" ng-click="searchPropertiesFn($event, 'new')">НОВИНКИ</a>
@@ -824,6 +821,14 @@
 
             <div>
                 Всего артикулов: {{wallpapers.length}}
+            </div>
+        </div>
+        <div class="col-xs-12 desktop-only">
+            <div class="filter__categories__selected">
+                <div class="filter__categories__inner">
+                    <div class="filter__categories__selected__board"></div>
+                    <div class="filter__categories__selected__clear">очистить всё</div>
+                </div>
             </div>
         </div>
         <div class="select-container switcher--mobile select-box" >
@@ -839,7 +844,7 @@
             </select>
         </div>
         <div class="filter-sidebar__handler filter-sidebar__handler--open">фильтр</div>
-        <div style="clear: both">
+        <div class="articules-mobile">
             Всего артикулов: {{wallpapers.length}}
         </div>
     </div>
@@ -857,10 +862,8 @@
         </ul>
     </div>
 
-    <main class="list row" style ="
-    margin: 30px 0;
-">
-        <div class="col-sm-6 col-md-2" ng-repeat="row in items">
+    <main class="list row" style ="margin: 0;">
+        <div class="col-sm-6 col-md-3 col-lg-2" ng-repeat="row in items">
             <a href="/<?php echo $prefix != '' ? $prefix . '/' : ''?>wallpaper/{{row.vendorCode}}"
                target="_blank" style="cursor:pointer;" ng-class="{
                     'list__item--sale' : (row.points == 1 || row.points == 2) && (row.priceOld != row.price),

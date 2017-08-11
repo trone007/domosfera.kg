@@ -370,19 +370,18 @@ select {
   text-align: left;
   width: 194px;
 }
-.bs__dropdown::after {
-  content: " ";
+.bs__dropdown .chevron {
+  display: inline-block;
   background: url("./img/items/down-chevron.svg") center center no-repeat;
   width:15px;
   height:15px;
-  background-size: 10px;
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transform-origin: center center;
+  background-size: 9px;
+  margin-left: 10px;
+  margin-top: 4px;
+  transform-origin: center 40%;
   transition: all 0.2s;
 }
-.bs__dropdown.open::after {
+.bs__dropdown.open .chevron {
   transform: rotate(180deg);
 }
 .bs__dropdown__toggle {
@@ -516,7 +515,7 @@ select {
 }
 @media (min-width: 1200px) {
   .container {
-    padding: 0;
+    /*padding: 0;*/
   }
   .list > .col-md-3 {
     padding-left: 0;
@@ -590,7 +589,7 @@ select {
   .mobile-menu__head select,
   .filter__categories__head select {
     background: #fff;
-    min-width: 190px;
+    min-width: 150px;
     padding: 6px 4px;
     font-weight: 600;
     color: #000;
@@ -748,9 +747,7 @@ select {
 .navigation__item {
   padding:0 35px;
 }
-.navigation__item:hover {
 
-}
 .navigation__item--right {
   margin-right: auto;
 }
@@ -1076,7 +1073,8 @@ select {
   text-transform: uppercase;
 }
 .filter__categories__head__title {
-  color: #d2d2d3;
+  color: #f92d50;
+  font-size: 18px;
   float: left;
 }
 .filter__categories__head__back {
@@ -1115,12 +1113,15 @@ select {
   display: block;
 }
 .filter__categories__selected {
-  display: none;
-  width: 152%;
-  border-top: 1px solid #d3d3d4;
+  /*display: none;*/
+  transition: all 0.2s;
+  max-height: 0px;
+  border-top: 1px solid transparent;
+}
+.filter__categories__inner {
   position: relative;
-  padding: 10px 100px 0 0;
-  min-height: 30px;
+  padding: 0 100px 0 0;
+
 }
 .filter__categories__selected__clear {
   float: right;
@@ -1187,7 +1188,7 @@ select {
   width: auto;
   background-color: rgba(0,0,0,0);
   position: absolute;
-  top: 50px;
+  top: 10px;
   left: -88px;
   padding: 20px 5px;
   z-index: 10;
@@ -1200,11 +1201,10 @@ select {
   -moz-box-shadow:    0px 2px 20px 0px rgba(122, 122, 122, 0.75);
   box-shadow:         0px 2px 20px 0px rgba(122, 122, 122, 0.75);
   padding: 10px 120px 10px 15px;
-  margin-top: -55px;
 }
-.country-block .filter-item-wrap{
-  margin-top: -65px;
-}
+/*.country-block .filter-item-wrap{*/
+  /*margin-top: -65px;*/
+/*}*/
 .color_popup .filter-item-wrap .filter__categories__content__item{
   flex-direction: column;
 }
@@ -1286,6 +1286,9 @@ select {
 .filter .filter-option.color--turquoise {
   background-color: #30D5C8;
 }
+.filter .filter-option.color--lilac {
+  background-color: #b95ccd;
+}
 .filter .filter-option.color--deep-blue {
   background-color: rgb(0,2,92);
 }
@@ -1364,12 +1367,39 @@ select {
   background: url("./img/filter/remove.svg") no-repeat center center;
   background-color: rgba(0,0,0,0.3);
 }
+.articules-mobile {
+  clear: both;
+}
+.pagination {
+  margin: 30px auto;
+}
+@media screen and (max-width: 991px) {
+  .color_popup_wrap {
+    position: absolute;
+    left: 0;
+    z-index: 1000;
+    margin-top: 60px;
+  }
+  .color_popup {
+    position: static;
+    left: 0;
+    top: 0
+  }
+
+}
 @media (min-width: 992px) {
   .filter .filter-option {
     display: inline-block;
     margin: 7px 13px 15px 7px;
     padding: 0 15px;
   }
+  .articules-mobile {
+    display: none;
+  }
+  .filter .filter-option--on-board {
+    margin-top: 15px;
+  }
+
 }
 .filter .switcher {
   text-align: right;
@@ -1380,6 +1410,9 @@ select {
   float: left;
   font-size: 15px;
   font-weight: 600;
+}
+.filter-sidebar__handler {
+  cursor: pointer;
 }
 .filter-sidebar__handler--open {
   text-transform: uppercase;
@@ -1442,6 +1475,10 @@ select {
   }
   .filter__categories__selected.filled {
     display: block;
+    overflow: visible;
+    height: auto;
+    max-height: 50px;
+    border-color: #d3d3d4;
   }
   .filter__categories__selected__clear {
     position: absolute;
@@ -1884,6 +1921,7 @@ select {
 .section-text .goods-demo {
   padding: 40px;
   background-size: cover;
+  position: relative;
 }
 .section-text .goods-demo__content__title {
   font-size: 28px;
