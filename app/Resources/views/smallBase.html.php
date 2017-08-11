@@ -51,31 +51,22 @@
                         </ul>
                     </div>
                     <?php if($app->getUser()) :?>
-                        <a href="/logout" class="col-md-2">выход</a>
-                        <a href="#" class="col-md-2"><?php echo $app->getUser()->getUsername()?></a>
+                        <a class="navigation__item" href="/logout" class="col-md-2">выход</a>
+                        <a class="navigation__item"href="#" class="col-md-2"><?php echo $app->getUser()->getUsername()?></a>
                     <?php else:?>
-                        <a href="/login" class="col-md-2">личный кабинет</a>
+                        <a class="navigation__item"href="/login" class="col-md-2">личный кабинет</a>
                     <?php endif?>
-                    <a href="/new/favorites" class="header__navigation__more__favorites col-md-2"><span>0</span>избранное</a>
-
-                    <a href="/new/shops" class="col-md-2">контакты</a>
+                    <a class="navigation__item" href="/new/shops">контакты</a>
+                    <a class="navigation__item" href="/new/favorites"><span class="favourite">0</span>избранное</a>
                 </div>
-                <div class="header__navigation__categories row">
+                <div class="navigation__menu">
                     <!--                <div class="header__navigation__categories__item bs__dropdown col-md-2">-->
                     <!---->
                     <!--                </div>-->
-                    <div class="header__navigation__categories__item col-md-2">
-                        <a href="/new/landing">Обои</a>
-                    </div>
-                    <div class="header__navigation__categories__item col-md-2">
-                        <a href="/new/landing?nomenclature=Фотообои">Фотообои</a>
-                    </div>
-                    <div class="header__navigation__categories__item col-md-2">
-                        <a href="/new/landing?nomenclature=Лепнина">Лепнина</a>
-                    </div>
-                    <div class="header__navigation__categories__item col-md-2">
-                        <a href="/new/landing?nomenclature=Кафель">Кафель</a>
-                    </div>
+                    <a href="/new/landing">Обои</a>
+                    <a href="/new/landing?nomenclature=Фотообои">Фотообои</a>
+                    <a href="/new/landing?nomenclature=Лепнина">Лепнина</a>
+                    <a href="/new/landing?nomenclature=Кафель">Кафель</a>
                 </div>
             </div>
             </div>
@@ -112,13 +103,12 @@
         <?php $view['slots']->output('_content') ?>
         <?php $view['slots']->output('stylesheets') ?>
 
-
-    <footer class="footer row">
-        <div class="col-xs-12 footer__main-menu">
+    <footer class="footer ">
+        <div class="footer__main-menu">
             <a href="/new/catalog">Обои</a>
             <a href="/new/catalog?nomenclature=Фотообои">Фотообои</a>
-            <a href="/new/catalog?nomenclature=Лепнина">Лепнина</a>
-            <a href="/new/catalog?nomenclature=Кафель">Кафель</a>
+            <a href="/new/landing?nomenclature=Лепнина">Лепнина</a>
+            <a href="/new/landing?nomenclature=Кафель">Кафель</a>
         </div>
         <div class="footer__more-menu footer__more-menu--mobile">
             <div class="footer__more-menu__nav">
@@ -156,7 +146,6 @@
             </div>
         </div>
     </footer>
-
 </div>
 
 <script src="/js/jquery-3.1.1.min.js"></script>
