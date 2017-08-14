@@ -786,25 +786,28 @@
                 <ul class="filter__categories__content__item country-block" data-filtercategory="country">
                     <?php $i = 0;?>
                     <?php foreach($countries as $key => $country):?>
-                        <?php if($key != null):?>
-                            <li class="filter-option country"  filter="country" filter-data ='<?php echo $key?>' data-filter="country-<?php echo $i++?>"><?php echo $key?></li>
-                        <?php else:?>
-                            <li class="filter-option country"  filter="country" filter-data ='NULL' data-filter="country-<?php echo $i++?>">NULL</li>
-                        <?php endif;?>
-                        <?php $j = 0;?>
-                        <ol class="color_popup_wrap">
-                            <div class="color_popup">
-                                <div class="filter-item-wrap">
-                                    <ul class="filter__categories__content__item active" data-filtercategory="country">
-                                        <?php foreach($country as $manufacturer):?>
-                                            <li class="filter-option" filter="country" filter-data='<?php echo $manufacturer?>' data-filter="country-<?php echo $i++?>">
-                                                <?php echo $manufacturer?>
-                                            </li>
-                                        <?php endforeach;?>
-                                    </ul>
+                        <li class="country-box">
+                            <ol class="color_popup_wrap">
+                                <div class="color_popup">
+                                    <div class="filter-item-wrap">
+                                        <ul class="filter__categories__content__item active" data-filtercategory="country">
+                                            <?php foreach($country as $manufacturer):?>
+                                                <li class="filter-option" filter="country" filter-data='<?php echo $manufacturer?>' data-filter="country-<?php echo $i++?>">
+                                                    <?php echo $manufacturer?>
+                                                </li>
+                                            <?php endforeach;?>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </ol>
+                            </ol>
+
+                            <?php if($key != null):?>
+                                <div class="filter-option country"  filter="country" filter-data ='<?php echo $key?>' data-filter="country-<?php echo $i++?>"><?php echo $key?></div>
+                            <?php else:?>
+                                <div class="filter-option country"  filter="country" filter-data ='NULL' data-filter="country-<?php echo $i++?>">NULL</div>
+                            <?php endif;?>
+                            <?php $j = 0;?>
+                        </li>
 
                     <?php endforeach;?>
                 </ul>

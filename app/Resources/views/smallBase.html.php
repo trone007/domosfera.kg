@@ -98,10 +98,10 @@
                 </div>
             </div>
             <ul class="mobile-menu__list">
-                <li><a href="/new/catalog">Обои</a></li>
-                <li><a href="/new/catalog?nomenclature=Фотообои">Фотообои</a></li>
-                <li><a href="/new/catalog?nomenclature=Лепнина">Лепнина</a></li>
-                <li><a href="/new/catalog?nomenclature=Кафель">Кафель</a></li>
+                <li><a id="page-catalog-link" href="/new/catalog">Обои</a></li>
+                <li><a id="page-wallpapers-link" href="/new/catalog?nomenclature=Фотообои">Фотообои</a></li>
+                <li><a id="page-moulding-link" href="/new/catalog?nomenclature=Лепнина">Лепнина</a></li>
+                <li><a id="page-tile-link" href="/new/catalog?nomenclature=Кафель">Кафель</a></li>
             </ul>
             <ul class="mobile-menu__small-list">
                 <li><a href="/login">вход в личный кабинет</a></li>
