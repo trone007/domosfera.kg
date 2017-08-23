@@ -856,34 +856,29 @@ class WallpaperController extends Controller
         $width = (int)$request->get('width');
         $height = (int)$request->get('height');
 
-        header('Content-type: image/jpeg');
         ob_implicit_flush(true);
         ob_start();
-//        $showImage = new Process("php /home/denis/project/bin/console app:image-get -- {$id} {$width} {$height}");
-//        $showImage->start();
-////
-//
-////
-//
-//        $showImage->wait();
-//        echo base64_decode($showImage->getOutput());
-        $dir = '/home/denis/project/web/tmp/';
+
+        $rootDir = dirname($this->container->getParameter('kernel.root_dir'));
+        $dir = $rootDir . '/web/tmp/';
+
         $filename = $dir . $id . $width.'x'.$height.'.jpg';
         if(file_exists($filename)) {
-            echo file_get_contents($filename);
+            $data = file_get_contents($filename);
         } else {
-            $process = new Process("php /home/denis/project/bin/console app:image-update -- {$id} {$width} {$height}");
+            $process = new Process("php {$rootDir}/bin/console app:image-update -- {$id} {$width} {$height}");
             $process->start();
             $process->wait();
-
-            echo base64_decode($process->getOutput());
-
+            $data = base64_decode($process->getOutput());
         }
         ob_flush();
 
         ob_end_flush();
         ob_clean();
-        return new Response('');
+        $response = new Response();
+        $response->setContent($data);
+        $response->headers->set('Content-Type', 'image/jpeg');
+        return $response;
     }
 
     /**

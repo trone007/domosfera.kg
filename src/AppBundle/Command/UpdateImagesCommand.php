@@ -27,8 +27,8 @@ class UpdateImagesCommand extends ContainerAwareCommand
         $doctrine = $this->getContainer()->get('doctrine');
 
         $wallpapers = $doctrine->getRepository('AppBundle:Wallpaper')->findByShop('kgb');
-
-        $dir = '/home/denis/project/web/tmp/';
+        $rootDir = dirname($this->getContainer()->get('kernel')->getRootDir());
+        $dir = $rootDir . '/web/tmp/';
 
         foreach ($wallpapers as $wallpaper) {
             $filename = $dir. $wallpaper->getImage() . '300x300' . '.jpg';
@@ -38,9 +38,13 @@ class UpdateImagesCommand extends ContainerAwareCommand
             $image = file_get_contents('http://www.gallery.kg/image/'. urlencode('кыргызстан') .
                 '/' . $wallpaper->getImage(). '/300/300');
 
-            $image = imagecreatefromstring($image);
-            imagejpeg($image, $filename, 50);
-            imagedestroy($image);
+            try {
+                $image = imagecreatefromstring($image);
+                imagejpeg($image, $filename, 50);
+                imagedestroy($image);
+            } catch (\Exception $ex) {
+                $output->writeln($ex->getMessage());
+            }
         }
 
 

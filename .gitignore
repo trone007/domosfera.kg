@@ -1,3 +1,6 @@
 /log/
 /var/
 /.idea/
+/web/tmp/
+/vendor/
+/composer.lock

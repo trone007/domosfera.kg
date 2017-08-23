@@ -7,13 +7,13 @@
  */
 
 namespace AppBundle\Command;
-use Symfony\Component\Console\Command\Command;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use AppBundle\Image as Image;
 
-class UpdateImageCommand extends Command
+class UpdateImageCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
@@ -31,7 +31,8 @@ class UpdateImageCommand extends Command
         $width = $input->getArgument('width');
         $height = $input->getArgument('height');
 
-        $dir = '/home/denis/project/web/tmp/';
+        $rootDir = dirname($this->getContainer()->get('kernel')->getRootDir());
+        $dir = $rootDir . '/web/tmp/';
         $filename = $dir. $image .$width . 'x' . $height.'.jpg';
 
         $image = file_get_contents('http://www.gallery.kg/image/'. urlencode('кыргызстан'). '/' . $image. '/'.$width. '/'. $height);

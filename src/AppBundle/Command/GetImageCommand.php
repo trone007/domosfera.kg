@@ -7,13 +7,13 @@
  */
 
 namespace AppBundle\Command;
-use Symfony\Component\Console\Command\Command;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use AppBundle\Image as Image;
 
-class GetImageCommand extends Command
+class GetImageCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
@@ -31,10 +31,11 @@ class GetImageCommand extends Command
         $width = $input->getArgument('width');
         $height = $input->getArgument('height');
 
-        $dir = '/home/denis/project/web/tmp/';
+        $rootDir = dirname($this->getContainer()->get('kernel')->getRootDir());
+        $dir = $rootDir . '/web/tmp/';
+
         $filename = $dir. $id .$width . 'x' . $height.'.jpg';
-        $dir = '/home/denis/project/web/tmp/';
-        $filename = $dir . $id . $width.'x'.$height.'.jpg';
+
         if(file_exists($filename)) {
             $output->write(base64_encode(file_get_contents($filename)));
         } else {

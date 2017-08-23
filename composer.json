@@ -19,7 +19,7 @@
     "require": {
         "php": ">=7.1",
         "symfony/symfony": "3.2.*",
-        "doctrine/orm": "dev-master",
+        "doctrine/orm": "2.5.*",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/doctrine-cache-bundle": "^1.2",
         "symfony/swiftmailer-bundle": "^2.3",
@@ -33,8 +33,7 @@
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
         "symfony/phpunit-bridge": "^3.0",
-        "symfony/options-resolver": "^3.2",
-        "apigen/apigen": "dev-master"
+        "symfony/options-resolver": "^3.2"
     },
     "scripts": {
         "symfony-scripts": [
